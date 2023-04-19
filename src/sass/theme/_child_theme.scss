@@ -1,0 +1,122 @@
+@import "typography";
+@import "colours";
+@import "header";
+@import "footer";
+@import "buttons";
+@import "blog";
+@import "resources";
+@import "search";
+@import "blocks/blocks";
+@import "single-products";
+
+main {
+    padding-top: 92px;
+    @media (min-width:992px) {
+        padding-top: 130px;
+    }
+}
+
+.alignwide {
+    @extend .container;
+}
+
+a.noline {
+    text-decoration: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: black;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.content {
+    max-width: 100ch;
+}
+
+.author {
+    background-color: $grey-100-tx;
+}
+
+ul.nopad {
+    padding-inline-start: 0;
+    list-style: none;
+}
+
+@media (min-width:992px) {
+    .cols-lg-2 {
+        columns: 2;
+        ul {
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid-column;
+        }
+    }
+    .cols-lg-3 {
+        columns: 3;
+        ul {
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid-column;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .wp-block-image {
+        figure.alignright {
+            float: none !important;
+            margin: auto !important;
+        }
+    }
+}
+
+
+ol.list-alpha {
+    list-style-type: lower-alpha;
+}
+
+blockquote,
+.blockquote {
+    padding: 1rem;
+    background-color: $grey-100-tx;
+    border-radius: 1rem;
+    box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+    margin-bottom: 0 !important;
+}
+
+.is-layout-flex.has-white-color a {
+    color: $orange-200;
+}
+
+.breakout{
+    width: 100vw;
+    position: relative;
+    background-color: lightgreen;
+    left: calc(-1 * (100vw - 100%) / 2);
+    color: rgba(0,0,0,.6);
+  }
+
+// show stuff that overflows horizontally
+// * {
+//     outline: 1px solid #f00 !important;
+// }
+// show stuff that overflows horizontally via console JS
+/*
+var all = document.getElementsByTagName("*"), i = 0, rect, docWidth = document.documentElement.offsetWidth;
+for (; i < all.length; i++) {
+    rect = all[i].getBoundingClientRect();
+    if (rect.right > docWidth || rect.left < 0){
+        console.log(all[i]);
+        all[i].style.borderTop = '1px solid red';
+    }
+}
+*/
+
+// @mixin fluid-type($min-vw, $max-vw, $min-value, $max-value) {
+// 	$factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
+// 	$calc-value: unquote('#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }');
+
+// 	font-size: $min-value; // Fallback for older browsers
+// 	font-size: clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+// }

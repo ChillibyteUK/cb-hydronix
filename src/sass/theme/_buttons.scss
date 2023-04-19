@@ -1,0 +1,43 @@
+.btn {
+    border-radius: 0;
+    font-weight: 900;
+    font-size: 0.938rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    width: 230px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    @media (min-width:992px) {
+        margin-left: 0;        
+    }
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all 0.3s ease;
+    &:hover {
+        color: $grey-200;
+        transform: translateY(3px);
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+}
+.btn--small {
+    width: 160px;
+    padding: 0.75rem 1rem;
+    height: auto;
+}
+.btn--orange {
+    background-color: $orange-400;
+    color: white;
+    &:hover {
+        color: $grey-200;
+    }
+}
+.btn--green {
+    background-color: $green-400;
+    color: white;
+    &:hover {
+        color: $grey-100;
+    }
+}

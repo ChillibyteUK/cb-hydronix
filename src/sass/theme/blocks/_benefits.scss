@@ -1,0 +1,11 @@
+.benefits {
+    &__image {
+        filter: drop-shadow(-1px 3px 8px $grey-100-tx);
+    }
+    &__content {
+        background-color: $grey-100-tx;
+        border-radius: 1rem;
+        box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+        padding: 1rem;
+    }
+}

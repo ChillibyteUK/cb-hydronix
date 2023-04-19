@@ -1,0 +1,37 @@
+// Use this file to overwrite the basic Bootstrap variables and add your own variables
+// To overwrite a Bootstrap variable you don´t have to touch the Bootstrap folder.
+// Just copy a variable from src/sass/assets/bootstrap5/_variables.scss, paste it here and edit the value.
+
+$blue-100: #f2f3f4;
+$blue-200: #2988bf;
+// $blue-400: #065887;
+
+$blue-400: #0078a9;
+
+$orange-200: #ea9a00;
+$orange-400: #ea5000;
+
+$green-200: #b6e100;
+$green-400: #80bc05;
+$green-700: #009643;
+
+$grey-100: #e9e9e9;
+$grey-100-tx: #e9e9e97a;
+$grey-200: #c9c9c9;
+$grey-300: #a1a19f;
+$grey-350: #7c8892;
+$grey-400: #3c3c3c;
+$grey-700: #1a1a1a;
+
+
+$primary: $blue-400;
+$secodary: $grey-400;
+
+@import "../assets/bootstrap5/functions";
+@import "../assets/bootstrap5/variables";
+@import "../assets/bootstrap5/utilities";
+
+$utilities: map-merge( 
+$utilities, ( "width": map-merge( 
+map-get( $utilities, "width"), ( responsive: true ),),)
+);

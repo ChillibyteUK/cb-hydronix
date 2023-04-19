@@ -1,0 +1,44 @@
+./fields.txt:./page-templates/blocks/cb_accordion.php:                echo '  <div class="h4 question ' . $collapsed . '" data-bs-toggle="collapse" id="heading_' . $counter . '" data-bs-target="#collapse_' . $counter . '" aria-expanded="true" aria-controls="collapse_' . $counter . '">' . get_sub_field('question') . '</div>';
+./fields.txt:./page-templates/blocks/cb_accordion.php:                echo '  <div class="answer collapse ' . $show . '" id="collapse_' . $counter . '" aria-labelledby="heading_' . $counter . '" data-bs-parent="#accordion"><div class="pt-2" itemprop="text">' . apply_filters('the_content',get_sub_field('answer')) . '</div></div>';
+./fields.txt:./page-templates/blocks/cb_hero.php:        $bg = wp_get_attachment_image_url( get_sub_field('image'), 'full' );
+./fields.txt:./page-templates/blocks/cb_hero.php:                        <h1><?=get_sub_field('title')?></h1>
+./fields.txt:./page-templates/blocks/cb_hero.php:                        <div class="hero__content mb-4"><?=get_sub_field('content')?></div>
+./fields.txt:./page-templates/blocks/cb_hero.php:                        if (get_sub_field('cta')) {
+./fields.txt:./page-templates/blocks/cb_hero.php:                            $cta = get_sub_field('cta');
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                        <h3 class="process_cards__title"><?=get_sub_field('title')?></h3>
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                $arr = explode( '<br />', get_sub_field('bullets') );
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                <img src="<?=wp_get_attachment_image_url(get_sub_field('image'),'medium')?>">
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                            $products = get_sub_field('products');
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                        if (get_sub_field('ambient_temp')) {
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                Ambient: <span class="text-green"><?=get_sub_field('ambient_temp')?>&deg;C</span><br>
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                High: <span class="text-red">Up to <?=get_sub_field('high_temp')?>&deg;C </span>
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                if (get_sub_field('badges')) {
+./fields.txt:./page-templates/blocks/cb_process_cards--orig.php:                                    foreach (get_sub_field('badges') as $b) {
+./fields.txt:./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('left_content')?>
+./fields.txt:./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('right_content')?>
+./fields.txt:./page-templates/blocks/cb_three_col_video.php:            // $bg = get_vimeo_data_from_id(get_sub_field('vimeo_id'), 'thumbnail_url');
+./fields.txt:./page-templates/blocks/cb_three_col_video.php:                $videometa = mmd_get_vimeo_info(get_sub_field('vimeo_id'));
+./fields.txt:./page-templates/blocks/cb_three_col_video.php:                <lite-vimeo videoid="<?=get_sub_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo>
+./fields.txt:./page-templates/blocks/cb_three_col_video.php:                <?=get_sub_field('video_description')?>
+./page-templates/blocks/cb_accordion.php:                echo '  <div class="h4 question ' . $collapsed . '" data-bs-toggle="collapse" id="heading_' . $counter . '" data-bs-target="#collapse_' . $counter . '" aria-expanded="true" aria-controls="collapse_' . $counter . '">' . get_sub_field('question') . '</div>';
+./page-templates/blocks/cb_accordion.php:                echo '  <div class="answer collapse ' . $show . '" id="collapse_' . $counter . '" aria-labelledby="heading_' . $counter . '" data-bs-parent="#accordion"><div class="pt-2" itemprop="text">' . apply_filters('the_content',get_sub_field('answer')) . '</div></div>';
+./page-templates/blocks/cb_hero.php:        $bg = wp_get_attachment_image_url( get_sub_field('image'), 'full' );
+./page-templates/blocks/cb_hero.php:                        <h1><?=get_sub_field('title')?></h1>
+./page-templates/blocks/cb_hero.php:                        <div class="hero__content mb-4"><?=get_sub_field('content')?></div>
+./page-templates/blocks/cb_hero.php:                        if (get_sub_field('cta')) {
+./page-templates/blocks/cb_hero.php:                            $cta = get_sub_field('cta');
+./page-templates/blocks/cb_process_cards--orig.php:                        <h3 class="process_cards__title"><?=get_sub_field('title')?></h3>
+./page-templates/blocks/cb_process_cards--orig.php:                                $arr = explode( '<br />', get_sub_field('bullets') );
+./page-templates/blocks/cb_process_cards--orig.php:                                <img src="<?=wp_get_attachment_image_url(get_sub_field('image'),'medium')?>">
+./page-templates/blocks/cb_process_cards--orig.php:                            $products = get_sub_field('products');
+./page-templates/blocks/cb_process_cards--orig.php:                        if (get_sub_field('ambient_temp')) {
+./page-templates/blocks/cb_process_cards--orig.php:                                Ambient: <span class="text-green"><?=get_sub_field('ambient_temp')?>&deg;C</span><br>
+./page-templates/blocks/cb_process_cards--orig.php:                                High: <span class="text-red">Up to <?=get_sub_field('high_temp')?>&deg;C </span>
+./page-templates/blocks/cb_process_cards--orig.php:                                if (get_sub_field('badges')) {
+./page-templates/blocks/cb_process_cards--orig.php:                                    foreach (get_sub_field('badges') as $b) {
+./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('left_content')?>
+./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('right_content')?>
+./page-templates/blocks/cb_three_col_video.php:            // $bg = get_vimeo_data_from_id(get_sub_field('vimeo_id'), 'thumbnail_url');
+./page-templates/blocks/cb_three_col_video.php:                $videometa = mmd_get_vimeo_info(get_sub_field('vimeo_id'));
+./page-templates/blocks/cb_three_col_video.php:                <lite-vimeo videoid="<?=get_sub_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo>
+./page-templates/blocks/cb_three_col_video.php:                <?=get_sub_field('video_description')?>

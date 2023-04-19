@@ -1,0 +1,67 @@
+.product_range_nav {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+
+    a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            .product_range_nav__card {
+                transform: translateY(3px);
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            }
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 0;
+        aspect-ratio: 3 / 2;
+        width: 25vw;
+        height: auto;
+        background-image: url(../img/hx-overlay.svg);
+        background-position: bottom right;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+    h2 {
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    &__card {
+        background-color: white;
+        padding-top: 1rem;
+        text-align: center;
+        height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: all 0.3s ease;
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    &__icon {
+        margin: 0 auto 0.5rem auto;
+        max-width: 150px;
+    }
+    &__description {
+        max-width: 32ch;
+        margin: 0 auto 1rem auto;
+    }
+    &__button {
+        @extend .btn;
+        background-color: $orange-400;
+        color: white !important;
+        width: 100%;
+    }
+}

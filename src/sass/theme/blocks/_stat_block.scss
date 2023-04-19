@@ -1,0 +1,46 @@
+.stat_block {
+    background-image: url(../img/hx-bg--white.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    &__stat {
+        text-align: center;
+        margin: 1rem;
+        aspect-ratio: 1 / 1;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        font-weight: 900;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4rem;
+        &--blue {
+            background-image: url(../img/stat--blue.svg);
+            color: $blue-400;
+        }
+        &--orange {
+            background-image: url(../img/stat--orange.svg);
+            color: $orange-400;
+        }
+        &--grey {
+            background-image: url(../img/stat--grey.svg);
+            color: $grey-400;
+        }
+        &--green {
+            background-image: url(../img/stat--green.svg);
+            color: $green-400;
+        }
+    }
+    &__title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    &__subtitle {
+        text-align: center;
+        font-weight: 300;
+        font-size: 1.3rem;
+    }
+}

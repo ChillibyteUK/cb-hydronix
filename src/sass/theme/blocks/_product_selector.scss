@@ -1,0 +1,78 @@
+.product {
+    &__card {
+        display: block;
+        border-radius: 1rem;
+        border: 1px solid #dee2e6;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        transition: all 0.3s ease;
+        &:hover {
+            transform: translateY(3px);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+        img {
+            aspect-ratio: 4 / 3;
+            width: 100%;
+            max-height: 90px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+    }
+    &__title {
+        font-weight: 700;
+    }
+    &__subtitle {
+        font-weight: 400;
+    }
+    // &__badges {
+    //     display: flex;
+    //     div {
+    //         width: 50px;
+    //         height: 50px;
+    //     }
+    // }
+}
+#productsContainer {
+    background-color: $blue-200;
+    color: white;
+}
+.enquireContainer {
+    background-color: white;
+    color: $black;
+    padding: 1rem;
+    #cbx {
+        columns: 2;
+    }
+}
+
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    .badge {
+        width: 50px;
+        height: 50px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        &:empty {
+            display: block;
+        }
+    }
+    .badge--atex {
+        background-image: url(../img/badge--explosive.png);
+    }
+    .badge--etl {
+        background-image: url(../img/badge--etl.png);
+    }
+    .badge--food-safe {
+        background-image: url(../img/badge--food-safe.png);
+    }
+    .badge--high-temp {
+        background-image: url(../img/badge--high-temp.png);
+    }
+}

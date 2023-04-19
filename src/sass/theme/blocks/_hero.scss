@@ -1,0 +1,56 @@
+.hero {
+    background-color: $grey-400;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 550px;
+    position: relative;
+    z-index: 0;
+    h1 {
+        margin-bottom: 0.5rem;
+    }
+    .carousel-item {
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    // .carousel-indicators {
+    //     bottom: 130px;
+    // }
+
+}
+.short_hero,
+.application_hero {
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 0;
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background-image: url(../img/hx-bg--blue-white.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        opacity: 0.5;
+    }
+    .hero__content h1 {
+        color: #fff;
+        font-size: 2.5rem;
+        font-size: clamp(2.5rem, 2.3rem + 1vw, 3.5rem);
+    }
+}
+
+
+.sub_page_title {
+    background-color: $blue-100;
+    font-size: 0.875rem;
+    a {
+        text-decoration: none;
+    }
+}

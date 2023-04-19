@@ -1,0 +1,40 @@
+.installation_points,
+.process_benefits,
+.three_cards {
+    .card {
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+        &.inactive {
+            opacity: 0.4;
+        }
+    }
+    // .installations {
+    // }
+    img {
+        display: flex;
+        max-width: 80px;
+        margin: 0 auto 0.5rem auto;
+    }
+
+    ul {
+        padding: 0;
+    }
+    li {
+        background-image: url(../img/check.svg);
+        background-repeat: no-repeat;
+        background-position: left 2px;
+        padding: 0 0 0 1.5rem;
+        margin-bottom: 0.5rem;
+        background-size: 15px;
+        background-position: left 4px;
+        list-style: none;
+    
+    }
+
+}
+.three_cards {
+    .card {
+        height: calc(100% - 3rem);
+    }
+}

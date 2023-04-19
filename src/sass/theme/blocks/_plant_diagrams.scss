@@ -1,0 +1,28 @@
+.plant {
+    &__card {
+        background-color: $grey-100-tx;
+        border-radius: 1rem;
+        box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 1rem;
+    }
+    &__title {
+        color: $blue-400;
+        border-bottom: 1px solid $grey-300;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    &__body {
+        min-height: 210px;
+        padding-bottom: 1rem;
+    }
+    &__part_image {
+        max-height: 40px;
+    }
+}
+.sc-map {
+    background-repeat: no-repeat;
+}

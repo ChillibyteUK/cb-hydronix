@@ -1,0 +1,52 @@
+.steps {
+    background-color: $primary;
+    &__row {
+        margin-bottom: 1rem;
+    }
+    &__left {
+        background-color: white;
+        padding: 2rem;
+        display: flex;
+    }
+    &__number {
+        height: 50px;
+        flex: 0 0 50px;
+        // background-color: green;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../img/bullet.svg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    &__val {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    &__right {
+        background-color: $blue-100;
+        color: $primary;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        position: relative;
+        @media (min-width:992px) {
+            padding: 2rem 2rem 2rem 4rem;
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                content: "";
+                border-top: 25px solid transparent;
+                border-bottom: 25px solid transparent;
+                border-left: 25px solid #fff;
+            }
+        }
+    }
+}

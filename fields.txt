@@ -1,0 +1,280 @@
+./archive-events.php:        if (get_field('news_archive','options')) {
+./archive-events.php:            echo '<div class="mb-5">' . get_field('event_archive','options') . '</div>';
+./archive-events.php:                preg_match_all('~^(\w+) (\d+), (\d{4})~',date("F j, Y",strtotime(get_field('event_date',get_the_ID()))),$date);
+./archive-events.php:                $type = get_field('event_type', get_the_ID());
+./archive-events.php:                                <?=date("jS",strtotime(get_field('event_date',get_the_ID())))?>
+./archive-events.php:                                <div class="event__month"><?=date("F",strtotime(get_field('event_date',get_the_ID())))?></div>
+./archive-events.php:                                <div class="event__loca"><?=get_field('event_location')?></div>
+./archive-events.php:                                    if (get_field('event_end')) {
+./archive-events.php:                                        echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))) . ' - ' . date("F jS, Y",strtotime(get_field('event_end',get_the_ID()))) . '</div>';
+./archive-events.php:                                <div class="event__intro"><?=get_field('event_intro')?></div>
+./attachments.php:        // $pVer = get_field('product_version',get_the_ID());
+./attachments.php:            get_field('release_date',get_the_ID()),                     // [5]
+./attachments.php.001:                get_field('ddate',get_the_ID()),                            // [5]
+./downloads.php.UNUSED:            utf8_encode(get_field('description',get_the_ID())),
+./downloads.php.UNUSED:            get_field('dver'),
+./downloads.php.UNUSED:            get_field('ddate',get_the_ID())
+./footer.php:                    $social = get_field('social', 'options');
+./footer.php:if (get_field('gtm_property', 'options')) {
+./footer.php:<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?=get_field('gtm_property', 'options')?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+./header.php:    if (get_field('ga_property', 'options')) { 
+./header.php:<script async src="https://www.googletagmanager.com/gtag/js?id=<?=get_field('ga_property','options')?>"></script>
+./header.php:  gtag('config', '<?=get_field('ga_property','options')?>');
+./header.php:    if (get_field('gtm_property', 'options')) {
+./header.php:})(window,document,'script','dataLayer','<?=get_field('gtm_property','options')?>');</script>
+./header.php:    if (get_field('google_site_verification','options')) {
+./header.php:        echo '<meta name="google-site-verification" content="' . get_field('google_site_verification','options') . '" />';
+./header.php:    if (get_field('bing_site_verification','options')) {
+./header.php:        echo '<meta name="msvalidate.01" content="' . get_field('bing_site_verification','options') . '" />';
+./header.php:    $social = get_field('social', 'options');
+./inc/cb-news.php:			preg_match_all('~^(\w+) (\d+), (\d{4})~',date("F j, Y",strtotime(get_field('event_date',get_the_ID()))),$date);
+./inc/cb-news.php:								<?=date("jS",strtotime(get_field('event_date',get_the_ID())))?>
+./inc/cb-news.php:								<div class="event__month"><?=date("F",strtotime(get_field('event_date',get_the_ID())))?></div>
+./inc/cb-news.php:								<div class="event__loca"><?=get_field('event_location')?></div>
+./inc/cb-news.php:									if (get_field('event_end')) {
+./inc/cb-news.php:										echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))) . ' - ' . date("F jS, Y",strtotime(get_field('event_end',get_the_ID()))) . '</div>';
+./inc/cb-news.php:								<div class="event__intro"><?=get_field('event_intro')?></div>
+./inc/cb-utility.php:    $output = get_field('contact_address','options');
+./inc/cb-utility.php:    if (get_field('contact_phone','options')) {
+./inc/cb-utility.php:        return '<a href="tel:' . parse_phone(get_field('contact_phone','options')) . '">' . get_field('contact_phone','options') . '</a>';
+./inc/cb-utility.php:    if (get_field('contact_email','options')) {
+./inc/cb-utility.php:        return '<a href="mailto:' . get_field('contact_email','options') . '">' . get_field('contact_email','options') . '</a>';
+./inc/cb-utility.php:    if (get_field('contact_email','options')) {
+./inc/cb-utility.php:        return '<a href="mailto:' . get_field('contact_email','options') . '"><i class="fas fa-envelope"></i></a>';
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./inc/cb-utility.php:    $social = get_field('social', 'options');
+./index.php:        if (get_field('news_archive','options')) {
+./index.php:            echo '<div class="mb-5">' . get_field('news_archive','options') . '</div>';
+./page-templates/blocks/cb_aggregate_plant.php:                        $s = get_field('bin_silo_hopper', 'options');
+./page-templates/blocks/cb_aggregate_plant.php:                        $s = get_field('belt_conveyor', 'options');
+./page-templates/blocks/cb_aggregate_plant.php:                        $s = get_field('mixer', 'options');
+./page-templates/blocks/cb_aggregate_plant.php:                        $s = get_field('control_room', 'options');
+./page-templates/blocks/cb_application_hero.php:$bg = wp_get_attachment_image_url(get_field('background'),'full');
+./page-templates/blocks/cb_application_hero.php:            <div class="col-lg-9 d-flex hero__content"><h1 class="my-auto text-white"><?=get_field('title')?></h1></div>
+./page-templates/blocks/cb_application_hero.php:            <div class="col-lg-3"><img src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=get_field('icon')?>--wo.svg"></div>
+./page-templates/blocks/cb_application_icons.php:        $thisApps = get_field('applications');
+./page-templates/blocks/cb_benefits.php:                <img src="<?=get_field('benefits','options')?>" class="benefits__image" alt="">
+./page-templates/blocks/cb_benefits.php:                    echo get_field('benefits_copy','options',false);
+./page-templates/blocks/cb_breakout.php:$bg = get_field('background');
+./page-templates/blocks/cb_breakout.php:        <?=get_field('content')?>
+./page-templates/blocks/cb_children.php:        if (get_field('title')) {
+./page-templates/blocks/cb_children.php:            echo '<h2>' . get_field('title') . '</h2>';
+./page-templates/blocks/cb_children_icons.php:        if (get_field('title')) {
+./page-templates/blocks/cb_children_icons.php:            echo '<h2>' . get_field('title') . '</h2>';
+./page-templates/blocks/cb_children_icons.php:if (get_field('your_application')) {
+./page-templates/blocks/cb_downloads.php:                get_field('release_date',get_the_ID()),                     // [5]
+./page-templates/blocks/cb_filtered_news.php:                    'tag__in' => get_field('tags')
+./page-templates/blocks/cb_filtered_news.php:                    'tag__in' => get_field('tags')
+./page-templates/blocks/cb_filtered_news.php:                    $type = get_field('event_type', get_the_ID());
+./page-templates/blocks/cb_filtered_news.php:                        <div class="col-md-4 px-0"><div class="evt__edate <?=$type?>"><?=date("j F, Y",strtotime(get_field('event_date',get_the_ID())))?></div></div>
+./page-templates/blocks/cb_filtered_news.php:                            <div class="evt__loca"><?=get_field('event_location',get_the_ID())?></div>
+./page-templates/blocks/cb_hero.php:$c = count(get_field('slides')) - 1;
+./page-templates/blocks/cb_hero_short.php:$title = get_field('title') == '' ? get_the_title() : get_field('title');
+./page-templates/blocks/cb_hs_form.php:$e = get_field('hs_form');
+./page-templates/blocks/cb_hs_form.php:if (get_field('title')) {
+./page-templates/blocks/cb_hs_form.php:    echo '<h2>' . get_field('title') . '</h2>';
+./page-templates/blocks/cb_installation_points.php:$i = get_field('installation_point');
+./page-templates/blocks/cb_installation_points.php:                        $thisApps = get_field('applications');
+./page-templates/blocks/cb_latest.php:                    $type = get_field('event_type', get_the_ID());
+./page-templates/blocks/cb_latest.php:                        <div class="col-md-4 px-0"><div class="evt__edate <?=$type?>"><?=date("j F, Y",strtotime(get_field('event_date',get_the_ID())))?></div></div>
+./page-templates/blocks/cb_latest.php:                            <div class="evt__loca"><?=get_field('event_location',get_the_ID())?></div>
+./page-templates/blocks/cb_material_process_cards.php:                <h2 class="fs-3"><?=get_field('title_1')?></h2>
+./page-templates/blocks/cb_material_process_cards.php:                    $arr = explode( '<br />', get_field('card_1') );
+./page-templates/blocks/cb_material_process_cards.php:                <h2 class="fs-3"><?=get_field('title_2')?></h2>
+./page-templates/blocks/cb_material_process_cards.php:                        $thisProcs = get_field('processes');
+./page-templates/blocks/cb_process_benefits.php:                <?=get_field('intro')?>
+./page-templates/blocks/cb_process_benefits.php:                    $arr = explode( '<br />', get_field('benefits') );
+./page-templates/blocks/cb_process_cards.php:        if (get_field('show_title') != 'Yes') {
+./page-templates/blocks/cb_process_cards.php:            $steps = get_field('cards');
+./page-templates/blocks/cb_process_cards.php:                $s = get_field($step, 'options');
+./page-templates/blocks/cb_process_cards.php:                    if (get_field('show_text') != 'Yes') {
+./page-templates/blocks/cb_process_overview.php:$i = get_field('installation_point');
+./page-templates/blocks/cb_process_overview.php:                <?=get_field('intro')?>
+./page-templates/blocks/cb_process_overview.php:                        $arr = explode( '<br />', get_field('benefits') );
+./page-templates/blocks/cb_products.php:$products = get_field('products');
+./page-templates/blocks/cb_products.php:            <div class="mb-2 product__subtitle"><?=get_field('hero_subtitle',$p)?></div>
+./page-templates/blocks/cb_products_by_application.php:$app = get_field('product_application');
+./page-templates/blocks/cb_products_by_industry.php:$app = get_field('industry');
+./page-templates/blocks/cb_products_by_process.php:$app = get_field('process');
+./page-templates/blocks/cb_products_by_type.php:$app = get_field('product_type');
+./page-templates/blocks/cb_product_range_nav.php:$bg = wp_get_attachment_image_url(get_field('background'), 'full');
+./page-templates/blocks/cb_related_downloads--notabs.php:$related_by = get_field('related_by');
+./page-templates/blocks/cb_related_downloads--notabs.php:    $bg = get_field('background')[0] == 'Yes' ? 'py-5 bg--blue-100' : 'pb-5';
+./page-templates/blocks/cb_related_downloads.php:    $related_by = get_field('related_by');
+./page-templates/blocks/cb_single_post.php:$id = get_field('post');
+./page-templates/blocks/cb_single_post.php:$btn = get_field('cta_colour');
+./page-templates/blocks/cb_stat_block.php:                $stat1 = get_field('stat_1');
+./page-templates/blocks/cb_stat_block.php:                $stat2 = get_field('stat_2');
+./page-templates/blocks/cb_stat_block.php:                $stat3 = get_field('stat_3');
+./page-templates/blocks/cb_stat_block.php:                <?=get_field('after_content')?>
+./page-templates/blocks/cb_steps.php:        if (get_field('title')) {
+./page-templates/blocks/cb_steps.php:                <h2 class="mb-0"><?=get_field('title')?></h2>
+./page-templates/blocks/cb_text_image.php:$order_image = (get_field('order') == 'text_left') ? 'order-1 order-lg-2' : 'order-1 order-lg-1';
+./page-templates/blocks/cb_text_image.php:$order_text = (get_field('order') == 'text_left') ? 'order-2 order-lg-1' : 'order-2 order-lg-2';
+./page-templates/blocks/cb_text_image.php:$cols_text = (get_field('split') == '5050' || get_field('split') == '') ? 'col-lg-6' : 'col-lg-8';
+./page-templates/blocks/cb_text_image.php:$cols_image = (get_field('split') == '5050' || get_field('split') == '') ? 'col-lg-6' : 'col-lg-4';
+./page-templates/blocks/cb_text_image.php:$theme = get_field('theme');
+./page-templates/blocks/cb_text_image.php:                if (get_field('title')) {
+./page-templates/blocks/cb_text_image.php:                    echo '<h2>' . get_field('title') . '</h2>';
+./page-templates/blocks/cb_text_image.php:                <div class="content"><?=get_field('content')?></div>
+./page-templates/blocks/cb_text_image.php:                if (get_field('cta')) {
+./page-templates/blocks/cb_text_image.php:                    $cta = get_field('cta');
+./page-templates/blocks/cb_text_image.php:                <img src="<?=wp_get_attachment_image_url(get_field('image'), 'full')?>" class="img-fluid w-75">
+./page-templates/blocks/cb_text_video.php:$order_left = (get_field('order') == 'text_left') ? 'order-2 order-lg-2' : 'order-2 order-lg-1';
+./page-templates/blocks/cb_text_video.php:$order_right = (get_field('order') == 'text_left') ? 'order-1 order-lg-1' : 'order-1 order-lg-2';
+./page-templates/blocks/cb_text_video.php:$bg = (get_field('background')) ? 'text_video--bg' : '';
+./page-templates/blocks/cb_text_video.php:                if (get_field('title')) {
+./page-templates/blocks/cb_text_video.php:                    echo '<h2>' . get_field('title') . '</h2>';
+./page-templates/blocks/cb_text_video.php:                if (get_field('subtitle')) {
+./page-templates/blocks/cb_text_video.php:                    echo '<div class="fs-4 mb-4">' . get_field('subtitle') . '</div>';
+./page-templates/blocks/cb_text_video.php:                <div class="content mb-4"><?=get_field('content')?></div>
+./page-templates/blocks/cb_text_video.php:                if (get_field('cta')) {
+./page-templates/blocks/cb_text_video.php:                    $cta = get_field('cta');
+./page-templates/blocks/cb_text_video.php:                    $bg = get_vimeo_data_from_id(get_field('vimeo_id'), 'thumbnail_url');
+./page-templates/blocks/cb_text_video.php:                    <lite-vimeo videoid="<?=get_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo>
+./page-templates/blocks/cb_three_cards.php:                    $arr = explode( '<br />', get_field('card_1') );
+./page-templates/blocks/cb_three_cards.php:                    $steps = get_field('process_steps');
+./page-templates/blocks/cb_three_col_nav.php:                    <div class="three_col_nav__content"><?=get_field('app_content')?></div>
+./page-templates/blocks/cb_three_col_nav.php:                    <div class="three_col_nav__content"><?=get_field('ben_content')?></div>
+./page-templates/blocks/cb_three_col_nav.php:                    <div class="three_col_nav__content"><?=get_field('pc_content')?></div>
+./page-templates/blocks/cb_three_col_video.php:        if (get_field('title')) {
+./page-templates/blocks/cb_three_col_video.php:        <h2><?=get_field('title')?></h2>
+./page-templates/blocks/cb_two_posts.php:$id1 = get_field('post');
+./page-templates/blocks/cb_two_posts.php:$id2 = get_field('post_2');
+./page-templates/blocks/cb_two_posts.php:$btn = get_field('cta_colour');
+./page-templates/contact-sidebar.php:                    <div class="mb-3"><em><?=get_field('ho_areas_served','options')?></em></div>
+./page-templates/contact-sidebar.php:                        <li><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('ho_phone','options'))?>"><?=get_field('ho_phone','options')?></a></li>
+./page-templates/contact-sidebar.php:                        <li><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('ho_enquiries_email','options')?>"><?=__('Enquiries','cb-hydronix')?></a></li>
+./page-templates/contact-sidebar.php:                        <li><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('ho_support_email','options')?>"><?=__('Support','cb-hydronix')?></a></li>
+./page-templates/contact-sidebar.php:                        <li><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('ho_service_email','options')?>"><?=__('Service','cb-hydronix')?></a></li>
+./page-templates/contact-sidebar.php:                    <div class="mb-3"><em><?=get_field('us_areas_served','options')?></em></div>
+./page-templates/contact-sidebar.php:                        <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('us_address','options')?></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> (Toll-free),<br>or <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-4"><span class="fa-li"><i class="fa fa-mobile"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> (Toll-free),<br>or <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('us_email','options')?>">Hydronix America</a></li>
+./page-templates/contact-sidebar.php:                    <div class="mb-3"><em><?=get_field('eu_areas_served','options')?></em></div>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('eu_phone','options'))?>"><?=get_field('eu_phone','options')?></a></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-fax"></i></span> <?=get_field('eu_fax','options')?></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>">Hydronix Europe</a></li>
+./page-templates/contact-sidebar.php:                    <div class="mb-3"><em><?=get_field('fr_areas_served','options')?></em></div>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('fr_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('fr_email','options')?>">Hydronix France</a></li>
+./page-templates/contact-sidebar.php:                    <div class="mb-3"><em><?=get_field('cn_areas_served','options')?></em></div>
+./page-templates/contact-sidebar.php:                        <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('cn_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
+./page-templates/contact-us.php:                $e = get_field('contact_form','options');
+./page-templates/contact-us.php:                                <div class="mb-3"><em><?=get_field('ho_areas_served','options')?></em></div>
+./page-templates/contact-us.php:                                <div class="mb-3"><strong><?=get_field('ho_intro','options')?></strong></div>
+./page-templates/contact-us.php:                                    <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('ho_address','options')?></li>
+./page-templates/contact-us.php:                                    <li class="mb-4"><span class="fa-li"><i class="fa fa-arrow-circle-o-up"></i></span> <a class="noline" href="<?=get_field('directions_link','options')?>" target="_blank">Get directions</a></li>
+./page-templates/contact-us.php:                                    <li><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('ho_phone','options'))?>"><?=get_field('ho_phone','options')?></a></li>
+./page-templates/contact-us.php:                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
+./page-templates/contact-us.php:                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
+./page-templates/contact-us.php:                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
+./page-templates/contact-us.php:                                <iframe src="<?=get_field('ho_map_url','options')?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+./page-templates/contact-us.php:                        <div class="mb-2"><em><?=get_field('eu_areas_served','options')?></em></div>
+./page-templates/contact-us.php:                        <div class="mb-3"><em><?=get_field('eu_locality','options')?></em></div>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('eu_phone','options'))?>"><?=get_field('eu_phone','options')?></a></li>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-fax"></i></span> <?=get_field('eu_fax','options')?></li>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>">Hydronix Europe</a></li>
+./page-templates/contact-us.php:                        <div class="mb-2"><em><?=get_field('fr_areas_served','options')?></em></div>
+./page-templates/contact-us.php:                        <div class="mb-3"><em><?=get_field('fr_locality','options')?></em></div>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('fr_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('fr_email','options')?>">Hydronix France</a></li>
+./page-templates/contact-us.php:                        <div class="mb-2"><em><?=get_field('cn_areas_served','options')?></em></div>
+./page-templates/contact-us.php:                        <div class="mb-3"><em><?=get_field('cn_locality','options')?></em></div>
+./page-templates/contact-us.php:                            <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('cn_phone','options'))?>"><?=get_field('cn_phone','options')?></a></li>
+./page-templates/contact-us.php:                        <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
+./page-templates/contact-us.php:                        <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
+./page-templates/contact-us.php:                                <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('us_address','options')?></li>
+./page-templates/contact-us.php:                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> (Toll-free), or<br>
+./page-templates/contact-us.php:                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a>
+./page-templates/contact-us.php:                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> (Toll-free), or<br>
+./page-templates/contact-us.php:                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
+./page-templates/contact-us.php:                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('us_email','options')?>">Hydronix America</a></li>
+./page-templates/contact-us.php:        "telephone": "<?=get_field('ho_phone','options')?>",
+./page-templates/contact-us.php:        "telephone": "<?=get_field('us_phone','options')?>",	
+./page-templates/contact-us.php:        "telephone": "<?=get_field('us_phone_tf','options')?>",	
+./page-templates/contact-us.php:        "telephone": "<?=get_field('eu_phone','options')?>",
+./page-templates/contact-us.php:        "telephone": "<?=get_field('eu_phone','options')?>",
+./page-templates/contact-us.php:        "telephone": "<?=get_field('fr_phone','options')?>",
+./page-templates/resources.php:                                <div class="col-md-3 px-0"><div class="evt__edate"><?=date("j F, Y",strtotime(get_field('event_date',get_the_ID())))?></div></div>
+./page-templates/resources.php:                                    <div class="evt__loca"><?=get_field('event_location',get_the_ID())?></div>
+./products_by_industry_process_temp.php:        get_field('hero_subtitle',get_the_ID()),
+./search.php:                    $e = get_field('contact_form','options');
+./single-events.php:                    <div class="event__loca text-white fw-bold"><?=get_field('event_location')?></div>        
+./single-events.php:                if (get_field('event_end')) {
+./single-events.php:                    echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))) . ' - ' . date("F jS, Y",strtotime(get_field('event_end',get_the_ID()))) . '</div>';
+./single-events.php:                    echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))). '</div>';
+./single-events.php:            <div class="event__loca fw-bold"><?=get_field('event_location')?></div>
+./single-events.php:                if (get_field('event_end')) {
+./single-events.php:                    echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))) . ' - ' . date("F jS, Y",strtotime(get_field('event_end',get_the_ID()))) . '</div>';
+./single-events.php:                    echo '<div class="event__dates">' . date("F jS, Y",strtotime(get_field('event_date',get_the_ID()))). '</div>';
+./single-events.php:        <div class="mb-4"><?=apply_filters('the_content',get_field('event_detail'))?></div>
+./single-events.php:            if (get_field('event_booking_link')) {
+./single-events.php:                $link = get_field('event_booking_link');
+./single-news.php:$authImage = wp_get_attachment_image_url(get_field('profile_image','user_'.$authID),'thumbnail');
+./single-products.php:$bg = wp_get_attachment_image_url(get_field('hero_background'), 'full');
+./single-products.php:                    <div class="phero__subtitle mb-4"><?=get_field('hero_subtitle')?></div>
+./single-products.php:    if (get_field('detail_bg') != '') {
+./single-products.php:        // echo 'DETBG:' . get_field('detail_bg');
+./single-products.php:        $img = wp_get_attachment_image_url(get_field('detail_bg'),'full');
+./single-products.php:                if (get_field('installation_points')) {
+./single-products.php:                if (get_field('installation_by_connectivity')) {
+./single-products.php:                if (get_field('accessories')) {
+./single-products.php:                if (get_field('interfaces')) {
+./single-products.php:                if (get_field('products')) {
+./single-products.php:                                    if (get_field('overview')) {
+./single-products.php:                                    <?=cb_list(get_field('overview'))?>
+./single-products.php:                                    if (get_field('typical_materials')) {
+./single-products.php:                                    <?=cb_list(get_field('typical_materials'))?>
+./single-products.php:                                    if (get_field('installation')) {
+./single-products.php:                                    <?=cb_list(get_field('installation'))?>
+./single-products.php:                                    if (get_field('key_features')) {
+./single-products.php:                                    <?=cb_list(get_field('key_features'))?>
+./single-products.php:                                    if (!get_field('views',get_the_ID())) {
+./single-products.php:                                        foreach (get_field('views') as $i) {
+./single-products.php:                                        if (get_field('video_id')) {
+./single-products.php:                                            $vid = get_field('video_id');
+./single-products.php:                                                <a href="https://player.vimeo.com/video/<?=get_field('video_id')?>?byline=0&portrait=0" data-fancybox="gallery">
+./single-products.php:                                                        <iframe src="https://player.vimeo.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+./single-products.php:                            foreach(get_field('installation_points') as $p) {
+./single-products.php:                                                <a href="<?=wp_get_attachment_image_url(get_field('image',$p), 'large' )?>" data-fancybox="gallery">
+./single-products.php:                                                    <img src="<?=wp_get_attachment_image_url(get_field('image',$p), 'medium' )?>">
+./single-products.php:                                                <!-- 20230310 <img src="<?=wp_get_attachment_image_url(get_field('image',$p),'medium')?>"> -->
+./single-products.php:                if (get_field('installation_by_connectivity')) {
+./single-products.php:                            <?=get_field('installation_by_connectivity')?>
+./single-products.php:                if (get_field('accessories')) {
+./single-products.php:                            foreach (get_field('accessories') as $i) {
+./single-products.php:                            <?=get_field('features','options')?>
+./single-products.php:                if (get_field('interfaces')) {
+./single-products.php:                            foreach (get_field('interfaces') as $i) {
+./single-products.php:            $e = get_field('enquiry_form','options');
+./single-products.php:            $sku = get_field('product_code') == '' ? get_the_title() : get_field('product_code');
+./single.php:$authImage = wp_get_attachment_image_url(get_field('profile_image','user_'.$authID),'thumbnail');
+./page-templates/blocks/cb_accordion.php:                echo '  <div class="h4 question ' . $collapsed . '" data-bs-toggle="collapse" id="heading_' . $counter . '" data-bs-target="#collapse_' . $counter . '" aria-expanded="true" aria-controls="collapse_' . $counter . '">' . get_sub_field('question') . '</div>';
+./page-templates/blocks/cb_accordion.php:                echo '  <div class="answer collapse ' . $show . '" id="collapse_' . $counter . '" aria-labelledby="heading_' . $counter . '" data-bs-parent="#accordion"><div class="pt-2" itemprop="text">' . apply_filters('the_content',get_sub_field('answer')) . '</div></div>';
+./page-templates/blocks/cb_hero.php:        $bg = wp_get_attachment_image_url( get_sub_field('image'), 'full' );
+./page-templates/blocks/cb_hero.php:                        <h1><?=get_sub_field('title')?></h1>
+./page-templates/blocks/cb_hero.php:                        <div class="hero__content mb-4"><?=get_sub_field('content')?></div>
+./page-templates/blocks/cb_hero.php:                        if (get_sub_field('cta')) {
+./page-templates/blocks/cb_hero.php:                            $cta = get_sub_field('cta');
+./page-templates/blocks/cb_process_cards--orig.php:                        <h3 class="process_cards__title"><?=get_sub_field('title')?></h3>
+./page-templates/blocks/cb_process_cards--orig.php:                                $arr = explode( '<br />', get_sub_field('bullets') );
+./page-templates/blocks/cb_process_cards--orig.php:                                <img src="<?=wp_get_attachment_image_url(get_sub_field('image'),'medium')?>">
+./page-templates/blocks/cb_process_cards--orig.php:                            $products = get_sub_field('products');
+./page-templates/blocks/cb_process_cards--orig.php:                        if (get_sub_field('ambient_temp')) {
+./page-templates/blocks/cb_process_cards--orig.php:                                Ambient: <span class="text-green"><?=get_sub_field('ambient_temp')?>&deg;C</span><br>
+./page-templates/blocks/cb_process_cards--orig.php:                                High: <span class="text-red">Up to <?=get_sub_field('high_temp')?>&deg;C </span>
+./page-templates/blocks/cb_process_cards--orig.php:                                if (get_sub_field('badges')) {
+./page-templates/blocks/cb_process_cards--orig.php:                                    foreach (get_sub_field('badges') as $b) {
+./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('left_content')?>
+./page-templates/blocks/cb_steps.php:                    <?=get_sub_field('right_content')?>
+./page-templates/blocks/cb_three_col_video.php:            // $bg = get_vimeo_data_from_id(get_sub_field('vimeo_id'), 'thumbnail_url');
+./page-templates/blocks/cb_three_col_video.php:                $videometa = mmd_get_vimeo_info(get_sub_field('vimeo_id'));
+./page-templates/blocks/cb_three_col_video.php:                <lite-vimeo videoid="<?=get_sub_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo>
+./page-templates/blocks/cb_three_col_video.php:                <?=get_sub_field('video_description')?>

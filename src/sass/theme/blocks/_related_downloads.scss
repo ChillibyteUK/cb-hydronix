@@ -1,0 +1,28 @@
+.download {
+    &__card {
+        @extend .product__card;
+        display: flex;
+
+        img {
+            width: 100px;
+            margin-right: 0.5rem;
+        }
+    }
+    &__info {
+        width: 100%;
+    }
+    &__type {
+        font-style: italic;
+    }
+    &__title {
+        font-size: 0.875rem;
+        max-width: 90%;
+        overflow: hidden;
+    }
+    &__desc {
+        font-weight: 700;
+    }
+    &__meta {
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,97 @@
+<?php
+define('WP_USE_THEMES', false); // Don't load theme support functionality
+require_once("../../../wp-load.php");
+
+$DEBUG = false;
+
+$dsub = $_REQUEST['dsub'];
+$dtype = $_REQUEST['dtype'];
+$dlang = $_REQUEST['dlang'];
+$dind = $_REQUEST['dind'];
+
+$dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'dsub',  'field' => 'slug', 'terms' => $dsub);
+$dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'dtype', 'field' => 'slug', 'terms' => $dtype);
+$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'dlang', 'field' => 'slug', 'terms' => $dlang);
+$dind_tax = $dind == '' ? '' : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
+
+if ($DEBUG == true) {
+    header('Content-Type: text/html; charset=utf-8');
+
+    cbdump($_REQUEST);
+    cbdump($dsub_tax);
+    cbdump($dtype_tax);
+    cbdump($dlang_tax);
+    cbdump($dind_tax);
+}
+else {
+    header('Content-Type: application/json; charset=utf-8');
+}
+
+$q = new WP_Query(array(
+    'post_type' => 'attachment',
+    'post_status' => 'any',
+    'post_parent' => null,
+    'posts_per_page' => -1,
+    'tax_query' => array(
+        array('relation' => 'AND'),
+        $dsub_tax,
+        $dtype_tax,
+        $dlang_tax,
+        $dind_tax
+    )
+));
+
+$downloads = array();
+$types = array();
+$langs = array();
+$inds = array();
+
+if ($q->have_posts()) {
+    while ($q->have_posts()) {
+        $q->the_post();
+        $g = get_the_guid( get_the_ID() );
+        if (preg_match('/hydronixlimited-my\.sharepoint\.com/', $g) ) {
+            // if (!preg_match('/an0003/i',get_the_title(get_the_ID()))) {
+            //     continue;
+            // }
+            $title = get_the_title( get_the_ID());
+            $lang = get_the_terms( get_the_ID(), 'dlang' );
+            $type = get_the_terms( get_the_ID(), 'dtype' );
+            $ind = get_the_terms( get_the_ID(), 'industries' );
+
+            // $ver = preg_match('');
+            $downloads[get_the_title( get_the_ID() )] =  array(
+                utf8_encode(wp_get_attachment_caption(get_the_ID())),       // [0]
+                $title,                                                     // [1]
+                $type[0]->name,                                             // [2]
+                $lang[0]->name,                                             // [3]
+                $lang[0]->slug,                                             // [4]
+                get_field('ddate',get_the_ID()),                            // [5]
+                $ind[0]->name,                                              // [6]
+                $ind[0]->slug                                               // [7]
+            );
+            $types[ $type[0]->slug ] = $type[0]->name;
+            $langs[ $lang[0]->slug ] = $lang[0]->name;
+            $inds[  $ind[0]->slug ] = $ind[0]->name;
+            // die();
+        }
+    }
+    $results = array("types" => $types, "langs" => $langs, "inds" => $inds, "files" => $downloads);
+    
+    // echo '<pre style="white-space:pre-wrap">';
+    echo json_encode($results);
+    // echo '</pre>';
+}
+else {
+    echo json_encode("nope");
+}
+
+// $types = array_unique($types);
+
+
+// echo '<pre>';
+// print_r(json_encode($results));
+// echo '</pre>';
+
+
+die();

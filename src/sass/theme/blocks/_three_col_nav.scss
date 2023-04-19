@@ -1,0 +1,33 @@
+.three_col_nav {
+    &__card {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 0 3rem;
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+            border-bottom: 1px solid $grey-200;
+            @media (min-width:992px) {
+                border-bottom: none;
+                border-right: 1px solid $grey-200;
+            }
+        }
+    }
+    img {
+        max-width: 200px;
+        height: auto;
+        display: flex;
+        margin: 0 auto 1rem;
+    }
+    &__title {
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+        font-size: 1.563rem;
+    }
+    &__content {
+        margin: 0 auto 2rem auto;
+        font-weight: 700;
+    }
+}

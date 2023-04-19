@@ -1,0 +1,61 @@
+
+@font-face {
+    font-family: 'frutiger';
+    src: url('../fonts/frutiger-45-light-webfont.woff2') format('woff2'),
+         url('../fonts/frutiger-45-light-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'frutiger';
+    src: url('../fonts/frutiger-55-roman-webfont.woff2') format('woff2'),
+         url('../fonts/frutiger-55-roman-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'frutiger';
+    src: url('../fonts/frutiger-65-bold-webfont.woff2') format('woff2'),
+         url('../fonts/frutiger-65-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'frutiger';
+    src: url('../fonts/frutiger-75-black-webfont.woff2') format('woff2'),
+         url('../fonts/frutiger-75-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'frutiger', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    color: $grey-400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .h99 {
+    font-family: 'frutiger', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    margin-bottom: 0.5rem;
+}
+
+.fs-7 {
+    font-size: 0.875rem;
+}

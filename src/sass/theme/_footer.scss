@@ -1,0 +1,56 @@
+.footer {
+    background-color: $grey-100;
+    font-size: 0.875rem;
+    .menu {
+        list-style: none;
+        padding-inline-start: 0;
+    }
+    a {
+        text-decoration: none;
+        color: $grey-400;
+        transition: all .3s ease;
+        &:hover {
+            color: $grey-300;
+        }
+    }
+    a.btn {
+        color: white;
+        &:hover {
+            color: $grey-200;
+        }
+    }
+    .social-icons {
+        font-size: 1.4rem;
+        a {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+    }
+}
+.colophon {
+    background-color: $grey-200;
+    color: $grey-400;
+    font-size: 0.813rem;
+    a {
+        text-decoration: none;
+        color: $grey-400;
+        transition: all .3s ease;
+        &:hover {
+            color: $grey-300;
+        }
+    }
+    .link {
+        padding: 0 0.5rem;
+        &:not(:last-of-type) {
+            border-right: 1px solid $grey-300;
+        }
+    }
+    .cb {
+        content: url(../img/cb.png);
+        opacity: .6;
+        transition: all .3s ease;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

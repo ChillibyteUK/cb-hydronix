@@ -1,0 +1,39 @@
+.material_process_cards {
+    .process {
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        &__card {
+            width: 50%;
+            @media (min-width:992px) {
+                width: 25%;
+            }
+            @media (min-width:1200px) {
+                width: 20%;
+            }
+            height: 100px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            .process__title {
+                opacity: 0.4;
+            }
+            img {
+                max-width: 80px;
+                display: block;
+                margin: 0 auto 0.5rem auto;
+                opacity: 0.4;
+            }
+            &.active {
+                img {
+                    opacity: 1;
+                }
+                .process__title {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,229 @@
+.phero {
+    background-color: $grey-400;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    display: flex;
+    &__image {
+        max-height: 380px;
+    }
+    h1 {
+        margin-bottom: 0.5rem;
+        font-size: 3.563rem;
+    }
+    &__subtitle {
+        font-size: 1.625rem;
+    }
+}
+.bread__container {
+    background-color: rgba(0,0,0,0.25);
+}
+.bread {
+    padding: .25rem 0.75rem 0.25rem 1rem;
+    font-size: 0.8rem;
+    a {
+        color: $grey-400;
+        text-decoration: none;
+    }
+}
+p#breadcrumbs {
+    margin-bottom: 0;
+}
+
+.applications {
+    &__card {
+        a {
+            text-decoration: none;
+            &:hover {
+                img {
+                    transform: scale(1.3);
+                }
+            }
+        }
+        img {
+            max-width: 80px;
+            display: block;
+            margin: 0 auto 0.5rem auto;
+            transition: all 0.2s ease-out;
+            @media (min-width:768px) {
+                opacity: 0.4;
+            }
+        }
+        &.active {
+            img {
+                opacity: 1;
+            }
+            .applications__title {
+                opacity: 1;
+            }
+        }
+    }
+    &__title {
+        font-size: 1rem;
+        line-height: 1.2;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        opacity: 0.4;
+        min-height: 2.5rem;
+    }
+    &__status {
+        width: 15px;
+        height: 15px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url(../img/orange-nope.svg);
+        margin: auto;
+        &.active {
+            background-image: url(../img/green-circle.svg);
+        }
+    }
+}
+
+.details {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    .card {
+        border-radius: 0;
+    }
+
+    h3 {
+        font-size: calc(1.275rem + .3vw) !important;
+        @media (min-width: 1200px) {
+            font-size: 1.5rem !important;
+        }
+    }
+    li.nav-item {
+        flex-grow: 1;
+    }
+    .nav-link {
+        border-radius: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        &.active {
+            background-color: white;
+            color: $black;
+        }
+    }
+
+    .card {
+        background-color: transparent;
+        &-header {
+            border-radius: 0;
+            padding: 0;
+            a {
+                display: block;
+                padding: 0.5rem 1rem;
+                color: $black;
+                background-color: $grey-100;
+                text-decoration: none;
+                &.collapsed {
+                    background-color: rgba(0,0,0,0.5);
+                    color: white;
+                }
+            }
+
+        }
+        &-body {
+            background-color: white;
+        }
+    }
+
+    .responsive-tabs .nav-tabs {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .responsive-tabs .nav-tabs {
+            display: flex;
+        }
+
+        .responsive-tabs .card {
+            border: none;
+        }
+
+        .responsive-tabs .card .card-header {
+            display: none;
+        }
+
+        .responsive-tabs .card .collapse {
+            display: block;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .responsive-tabs .tab-pane {
+            display: block !important;
+            opacity: 1;
+        }
+    }
+
+    dt {
+        color: $blue-400;
+    }
+    dd {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.process-steps {
+    background-color: $grey-350;
+    color: white;
+    padding: 1rem 1rem 0 1rem;
+    &__step {
+        width: 15%;
+        text-align: center;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+        flex: 1 1 auto;
+        img {
+            display: block;
+            margin: auto;
+            max-width: 80px;
+            transition: all 0.2s ease-out;
+        }
+        a {
+            text-decoration: none; color: white;
+            &:hover img {
+                transform: scale(1.3);
+            }
+        }
+    }
+    // .process-steps__step + .process-steps__step,
+    // .process-steps__step:not(:last-of-type) {
+    //     border-right: 1px solid $grey-100-tx;
+    // }
+    &__name {
+        min-height: 3.2rem;
+        line-height: 1.2;
+    }
+}
+
+.install__card {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+    background-color: $blue-100;
+    height: 100%;
+    h3 {
+        color: $blue-400;
+        border-bottom: 1px solid $grey-200;
+        font-size: 1.25rem !important;
+    }
+    img {
+        max-width: 200px;
+        height: 100px;
+        width: auto;
+    }
+    ul {
+        padding-inline-start: 1rem;
+        li {
+            font-size: 0.9rem;
+        }
+    }
+
+}

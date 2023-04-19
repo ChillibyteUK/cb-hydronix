@@ -1,0 +1,80 @@
+<?php
+define('WP_USE_THEMES', false); // Don't load theme support functionality
+require_once("../../../wp-load.php");
+
+$DEBUG = false;
+
+$dsub = $_REQUEST['dsub'];
+$dtype = $_REQUEST['dtype'];
+$dlang = $_REQUEST['dlang'];
+
+$dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'dsub',  'field' => 'slug', 'terms' => $dsub);
+$dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'dtype', 'field' => 'slug', 'terms' => $dtype);
+$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
+
+if ($DEBUG == true) {
+    header('Content-Type: text/html; charset=utf-8');
+
+    '<h1>REQUEST</h1>';
+    cbdump($_REQUEST);
+    
+    '<h1>dsub</h1>';
+    cbdump($dsub_tax);
+    '<h1>dtype</h1>';
+    cbdump($dtype_tax);
+    '<h1>doclang</h1>';
+    cbdump($dlang_tax);
+}
+else {
+    header('Content-Type: applicaion/json; charset=utf-8');
+}
+
+$q = new WP_Query(array(
+    'post_type' => 'downloads',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
+    'tax_query' => array(
+        array('relation' => 'AND'),
+        $dsub_tax,
+        $dtype_tax,
+        $dlang_tax
+    )
+));
+
+$downloads = array();
+$types = array();
+$langs = array();
+
+if ($q->have_posts()) {
+    while ($q->have_posts()) {
+        $q->the_post();
+        $lang = get_the_terms( get_the_ID(), 'dlang' );
+        $type = get_the_terms( get_the_ID(), 'dtype' );
+        $downloads[get_the_title()] =  array(
+            utf8_encode(get_field('description',get_the_ID())),
+            get_field('dver'),
+            $type[0]->name,
+            $lang[0]->name,
+            $lang[0]->slug,
+            get_field('ddate',get_the_ID())
+        );
+        $types[ $type[0]->slug ] = $type[0]->name;
+        $langs[ $lang[0]->slug ] = $lang[0]->name;
+    }
+    $results = array("types" => $types, "langs" => $langs, "files" => $downloads);
+    
+    echo json_encode($results);
+}
+else {
+    echo json_encode("nope");
+}
+
+// $types = array_unique($types);
+
+
+// echo '<pre>';
+// print_r(json_encode($results));
+// echo '</pre>';
+
+
+die();

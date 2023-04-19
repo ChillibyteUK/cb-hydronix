@@ -1,0 +1,60 @@
+.process_cards {
+    &__card {
+        background-color: $grey-100-tx;
+        border-radius: 1rem;
+        box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 1rem 0 0 0;
+    }
+    &__title {
+        color: $blue-400;
+        border-bottom: 1px solid $grey-300;
+        margin: 0 1rem 1rem 1rem;
+        font-size: 1.5rem;
+    }
+    &__body {
+        min-height: 210px;
+        padding-bottom: 1rem;
+    }
+    &__products {
+        table {
+            margin-bottom: 0;
+        }
+    }
+    &__product_image {
+        max-height: 40px;
+    }
+    &__environment {
+        display: flex;
+        gap: 15px;
+        background-color: $grey-700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $grey-100;
+        padding: 0.5rem 1rem;
+        .img--temps {
+            width: 30px;
+        }
+        .text-green {
+            color: #46b649;
+        }
+        .text-red {
+            color: #ff0000;
+        }
+    }
+    &__badges {
+        img {
+            max-height: 50px;
+        }
+        display: flex;
+        flex-grow: 1;
+        gap: 5px;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
