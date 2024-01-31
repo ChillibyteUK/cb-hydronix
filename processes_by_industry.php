@@ -6,15 +6,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
 
-$translated_term_id = apply_filters( 'wpml_object_id', $industry, 'industries', TRUE);
-
-cbdump($translated_term_id);
-
 if ($industry != '%') {
     $ind_tax = array(
         'taxonomy' => 'industries',
-        'field' => 'id',
-        'terms' => $translated_term_id,
+        'field' => 'slug',
+        'terms' => $industry,
     );
 }
 $q = new WP_Query(array(
