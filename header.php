@@ -17,6 +17,8 @@ if ($countryData->countryCode === 'CN') {
     exit;
 }
 
+$curr_lang = apply_filters('wpml_current_language', null);
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -131,6 +133,8 @@ $s = implode(',', $socials);
     <?php
 do_action('wp_body_open');
 $home_url = apply_filters('wpml_home_url', get_option('home'));
+
+$l = $curr_lang == 'en' ? '/' : '/' . $curr_lang . '/';
 ?>
     <div class="site" id="page">
         <div id="wrapper-navbar" class="fixed-top">
@@ -148,7 +152,7 @@ $home_url = apply_filters('wpml_home_url', get_option('home'));
                             <div class="contacts">
                                 <div class="mb-2 text-center text-lg-end">
                                     <div id="searchBox" class="d-none">
-                                        <form id="search" class="d-flex w-100 justify-content-center" action="/"
+                                        <form id="search" class="d-flex w-100 justify-content-center" action="<?=$l?>"
                                             method="get" accept-charset="utf-8">
                                             <input type="text" name="s" id="search-s" value=""
                                                 class="align-self-center search-input form-control" autofocus />
@@ -166,8 +170,6 @@ $home_url = apply_filters('wpml_home_url', get_option('home'));
                                     ))
 ?></div>
                                     <?php
-$curr_lang = apply_filters('wpml_current_language', null);
-
 $en_contact = get_page_by_path('/about-hydronix/contact-us/');
 $en_contact_id = $en_contact->ID;
 $lang_contact = apply_filters('wpml_object_id', $en_contact_id, 'page', true, $curr_lang);

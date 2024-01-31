@@ -106,7 +106,7 @@ $("#spinner").hide();
 $("#industry").change(function(){
     let endpoint = '/wp-content/themes/cb-hydronix/processes_by_industry.php'
     $("#process").empty();
-    $("#process").append("<option>Select the process</option>");
+    $("#process").append("<option><?=__('Select the process','cb-hydronix')?></option>");
     $("#hiddenIndustry").empty();
     $("#tempContainer").hide();
     $("#productsContainer").hide();
