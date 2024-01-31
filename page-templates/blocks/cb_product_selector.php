@@ -140,7 +140,7 @@ $("#process").change(function(){
     $("#temperature").empty();
     $("#productsContainer").hide();
 
-    $("#temperature").append("<option>Select the material temperature</option>");
+    $("#temperature").append("<option><?=__('Select the material temperature','cb-hydronix')?></option>");
 
     var selProcess = $(this).val();
     $("#hiddenProcess").val(selProcess);
