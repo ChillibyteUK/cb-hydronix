@@ -8,6 +8,7 @@ $industry = $_REQUEST['ind'];
 
 $translated_term_id = apply_filters( 'wpml_object_id', $industry, 'industries', TRUE);
 
+cbdump($translated_term_id);
 
 if ($industry != '%') {
     $ind_tax = array(
