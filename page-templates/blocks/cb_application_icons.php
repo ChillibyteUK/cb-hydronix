@@ -4,9 +4,14 @@ $allApps = get_terms( array(
     'hide_empty' => false
 ));
 $appIDs = wp_list_pluck($allApps,'term_id');
+
+$background = get_field('background');
+$bg = !empty($background) && $background[0] === 'light' ? '' : 'bg--blue-100';
+
+$classes = $block['className'] ?? null;
 ?>
 <!-- application_icons -->
-<section class="bg--blue-100 my-4">
+<section class="<?=$bg?> <?=$classes?> py-4">
 <div class="container py-4">
     <h2 class="fs-4 text-center mb-4"><?=__('Typical Applications','cb-hydronix')?></h2>
     <div class="applications row g-4">
@@ -22,6 +27,8 @@ $appIDs = wp_list_pluck($allApps,'term_id');
             $icon2 = '--blue'; // TODO - colour icons
             $active = '';
             
+            // echo $a->slug;
+
             $en_id = apply_filters( 'wpml_object_id', $a->term_id, 'applications', TRUE, 'en');
 
             $current_lang = apply_filters( 'wpml_current_language', NULL );
@@ -31,8 +38,10 @@ $appIDs = wp_list_pluck($allApps,'term_id');
 
             $imgslug = $en_term->slug;
 
+            // var_dump($en_id);
+            
             foreach ($thisApps as $i) {
-                if ($i == $en_term->term_id) {
+                if ($i == $a->term_id) {
                     // active - blue on desktop colour on mobile
                     $icon = '--blue'; // 
                     $icon2 = '--colour'; // 
@@ -42,8 +51,7 @@ $appIDs = wp_list_pluck($allApps,'term_id');
             ?>
         <div class="col-sm-4 col-lg-2 applications__card <?=$active?>">
             <a href="<?=__('/measure/','cb-hydronix')?><?=$a->slug?>/">
-                <img class="d-md-none" src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$imgslug?><?=$icon2?>.svg" alt="X <?=$icon2?>">
-                <img class="d-none d-md-block" src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$imgslug?><?=$icon?>.svg" alt="X <?=$icon?>">
+                <img src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$imgslug?><?=$icon?>.svg" alt="X <?=$icon?>">
                 <div class="applications__title"><?=$a->name?></div>
             </a>
         </div>

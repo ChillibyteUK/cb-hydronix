@@ -1,14 +1,19 @@
+<?php
+global $sitepress;
+$curr_lang = $sitepress->get_current_language();
+$lang = $curr_lang == 'en' ? '' : '/' . $curr_lang;
+?>
 <!-- latest -->
 <section class="latest">
     <div class="latest__heading py-4">
         <div class="container-xl">
-            <h2><?=__('Related News, Blogs &amp; Events','cb-hydronix')?></h2>
+            <h2><?=__('Latest News, Blogs &amp; Events','cb-hydronix')?></h2>
         </div>
     </div>
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-7">
-                <h2 class="mb-4"><?=__('Latest News & Blogs','cb-hydronix')?></h2>
+                <h2 class="mb-4"><?=__('Latest News &amp; Blogs','cb-hydronix')?></h2>
                 <?php
                 $latest_news = get_posts("post_type=post&numberposts=2");
                 foreach ($latest_news as $news) {
@@ -29,11 +34,11 @@
                 }
                 ?>
                 <div>
-                    <a href="/resources/" class="mx-auto btn btn--orange">Hydronix Resource Hub</a>
+                    <a href="<?=$lang?>/<?=__('resources','cb-hydronix')?>/" class="mx-auto btn btn--orange"><?=__('Hydronix Resource Hub','cb-hydronix')?></a>
                 </div>
             </div>
             <div class="col-lg-5">
-                <h2 class="mb-4">Upcoming Events</h2>
+                <h2 class="mb-4"><?=__('Upcoming Events','cb-hydronix')?></h2>
                 <?php
                 $q = new WP_Query(array(
                     'post_type' => 'events',
@@ -66,7 +71,7 @@
                     ?>
                 <a href="<?=get_the_permalink(get_the_ID())?>" class="evt__item mb-4">
                     <div class="row evt mx-0">
-                        <div class="col-md-4 px-0"><div class="evt__edate <?=$type?>"><?=date("j F, Y",strtotime(get_field('event_date',get_the_ID())))?></div></div>
+                        <div class="col-md-4 px-0"><div class="evt__edate <?=$type?>"><?=date_i18n("j F, Y",strtotime(get_field('event_date',get_the_ID())))?></div></div>
                         <div class="col-md-8 py-2 evt__detail">
                             <div class="evt__title"><?=get_the_title()?></div>
                             <div class="evt__loca"><?=get_field('event_location',get_the_ID())?></div>
@@ -78,7 +83,7 @@
                 wp_reset_postdata();
                 ?>
                 <div>
-                    <a href="/resources/events/" class="mx-auto btn btn--orange">All Events</a>
+                    <a href="<?=$lang?>/<?=__('resources','cb-hydronix')?>/<?=__('events','cb-hydronix')?>/" class="mx-auto btn btn--orange"><?=__('All Events','cb-hydronix')?></a>
                 </div>
             </div>
         </div>

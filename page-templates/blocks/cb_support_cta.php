@@ -21,8 +21,16 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <a href="/contact-support/" class="btn btn--orange mb-2"><?=__('Contact Support','cb-hydronix')?></a>
-                <a href="/resources/downloads/" class="btn btn--green"><?=__('Download Technical Resources','cb-hydronix')?></a>
+                <?php
+                $suppID = get_page_by_path('contact-support');
+                $suppIDLang = apply_filters( 'wpml_object_id', $suppID->ID, 'page' );
+                $suppLink = get_the_permalink($suppIDLang);
+                $resID = get_page_by_path('resources/downloads');
+                $resIDLang = apply_filters( 'wpml_object_id', $resID->ID, 'page' );
+                $resLink = get_the_permalink($resIDLang);
+                ?>
+                <a href="<?=$suppLink?>" class="btn btn--orange mb-2"><?=__('Contact Support','cb-hydronix')?></a>
+                <a href="<?=$resLink?>" class="btn btn--green"><?=__('Download Technical Resources','cb-hydronix')?></a>
             </div>
         </div>
     </div>

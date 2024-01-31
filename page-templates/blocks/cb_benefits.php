@@ -1,15 +1,20 @@
-<section class="benefits py-4 mb-4">
+<?php
+$background = get_field('background');
+$bg = !empty($background) && $background[0] === 'dark' ? 'bg--blue-100' : '';
+
+$classes = $block['className'] ?? null;
+?>
+<!-- benefits -->
+<section class="benefits py-5 <?=$bg?> <?=$classes?>">
     <div class="container-xl">
         <h2><?=__('Key Benefits','cb-hydronix')?></h2>
         <div class="row">
             <div class="col-md-4 px-4">
-                <img src="<?=get_field('benefits','options')?>" class="benefits__image" alt="">
+                <img src="<?=get_field('benefits_image', 'options')?>" class="benefits__image" alt="">
             </div>
             <div class="col-md-8">
                 <div class="benefits__content">
-                    <?php
-                    echo get_field('benefits_copy','options',false);
-                    ?>
+                    <?=get_field('benefits_copy', 'options')?>
                 </div>
             </div>
         </div>

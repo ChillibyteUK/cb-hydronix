@@ -41,12 +41,12 @@ get_header();
                     <div class="card p-4">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3>Hydronix Head Office</h3>
+                                <h3><?=__('Hydronix Head Office','cb-hydronix')?></h3>
                                 <div class="mb-3"><em><?=get_field('ho_areas_served','options')?></em></div>
                                 <div class="mb-3"><strong><?=get_field('ho_intro','options')?></strong></div>
                                 <ul class="fa-ul">
                                     <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('ho_address','options')?></li>
-                                    <li class="mb-4"><span class="fa-li"><i class="fa fa-arrow-circle-o-up"></i></span> <a class="noline" href="<?=get_field('directions_link','options')?>" target="_blank">Get directions</a></li>
+                                    <li class="mb-4"><span class="fa-li"><i class="fa fa-arrow-circle-o-up"></i></span> <a class="noline" href="<?=get_field('directions_link','options')?>" target="_blank"><?=__('Get directions','cb-hydronix')?></a></li>
                                     <li><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('ho_phone','options'))?>"><?=get_field('ho_phone','options')?></a></li>
                                 </ul>
                                 <div class="d-flex w-100 justify-content-between flex-wrap">
@@ -63,30 +63,30 @@ get_header();
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4>Hydronix Europe</h4>
+                        <h4><?=__('Hydronix Europe','cb-hydronix')?></h4>
                         <div class="mb-2"><em><?=get_field('eu_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('eu_locality','options')?></em></div>
                         <ul class="fa-ul">
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('eu_phone','options'))?>"><?=get_field('eu_phone','options')?></a></li>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-fax"></i></span> <?=get_field('eu_fax','options')?></li>
-                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>">Hydronix Europe</a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>"><?=__('Hydronix Europe','cb-hydronix')?></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4>Hydronix France</h4>
+                        <h4><?=__('Hydronix France','cb-hydronix')?></h4>
                         <div class="mb-2"><em><?=get_field('fr_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('fr_locality','options')?></em></div>
                         <ul class="fa-ul">
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('fr_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
-                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('fr_email','options')?>">Hydronix France</a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('fr_email','options')?>"><?=__('Hydronix France','cb-hydronix')?></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4>Hydronix China</h4>
+                        <h4><?=__('Hydronix China','cb-hydronix')?></h4>
                         <div class="mb-2"><em><?=get_field('cn_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('cn_locality','options')?></em></div>
                         <ul class="fa-ul">
@@ -96,19 +96,19 @@ get_header();
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4>Hydronix America</h3>
+                        <h4><?=__('Hydronix America','cb-hydronix')?></h3>
                         <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
                             <ul class="fa-ul">
                                 <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('us_address','options')?></li>
                                 <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> 
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> (Toll-free), or<br>
+                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
                                     <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a>
                                 </li>
                                 <li class="mb-4"><span class="fa-li"><i class="fa fa-mobile"></i></span>
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> (Toll-free), or<br>
+                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
                                     <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
-                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('us_email','options')?>">Hydronix America</a></li>
+                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
                             </ul>
                         </div>
                     </div>

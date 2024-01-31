@@ -110,18 +110,29 @@
 
 }
 
-#menu-language-switcher {
-    li > a.dropdown-toggle > span {
-        display: none;
-    }
-    .dropdown-menu a.dropdown-item {
-        color: black !important;
-        text-transform: initial;
-        img {
-            margin-right: 0.5rem;
-        }
+.wpml-ls-menu-item {
+    a {
+        text-transform: initial !important;
     }
 }
+.mobile-lang-nav {
+    .dropdown-menu {
+        position: absolute;
+    }
+}
+
+// #menu-language-switcher {
+//     li > a.dropdown-toggle > span {
+//         display: none;
+//     }
+//     .dropdown-menu a.dropdown-item {
+//         color: black !important;
+//         text-transform: initial;
+//         img {
+//             margin-right: 0.5rem;
+//         }
+//     }
+// }
 
 #searchTrigger {
     cursor: pointer;

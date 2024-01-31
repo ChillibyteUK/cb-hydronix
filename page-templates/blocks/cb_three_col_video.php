@@ -1,3 +1,9 @@
+<?php
+$background = get_field('background');
+$bg = !empty($background) && $background[0] === 'dark' ? 'bg--blue-100' : '';
+
+$classes = $block['className'] ?? null;
+?>
 <style>
 .video-grid {
     display: grid;
@@ -24,12 +30,12 @@ lite-vimeo {
     min-height: 4rem;
 }
 </style>
-<section class="three_col_video pb-5">
+<section class="three_col_video py-5 <?=$bg?> <?=$classes?>">
     <div class="container-xl">
         <?php
-        if (get_field('title')) {
+        if (get_field('three_col_video__title')) {
             ?>
-        <h2><?=get_field('title')?></h2>
+        <h2><?=get_field('three_col_video__title')?></h2>
             <?php
         }
 

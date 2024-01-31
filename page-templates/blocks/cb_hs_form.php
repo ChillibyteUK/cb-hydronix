@@ -6,8 +6,8 @@ $anchor = $block['anchor'];
 <!-- hs_form -->
 <div class="<?=$class?>" id="<?=$anchor?>">
 <?php
-if (get_field('title')) {
-    echo '<h2>' . get_field('title') . '</h2>';
+if (get_field('hs_form__title')) {
+    echo '<h2>' . get_field('hs_form__title') . '</h2>';
 }
 ?>
 <!--[if lte IE 8]>

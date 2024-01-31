@@ -26,10 +26,32 @@ get_header();
             <?php
             while ( have_posts() ) {
                 the_post();
+                $post_type = get_post_type();
+                if ($post_type == 'products') {
+                    $flag = __('Product','cb-hydronix');
+                }
+                elseif ($post_type == 'post') {
+                    $flag = __('Article','cb-hydronix');
+                }
+                elseif ($post_type == 'page') {
+                    $term = get_the_terms(get_the_ID(),'industries');
+                    if ($term) {
+                        $flag = $term[0]->name;
+                    }
+                    else {
+                        $flag = __('Page','cb-hydronix');
+                    }
+                }
+                else {
+                    $flag = $post_type;
+                }
                 ?>
                 <div class="search mb-4">
                     <div class="search__inner pb-4">
-                        <div class="search__title"><?=get_the_title()?></div>
+                        <div class="d-flex justify-content-between">
+                            <div class="search__title"><?=get_the_title()?></div>
+                            <div class="search__type"><?=$flag?></div>
+                        </div>
                         <div class="search__date"><?=get_the_date('j M, Y')?></div>
                         <div class="search__intro mb-3"><?=wp_trim_words(get_the_content(get_the_ID()),30)?></div>
                         <div class="search__link text-right"><a href="<?=get_the_permalink()?>">Read more</a></div>

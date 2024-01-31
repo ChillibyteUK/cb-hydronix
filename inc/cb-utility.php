@@ -111,7 +111,7 @@ function get_vimeo_data_from_id( $video_id, $data ) {
 	
 	$video_array = json_decode( $response, true );
 	
-	return $video_array[$data];
+	return $video_array[$data] ?? null;
 }
 
 function mmd_get_vimeo_info( $video_id ) 

@@ -5,29 +5,43 @@ require_once("../../../wp-load.php");
 header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
+
+if ($industry != '%') {
+    $ind_tax = array(
+        'taxonomy' => 'industries',
+        'field' => 'slug',
+        'terms' => $industry,
+    );
+}
+
 $process = $_REQUEST['process'];
+
+if ($process != '%') {
+    $proc_tax = array(
+        'taxonomy' => 'process',
+        'field' => 'slug',
+        'terms' => $process,
+    );
+}
+
 $temp = $_REQUEST['temp'];
+
+if ($temp != '%') {
+    $temp_tax = array(
+        'taxonomy' => 'temp',
+        'field' => 'slug',
+        'terms' => $temp,
+    );
+}
 
 $q = new WP_Query(array(
     'post_type' => 'products',
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'tax_query' => array(
-        array(
-            'taxonomy' => 'industries',
-            'field' => 'slug',
-            'terms' => $industry,
-        ),
-        array(
-            'taxonomy' => 'process',
-            'field' => 'slug',
-            'terms' => $process,
-        ),
-        array(
-            'taxonomy' => 'temp',
-            'field' => 'slug',
-            'terms' => $temp,
-        )
+        $ind_tax,
+        $proc_tax,
+        $temp_tax
     )
 ));
 

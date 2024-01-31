@@ -11,4 +11,11 @@
         margin-bottom: 0.5rem;
         color: $grey-300;
     }
+    &__type {
+        background-color: $blue-400;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border-radius: 0.25rem;
+    }
 }

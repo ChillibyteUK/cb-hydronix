@@ -38,7 +38,7 @@
                 wp_reset_postdata();
                 ?>
                 <div>
-                    <a href="/resources/" class="mx-auto btn btn--orange">Hydronix Resource Hub</a>
+                    <a href="/resources/" class="mx-auto btn btn--orange"><?=__('Hydronix Resource Hub','cb-hydronix')?></a>
                 </div>
             </div>
             <div class="col-lg-5">
@@ -87,7 +87,7 @@
                 wp_reset_postdata();
                 ?>
                 <div>
-                    <a href="/resources/events/" class="mx-auto btn btn--orange">All Events</a>
+                    <a href="/resources/events/" class="mx-auto btn btn--orange"><?=__('All Events','cb-hydronix')?></a>
                 </div>
             </div>
         </div>

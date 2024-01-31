@@ -42,13 +42,13 @@ $ptype = array_shift(get_the_terms( get_the_ID(), 'ptype' ));
                     <div class="phero__subtitle mb-4"><?=get_field('hero_subtitle')?></div>
                     <div class="d-flex justify-content-between flex-wrap">
                         <a class="btn btn--orange mb-2" href="#form"><?=__('Request More Info','cb-hydronix')?></a>
-                        <a class="btn btn--green mb-2" href="#docs"><?=__('Download Brochure','cb-hydronix')?></a>
+                        <a class="btn btn--green mb-2 d-none" id="docBtn" href="#docs"><?=__('Download Resources','cb-hydronix')?></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<section class="sub_page_title py-1 mb-4">
+<!--section class="sub_page_title py-1 mb-4">
     <div class="container-xl">
         <?php
         if ( function_exists('yoast_breadcrumb') ) {
@@ -56,14 +56,15 @@ $ptype = array_shift(get_the_terms( get_the_ID(), 'ptype' ));
         }
         ?>
     </div>
-</section>
+</section-->
     <?php
     $thisApp = get_the_terms( get_the_ID(), 'applications');
         
+    $allApps = get_terms(array('taxonomy'=>'applications','hide_empty'=>false)) ?? null;
+    $thisAppIDs = wp_list_pluck( $thisApp,'term_id' ) ?? null;
+
     if ($thisApp) {
-        $allApps = get_terms(array('taxonomy'=>'applications','hide_empty'=>false));
         $appIDs = wp_list_pluck($allApps,'term_id');
-        $thisAppIDs = wp_list_pluck( $thisApp,'term_id' );
         ?>
     <div class="container py-4">
         <h2 class="fs-4 text-center mb-4"><?=__('Typical Applications','cb-hydronix')?></h2>
@@ -144,7 +145,9 @@ $ptype = array_shift(get_the_terms( get_the_ID(), 'ptype' ));
                 </li>
                     <?php
                 }
-                if (has_term('measure','ptype')) {
+                $txterm = icl_object_id('measure', 'ptype', true);
+                if (has_term($txterm,'ptype')) {
+                // if (has_term('measure','ptype')) {
                     ?>
                 <li class="nav-item">
                     <a id="features" href="#pane-Features" class="nav-link" data-bs-toggle="tab" role="tab"><?=__('Features','cb-hydronix')?></a>
@@ -214,35 +217,48 @@ $ptype = array_shift(get_the_terms( get_the_ID(), 'ptype' ));
                                     </ul>
                                         <?php
                                     }
-                                    if (1 == 1) {
+                                    if (is_array($allApps)) {
                                         ?>
                                         <div class="badges">
                                             <?php
-                                        foreach ($allApps as $a) {
-                                            foreach ($thisAppIDs as $i) {
-                                                if ($i == $a->term_id) {
-                                                    if ($a->slug == 'food-safe') {
-                                                        echo '<div class="badge badge--food-safe" title="Food Safe"></div>';
-                                                    }
-                                                    if ($a->slug == 'explosive-atmosphere') {
-                                                        echo '<div class="badge badge--atex" title="ATEX"></div>';
-                                                        echo '<div class="badge badge--etl" title="Intertek ETL"></div>';
-                                                    }
-                                                    if ($a->slug == 'high-temperature') {
-                                                        echo '<div class="badge badge--high-temp" title="High Temperature"></div>';
+                                                
+                                            foreach ($allApps as $a) {
+
+                                                $en_id = apply_filters( 'wpml_object_id', $a->term_id, 'applications', TRUE, 'en');
+
+                                                $current_lang = apply_filters( 'wpml_current_language', NULL );
+                                                $sitepress->switch_lang( 'en' );
+                                                $en_term = get_term( $en_id, 'applications' );
+                                                $sitepress->switch_lang($current_lang);
+                                    
+                                                $imgslug = $en_term->slug;
+                                                foreach ($thisAppIDs as $i) {   
+                                                    if ($i == $a->term_id) {
+                                                        if ($imgslug == 'food-safe') {
+                                                            echo '<div class="badge badge--food-safe" title="Food Safe"></div>';
+                                                        }
+                                                        if ($imgslug == 'explosive-atmosphere') {
+                                                            echo '<div class="badge badge--atex" title="ATEX"></div>';
+                                                            echo '<div class="badge badge--etl" title="Intertek ETL"></div>';
+                                                        }
+                                                        if ($imgslug == 'high-temperature') {
+                                                            echo '<div class="badge badge--high-temp" title="High Temperature"></div>';
+                                                        }
                                                     }
                                                 }
                                             }
-                                        }
                                             ?>
                                         </div>
                                         <?php
                                     }
-
                                     ?>
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-3">
                                     <?php
+                                    echo '<!--';
+                                    echo var_dump(get_field('views'));
+                                    echo '-->';
+                                                                            
                                     if (!get_field('views',get_the_ID())) {
                                         ?>
                                     <img src="<?=get_the_post_thumbnail_url(get_the_ID(),'full')?>" class="">
@@ -255,7 +271,7 @@ $ptype = array_shift(get_the_terms( get_the_ID(), 'ptype' ));
 
                                         <?php
                                         // echo get_the_post_thumbnail($id,'large',['class' => 'viewSlider']);
-                                        foreach (get_field('views') as $i) {
+                                        foreach (get_field('views',get_the_ID()) as $i) {
 
                                             ?>
                                             <li data-thumb="<?=wp_get_attachment_image_url( $i, 'medium' )?>">
@@ -402,6 +418,9 @@ function carousel() {
                         ?>
                     </div>
                 </div>
+                <?php
+                if (get_field('installation_points') ?? null) {
+                    ?>
                 <div id="pane-Installation" class="card tab-pane fade" role="tabpanel" aria-labelledby="installation">
                     <div class="card-header" role="tab" id="heading-Installation">
                         <div class="h5 mb-0">
@@ -441,7 +460,8 @@ function carousel() {
                         </div>
                     </div>
                 </div>
-                <?php
+                    <?php
+                }
                 if (get_field('installation_by_connectivity')) {
                     ?>
                 <div id="pane-InstallationConn" class="card tab-pane fade" role="tabpanel" aria-labelledby="installationConn">
@@ -498,7 +518,10 @@ function carousel() {
                 });
 
                 }
-                if (has_term('measure','ptype')) {
+
+                $txterm = icl_object_id('measure', 'ptype', true);
+                if (has_term($txterm,'ptype')) {
+                // if (has_term('measure','ptype')) {
                     ?>
                 <div id="pane-Features" class="card tab-pane fade" role="tabpanel" aria-labelledby="features">
                     <div class="card-header" role="tab" id="heading-Features">
@@ -530,11 +553,11 @@ function carousel() {
                         <div class="card-body pt-5">
                             <div class="row g-4">
                                 <div class="col-xl-6">
-                                    <img class="d-flex mx-auto mb-3" src="<?=get_stylesheet_directory_uri()?>/img/sensor-connectivity.png" alt="">
+									<img class="d-flex mx-auto mb-3" src="<?=get_field('sensor_connectivity_with_io','options')?>" alt="">
                                     <div class="text-center fst-italic"><?=__('Modbus to control system','cb-hydronix')?></div>
                                 </div>
                                 <div class="col-xl-6">
-                                    <img class="d-flex mx-auto mb-3" src="<?=get_stylesheet_directory_uri()?>/img/sensor-io.png" alt="">
+									<img class="d-flex mx-auto mb-3" src="<?=get_field('sensor_connectivity','options')?>" alt="">
                                     <div class="text-center fst-italic"><?=__('Input / Output connections','cb-hydronix')?></div>
                                     <div class="py-4">
                                         <strong><?=__('Recommended field cabling','cb-hydronix')?>:</strong>
@@ -604,7 +627,7 @@ function carousel() {
                 portalId: "<?=$e['portal_id']?>",
                 formId: "<?=$e['form_id']?>",
                 onFormSubmit: function($form, ctx){
-                    $form.find('input[name="firstname"]').val('<?=$sku?>').change();
+                    $form.find('input[name="product_enquiry_field"]').val('<?=$sku?>').change();
                 }
             });
             </script>
@@ -612,6 +635,10 @@ function carousel() {
     </section>
     <?php
     require_once CB_THEME_DIR . '/page-templates/blocks/cb_support_cta.php';
+
+
+    ob_start();
+    $hasContent = 0;
     ?>
     <section id="docs" class="resources py-5">
         <div class="container-xl">
@@ -660,7 +687,11 @@ function carousel() {
 <div class="tab-content" id="nav-tabContent">
 <?php
 
-    $types = get_terms(array('taxonomy' =>'attachment_category'));
+__('Brochures','cb-hydronix');
+
+do_action( 'wpml_switch_language', 'en' );
+$types = get_terms(array('taxonomy' =>'attachment_category'));
+do_action( 'wpml_switch_language', $current_lang );
 
     global $post;
     $slug = $post->post_name;
@@ -668,6 +699,8 @@ function carousel() {
     $tstate = 'active';
     $tabs = array();
     foreach ($types as $t) {
+        $current_lang = apply_filters( 'wpml_current_language', NULL );
+        do_action( 'wpml_switch_language', 'en' );
 
         $res = new WP_Query(array(
             'post_type' => 'attachment',
@@ -692,23 +725,75 @@ function carousel() {
                 )
             )
         ));
+        $sitepress->switch_lang($current_lang);
+
         if ($res->have_posts()) {
-            $tabs[] = <<<EOT
-<button class="nav-link {$tstate}" id="nav-{$t->slug}-tab" data-bs-toggle="tab" data-bs-target="#nav-{$t->slug}" type="button" role="tab" aria-controls="nav-{$t->slug}" aria-selected="true">{$t->name}</button>
-EOT;
+            $hasContent = 1;
+
+            // $term_name = $t->name
+            
+            switch($t->name) {
+                case 'Application Notes':
+                    $tabLabel = __('Application Notes','cb-hydronix');
+                    break;
+                case 'Articles':
+                    $tabLabel = __('Articles','cb-hydronix');
+                    break;
+                case 'Brochures':
+                    $tabLabel = __('Brochures','cb-hydronix');
+                    break;
+                case 'Case Studies':
+                    $tabLabel = __('Case Studies','cb-hydronix');
+                    break;
+                case 'Engineering Notes':
+                    $tabLabel = __('Engineering Notes','cb-hydronix');
+                    break;
+                case 'Miscellaneous':
+                    $tabLabel = __('Miscellaneous','cb-hydronix');
+                    break;
+                case 'Presentations':
+                    $tabLabel = __('Presentations','cb-hydronix');
+                    break;
+                case 'Software/Firmware':
+                    $tabLabel = __('Software/Firmware','cb-hydronix');
+                    break;
+                case 'User Guides':
+                    $tabLabel = __('User Guides','cb-hydronix');
+                    break;
+                default:
+                    $tabLabel = $t->name;    
+            }
+
+            
+            $tabs[] = '<button class="nav-link '
+                . $tstate
+                . '" id="nav-'
+                . $t->slug
+                . '-tab" data-bs-toggle="tab" data-bs-target="#nav-'
+                . $t->slug
+                . '" type="button" role="tab" aria-controls="nav-'
+                . $t->slug
+                . '" aria-selected="true">'
+                . $tabLabel
+                . '</button>';
+
             ?>
         <div class="py-4 tab-pane fade <?=$active?>" id="nav-<?=$t->slug?>" role="tabpanel" aria-labelledby="nav-<?=$t->slug?>-tab">
             <div class="row g-4">
             <?php
+            $current_lang = apply_filters( 'wpml_current_language', NULL );
+            do_action( 'wpml_switch_language', 'en' );
             while ($res->have_posts()) {
                 $res->the_post();
                 $fdesc = wp_get_attachment_caption(get_the_ID());
                 $img = wp_get_attachment_image( get_the_ID(), 'medium', "", ['class'=>'dl_card__image',] ) ?: '<img src="/wp-content/themes/cb-hydronix/img/missing-image.png" class="dl_card__image">';
                 $type = get_the_terms( get_the_ID(), 'attachment_category' );
-                $typename = $type[0]->name;
+                // $typename = $type[0]->name;
+                $typename = $tabLabel;
+                $filename = wp_get_attachment_url( get_the_ID() );
                 ?>
                 <div class="col-md-4 col-lg-3 col-xl-2">
-                    <a class="dl_card" href="<?=get_the_permalink(get_the_ID())?>" download>
+                    <a class="dl_card" href="<?=$filename?>" download>
                         <?=$img?>
                         <div class="dl_card__bottom">
                             <div class="dl_card__type"><?=$typename?></div>
@@ -720,6 +805,7 @@ EOT;
             }
             $active = '';
             $tstate = '';
+            $sitepress->switch_lang($current_lang);
             ?>
             </div>
         </div>
@@ -733,17 +819,44 @@ EOT;
     </section>
 </main>
 <?php
-add_action('wp_footer',function() use ($tabs) {
-    $json = json_encode((array)$tabs);
-    ?>
-<script>
-(function($){
-    var tabs = <?=$json?>;
-    for (i=0; i<tabs.length; i++) {
-        $('#nav-tab').append(tabs[i]);
-    }
-})(jQuery);
-</script>
-    <?php
-},9999);
+
+if ($hasContent == 1) {
+    echo ob_get_clean();
+    add_action('wp_footer',function() use ($tabs) {
+        $json = json_encode((array)$tabs);
+        ?>
+    <script>
+    (function($){
+        var tabs = <?=$json?>;
+        for (i=0; i<tabs.length; i++) {
+            $('#nav-tab').append(tabs[i]);
+        }
+    
+        $('.collapse').on('shown.bs.collapse', function(e) {
+            var $card = $(this).closest('.tab-pane');
+            var $open = $($(this).data('parent')).find('.collapse.show');
+            
+            var additionalOffset = 100;
+            if($card.prevAll().filter($open.closest('.tab-pane')).length !== 0)
+            {
+                additionalOffset =  $open.height();
+            }
+            $('html,body').animate({
+                scrollTop: $card.offset().top - additionalOffset
+            }, 500);
+        });
+    
+        $('#docBtn').removeClass('d-none');
+    })(jQuery);
+    </script>
+        <?php
+    },9999);
+}
+else {
+    ob_end_clean();
+    echo '</main>';
+}
+
+
+
 get_footer();

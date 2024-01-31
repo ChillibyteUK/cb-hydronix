@@ -11,10 +11,14 @@
     }
     h1 {
         margin-bottom: 0.5rem;
-        font-size: 3.563rem;
+        // font-size: 3.563rem;
+        font-size: 2rem;
+        font-size: clamp(2rem, 1.4316363636363636rem + 2.3681818181818186vw, 3.563rem);
     }
     &__subtitle {
-        font-size: 1.625rem;
+        // font-size: 1.625rem;
+        font-size: 1rem;
+        font-size: clamp(1rem, 0.7727272727272727rem + 0.946969696969697vw, 1.625rem);  
     }
 }
 .bread__container {
@@ -175,11 +179,13 @@ p#breadcrumbs {
     color: white;
     padding: 1rem 1rem 0 1rem;
     &__step {
-        width: 15%;
+        // width: 15%;
         text-align: center;
         margin-top: 1rem;
         padding-bottom: 1rem;
         flex: 1 1 auto;
+        display: flex;
+        flex-wrap: wrap;
         img {
             display: block;
             margin: auto;
@@ -187,6 +193,7 @@ p#breadcrumbs {
             transition: all 0.2s ease-out;
         }
         a {
+            width: 150px;
             text-decoration: none; color: white;
             &:hover img {
                 transform: scale(1.3);

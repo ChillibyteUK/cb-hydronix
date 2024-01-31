@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <div class="plant" id="plantInfo">
                     <div id="intro" class="plant__card">
-                        Explore the diagram opposite to see where Hydronix sensors can be installed.
+                        <?=__('Explore the diagram opposite to see where Hydronix sensors can be installed.','cb-hydronix')?>
                     </div>
                     <div id="hopperContent" class="plant__card" style="display:none">
                         <?php
@@ -33,7 +33,11 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a href="/products/hydro-probe/">Hydro-Probe</a></li>
+                            <?php
+                            foreach ($s['products'] as $o) {
+                                echo '<li><a href="' . get_the_permalink($o) . '">' . get_the_title($o) . '</a></li>';
+                            } 
+                            ?>
                         </ul>
                     </div>
                     <div id="conveyorContent" class="plant__card" style="display:none">
@@ -59,8 +63,11 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a href="/products/hydro-probe/">Hydro-Probe</a></li>
-                            <li><a href="/products/hydro-probe-orbiter/">Hydro-Probe Orbiter</a></li>
+                            <?php
+                            foreach ($s['products'] as $o) {
+                                echo '<li><a href="' . get_the_permalink($o) . '">' . get_the_title($o) . '</a></li>';
+                            } 
+                            ?>
                         </ul>
                     </div>
                     <div id="mixerContent" class="plant__card" style="display:none">
@@ -86,8 +93,11 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a href="/products/hydro-probe-orbiter/">Hydro-Probe Orbiter</a></li>
-                            <li><a href="/products/hydro-mix/">Hydro-Mix</a></li>
+                            <?php
+                            foreach ($s['products'] as $o) {
+                                echo '<li><a href="' . get_the_permalink($o) . '">' . get_the_title($o) . '</a></li>';
+                            } 
+                            ?>
                         </ul>
                     </div>
                     <div id="controlContent" class="plant__card" style="display:none">
@@ -113,9 +123,11 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a href="/products/hydro-view/">Hydro-View</a></li>
-                            <li><a href="/products/hydro-hub/">Hydro-Hub</a></li>
-                            <li><a href="/products/hydro-control/">Hydro-Control</a></li>
+                            <?php
+                            foreach ($s['products'] as $o) {
+                                echo '<li><a href="' . get_the_permalink($o) . '">' . get_the_title($o) . '</a></li>';
+                            } 
+                            ?>
                         </ul>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ $q = new WP_Query($args);
 ?>
 <main id="main">
     <div class="container py-5">
-        <h1 class="mb-4">Hydronix News &amp; Blogs</h1>
+        <h1 class="mb-4"><?=__('Hydronix News & Blogs','cb-hydronix')?></h1>
         <div class="row g-5">
             <?php
             while ($q->have_posts()) {

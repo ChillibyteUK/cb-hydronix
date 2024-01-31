@@ -324,6 +324,15 @@ function acf_blocks() {
             'supports' => array('mode' => false),
 		));
 		acf_register_block_type(array(
+			'name'				=> 'cb_organic_plant',
+			'title'				=> __('CB Organic Plant'),
+			'category'			=> 'layout',
+			'icon'				=> 'cover-image',
+			'render_template'	=> 'page-templates/blocks/cb_organic_plant.php',
+			'mode'	=> 'edit',
+            'supports' => array('mode' => false),
+		));
+		acf_register_block_type(array(
 			'name'				=> 'cb_steps',
 			'title'				=> __('CB Steps'),
 			'category'			=> 'layout',
@@ -425,7 +434,7 @@ function core_image_block_type_args( $args, $name ) {
 
 function modify_core_add_container($attributes, $content) {
     ob_start();
-	$class = $block['className'];
+	// $class = $block['className'];
     ?>
     <div class="container-xl">
 		<?=$content?>

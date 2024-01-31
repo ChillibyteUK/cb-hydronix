@@ -9,6 +9,74 @@
     margin: auto;
     display: flex;
 }
+.mw-100px {
+    max-width: 100px;
+}
+
+@media (max-width:767px) {
+    thead {
+        display: none;
+    }
+    tr {
+        display: grid;
+        /* grid-template-columns: 1fr; */
+        grid-template-areas: 
+            'type language'
+            'description description'
+            'file file'
+            'download download'
+            ;
+    }
+    /* td {
+        display: grid;
+        grid-template-columns: 15ch auto;
+    } */
+    /* td::before {
+        content: attr(data-cell) ": ";
+        font-weight: 700;
+        text-transform: capitalize;
+    } */
+    /* td:first-child {
+        padding-top: 1rem;
+    } */
+    td:last-child {
+        padding-bottom: 1rem;
+    }
+    .mw-100px {
+        max-width: 100%;
+    }
+    td.text-center {
+        text-align: left !important;
+    }
+    td.fs-7 {
+        font-size: 1rem;
+    }
+
+    td[data-cell="type"] {
+        grid-area: type;
+    }
+    td[data-cell="description"] {
+        grid-area: description;
+    }
+    td[data-cell="file name"] {
+        grid-area: file;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    td[data-cell="download"] {
+        grid-area: download;
+        text-align: center !important;
+        font-size: 2rem;
+    }
+    td[data-cell="language"] {
+        grid-area: language;
+        display: grid;
+        grid-template-columns: 3ch 0 1fr;
+        align-items: center;
+    }
+
+}
 </style>
 <?php
 
@@ -33,19 +101,19 @@ foreach ($dsubs as $d) {
 // industry
 $dinds = get_terms( array(
     'taxonomy' => 'industries',
-    'hide_empty' => true,
+    'hide_empty' => false,
     'parent'        => 0,
 ) );
 
 $dtypes = get_terms( array(
     'taxonomy' => 'attachment_category',
-    'hide_empty' => true,
+    'hide_empty' => false,
     'parent'        => 0,
 ) );
 
 $dlangs = get_terms( array(
     'taxonomy'   => 'doclang',
-    'hide_empty' => true,
+    'hide_empty' => false,
     'parent'     => 0,
     'orderby'    => 'name',
     'order'      => 'ASC',
@@ -61,10 +129,19 @@ $dlangs = get_terms( array(
                 <select name="dsub" id="dsub" data-field-name="dsub" class="form-select mb-4 filter">
                     <option value=""><?=__('Select all','cb-hydronix')?></option>
                     <?php
+                    $ca0022_slug = '';
+                    $ca0022_name = '';
                     foreach ($liveProducts as $slug => $name) {
                         // cbdump($dt);
-                        echo '<option value="' . $slug . '">' . $name . '</option>';
+                        if ($slug == 'ca-moisture-probe') {
+                            $ca0022_slug = $slug;
+                            $ca0022_name = $name;
+                        }
+                        else {
+                            echo '<option value="' . $slug . '">' . $name . '</option>';
+                        }
                     }
+                    echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
                     echo '<option value="" disabled>-- ' . __('Legacy Products','cb-hydronix') . ' --</option>';
                     foreach ($legacyProducts as $slug => $name) {
                         // cbdump($dt);
@@ -111,7 +188,10 @@ $dlangs = get_terms( array(
                     $curr_lang = apply_filters( 'wpml_current_language', null );
                     $selected = '';
                     foreach ($dlangs as $dl) {
-                        $selected = $dl->slug == $curr_lang ? 'selected' : '';
+                        $test = preg_replace('/-.*$/', '', $dl->slug);
+                        
+                        $selected = $test == $curr_lang ? 'selected' : '';
+                        // $selected = $dl->slug == $curr_lang ? 'selected' : '';
                         echo '<option value="' . $dl->slug . '" ' . $selected . '>' . $dl->name . '</option>';
                     }
                     ?>
@@ -134,10 +214,10 @@ $dlangs = get_terms( array(
             <table id="dlContainer" class="table table-sm table-striped">
                 <thead>
                     <tr>
-                        <th style="width:50px"><?=__('Type','cb-hydronix')?></th>
+                        <th style="width:100px"><?=__('Type','cb-hydronix')?></th>
                         <th><?=__('Description','cb-hydronix')?></th>
                         <th><?=__('File Name','cb-hydronix')?></th>
-                        <th class="text-center" style="width:100px">&nbsp;</th>
+                        <th class=" d-none d-md-table-cell text-center" style="width:100px">&nbsp;</th>
                         <th class="text-center" style="width:100px"><?=__('Download','cb-hydronix')?></th>
                         <th class="text-center" style="width:100px"><?=__('Lang','cb-hydronix')?></th>
                     </tr>
@@ -244,20 +324,25 @@ $("#submit").click(function(){
                     let rtl = vals[4] == 'fa' ? 'rtl' : '';
                     $("#dlBody").append(
                         "<tr class='dl' data-url='" + vals[11] + "'>"
-                        + "<td class='text-center align-middle'><i class='fa "
+                        + "<td data-cell='type' class='text-center align-middle fs-7 mw-100px'>"
+                        /*
+                        + "<i class='fa "
                         + vals[2] // type icon
-                        + "' title='" + vals[12] + "'></i></td>"
-                        + "<td class='align-middle'>"
+                        + "' title='" + vals[12] + "'></i>"
+                        */
+                        + vals[2] + "</td>"
+                        + "<td data-cell='description' class='align-middle'>"
                         + vals[0]  // desc
                         // + vals[8] // product
                         + "</td>"
-                        + "<td dir='" + rtl + "' style='vertical-align:middle'>"
+                        + "<td data-cell='file name' dir='" + rtl + "' style='vertical-align:middle'>"
                         + "<i class='fa fa-file-" + vals[10] + "-o'></i> <strong>" + vals[1] + "</strong><br>" // doc title
                         // + decodeURIComponent(escape(vals[0]))  // desc
                         + "<small class='text--blue'>" + vals[7] + " - " + vals[9] + "</small>"  // version
                         + "</td>"
-                        + "<td><img src='" + vals[13] + "' class='thumbnail'></td>"
-                        + "<td class='text-center align-middle'><a href='" + vals[11] + "' target='_blank'><i class='fa fa-download'></i></a></td><td class='text-center align-middle'>" 
+                        + "<td data-cell='thumbnail' class='d-none d-md-table-cell'><img src='" + vals[13] + "' class='thumbnail'></td>"
+                        + "<td data-cell='download' class='text-center align-middle'><a href='" + vals[11] + "' target='_blank'><i class='fa fa-download'></i></a></td>"
+                        + "<td data-cell='language' class='text-center align-middle'>" 
                         + "<img src='/wp-content/plugins/sitepress-multilingual-cms/res/flags/" + vals[4] // lang code
                         + ".png' alt='" + vals[3] + "'>" // lang name
                         + "<br><div class='small'>" + vals[3] + "</div>" // lang name
@@ -267,7 +352,7 @@ $("#submit").click(function(){
                 });
             }
             else {
-                $("#dlBody").append("<tr><td colspan='4'>We are sorry, there are no results that match your selection. Please revise your selection and try again.</td></tr>");
+                $("#dlBody").append("<tr><td colspan='6'><?=__('We are sorry, there are no results that match your selection. Please revise your selection and try again.','cb-hydronix')?></td></tr>");
             }
 
             // type dropdown

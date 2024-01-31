@@ -19,10 +19,15 @@ $children = new WP_Query( array(
 if ( $children->have_posts() ) {
     while ( $children->have_posts() ) {
         $children->the_post();
+
+        // get post name in base language
+        $original_post = apply_filters( 'wpml_object_id', get_the_ID(), 'page', TRUE, 'en' );
+        $native = get_post($original_post);
+        $native_slug = $native->post_name;
         ?>
         <div class="col-md-4 col-xl-3">
             <a class="child_pages__card" href="<?=get_the_permalink()?>">
-                <img src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=get_post_field( 'post_name', get_the_ID() );?>--blue.svg" alt="" class="d-flex mx-auto w-50">
+                <img src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$native_slug?>--blue.svg" alt="" class="d-flex mx-auto w-50">
                 <?=get_the_title()?>
             </a>
         </div>
@@ -32,10 +37,13 @@ if ( $children->have_posts() ) {
 wp_reset_postdata();
 
 if (get_field('your_application')) {
+    $appID = get_page_by_path('your-application');
+    $appIDLang = apply_filters( 'wpml_object_id', $appID->ID, 'page' );
+    $appLink = get_the_permalink($appIDLang);
     ?>
         <div class="col-md-4 col-xl-3">
-            <a class="child_pages__card" href="/your-application/">
-                <img src="<?=get_stylesheet_directory_uri()?>/img/icon--your-application.svg" alt="" class="d-flex mx-auto w-50">
+            <a class="child_pages__card" href="<?=$appLink?>">
+                <img src="<?=get_stylesheet_directory_uri()?>/img/icons/icon--your-application.svg" alt="" class="d-flex mx-auto w-50">
                 <?=__('Your Application','cb-hydronix')?>
             </a>
         </div>

@@ -13,7 +13,7 @@ $title = get_field('title') == '' ? get_the_title() : get_field('title');
         </div>
     </div>
 </section>
-<section class="sub_page_title py-1 mb-4">
+<!--section class="sub_page_title py-1 mb-4">
     <div class="container-xl">
         <?php
         if ( function_exists('yoast_breadcrumb') ) {
@@ -21,4 +21,4 @@ $title = get_field('title') == '' ? get_the_title() : get_field('title');
         }
         ?>
     </div>
-</section>
+</section-->

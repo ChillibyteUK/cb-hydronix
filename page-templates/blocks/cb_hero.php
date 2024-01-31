@@ -28,20 +28,18 @@ $c = count(get_field('slides')) - 1;
         $bg = wp_get_attachment_image_url( get_sub_field('image'), 'full' );
         ?>
         <div class="carousel-item py-5 <?=$active?>" style="background-image:url(<?=$bg?>)">
-            <div class="container my-auto">
-                <div class="row">
-                    <div class="col-lg-5 hero__content offset-lg-7">
-                        <h1><?=get_sub_field('title')?></h1>
-                        <div class="hero__content mb-4"><?=get_sub_field('content')?></div>
-                        <?php
-                        if (get_sub_field('cta')) {
-                            $cta = get_sub_field('cta');
-                            ?>
-                        <a class="btn btn-primary" href="<?=$cta['url']?>" target="<?=$cta['target']?>"><?=$cta['title']?></a>
-                            <?php
-                        }
+            <div class="container my-auto mt-md-0">
+                <div class="hero__content text-center">
+                    <h1><?=get_sub_field('title')?></h1>
+                    <div class="hero__content mb-4"><?=get_sub_field('content')?></div>
+                    <?php
+                    if (get_sub_field('cta')) {
+                        $cta = get_sub_field('cta');
                         ?>
-                    </div>
+                    <a class="btn btn-primary" href="<?=$cta['url']?>" target="<?=$cta['target']?>"><?=$cta['title']?></a>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

@@ -6,16 +6,19 @@ header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
 
+if ($industry != '%') {
+    $ind_tax = array(
+        'taxonomy' => 'industries',
+        'field' => 'slug',
+        'terms' => $industry,
+    );
+}
 $q = new WP_Query(array(
     'post_type' => 'products',
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'tax_query' => array(
-        array(
-            'taxonomy' => 'industries',
-            'field' => 'slug',
-            'terms' => $industry,
-        )
+        $ind_tax
     )
 ));
 
@@ -30,6 +33,8 @@ while ($q->have_posts()) {
         }
     }
 }
+
+$industries['%'] = 'Other';
 
 echo json_encode($industries);
 

@@ -1,3 +1,7 @@
+<?php
+global $sitepress;
+$curr_lang = $sitepress->get_current_language();
+?>
 <!-- three_col_nav -->
 <section class="three_col_nav py-5">
     <div class="container-xl">
@@ -17,7 +21,7 @@
                             echo '<option value="' . $p->slug . '">' . $p->name . '</option>';
                         }
                     }
-                    echo '<option value="your-application">' . __('Your Application','cb-hydronix') . '</option>';
+                    echo '<option value="' . __('your-application','cb-hydronix') . '">' . __('Your Application','cb-hydronix') . '</option>';
                     ?>
                 </select>
             </div>
@@ -28,7 +32,7 @@
                     <div class="three_col_nav__content"><?=get_field('ben_content')?></div>
                 </div>
                 <div class="mb-4">
-                    <a class="btn btn--orange mx-auto" href="/moisture-measurement/"><?=__('Read more','cb-hydronix')?></a>
+                    <a class="btn btn--orange mx-auto" href="<?=__('/moisture-measurement/','cb-hydronix')?>"><?=__('Read more','cb-hydronix')?></a>
                 </div>
             </div>
             <div class="col-lg-4 mb-4 three_col_nav__card">
@@ -52,21 +56,31 @@
 </section>
 <?php
 add_action('wp_footer',function(){
+    global $sitepress;
+    $curr_lang = $sitepress->get_current_language();
+    $lang = $curr_lang == 'en' ? '' : '/' . $curr_lang;
     ?>
 <script>
 (function($){
+    
     $('#byApplication').on('change',function(){
         var page = $(this).val();
-        if (page === 'your-application') {
-            window.location.href="/"+page+"/";
+        if (page === '<?=__('your-application','cb-hydronix')?>' ) {
+            window.location.href="<?=$lang?>/"+page+"/";
+        }
+        else if (page === '<?=__('concrete-construction','cb-hydronix')?>') {
+            window.location.href="<?=$lang?>/<?=__('measure','cb-hydronix')?>/"+page+"/";
+        }
+        else if (page === '<?=__('organic','cb-hydronix')?>') {
+            window.location.href="<?=$lang?>/<?=__('measure','cb-hydronix')?>/<?=__('grain-bulk-solids','cb-hydronix')?>/";
         }
         else {
-            window.location.href="/industries/"+page+"/";
+            window.location.href="<?=$lang?>/<?=__('industries','cb-hydronix')?>/"+page+"/";
         }
     });
     $('#byProcess').on('change',function(){
         var page = $(this).val();
-        window.location.href="/process-control/"+page+"/";
+        window.location.href="<?=$lang?>/<?=__('processes','cb-hydronix')?>/"+page+"/";
     });
 
 })(jQuery);

@@ -39,7 +39,7 @@ get_header();
                 <a target="_blank" href="mailto:?subject=I%27d%20like%20to%20share%20a%20link%20with%20you&body=<?=$url?>"><i class="fa fa-envelope"></i></a>
                 <a target="_blank" href="https://twitter.com/share?url=<?=$url?>"><i class="fa fa-twitter"></i></a>
                 <a target="_blank" href="http://www.facebook.com/sharer.php?u=<?=$url?>"><i class="fa fa-facebook-f"></i></a>
-                <a target="_blank" href="http://www.linkedin.com/shareArticle?url=<?=$url?>"><i class="fa fa-linkedin-in"></i></a>
+                <a target="_blank" href="http://www.linkedin.com/shareArticle?url=<?=$url?>"><i class="fa fa-linkedin"></i></a>
             </div>
         </div>
     </div>

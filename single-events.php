@@ -39,7 +39,7 @@ if ( get_the_post_thumbnail_url( get_the_ID() ) ) {
     <?php
 }
 ?>
-<section class="sub_page_title pb-4">
+<!--section class="sub_page_title pb-4">
     <div class="d-none d-lg-block bread__container">
         <div class="container bread">
             <?php
@@ -49,7 +49,7 @@ if ( get_the_post_thumbnail_url( get_the_ID() ) ) {
             ?>
         </div>
     </div>
-</section>
+</section-->
 <div class="container pt-4 pb-5">
     <div class="content">
         <?php

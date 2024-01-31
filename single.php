@@ -39,8 +39,16 @@ get_header();
                 <a target="_blank" href="mailto:?subject=I%27d%20like%20to%20share%20a%20link%20with%20you&body=<?=$url?>"><i class="fa fa-envelope"></i></a>
                 <a target="_blank" href="https://twitter.com/share?url=<?=$url?>"><i class="fa fa-twitter"></i></a>
                 <a target="_blank" href="http://www.facebook.com/sharer.php?u=<?=$url?>"><i class="fa fa-facebook-f"></i></a>
-                <a target="_blank" href="http://www.linkedin.com/shareArticle?url=<?=$url?>"><i class="fa fa-linkedin-in"></i></a>
+                <a target="_blank" href="http://www.linkedin.com/shareArticle?url=<?=$url?>"><i class="fa fa-linkedin"></i></a>
             </div>
+        </div>
+        <div class="col-lg-6">
+            <?php
+            if ($file = get_field('pdf_version')) {
+                $fname = cbslugify(get_the_title());
+                echo '<a href="' . $file . '" download="' . $fname . '" class="btn btn-primary"><i class="fa fa-file-pdf-o"></i>&nbsp;Download PDF</a>';
+            }
+            ?>
         </div>
     </div>
 </div>

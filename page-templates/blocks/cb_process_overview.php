@@ -7,10 +7,10 @@ $i = get_field('installation_point');
         <div class="row g-4">
             <div class="col-md-6">
                 <h2 class="fs-3 mb-4"><?=__('Overview','cb-hydronix')?></h2>
-                <?=get_field('intro')?>
+                <?=get_field('process_overview__intro')?>
             </div>
             <div class="col-md-6">
-                <h2 class="fs-3 mb-4">Benefits</h2>
+                <h2 class="fs-3 mb-4"><?=__('Benefits','cb-hydronix')?></h2>
                 <div class="process_benefits mb-4">
                     <div class="card">
                     <?php

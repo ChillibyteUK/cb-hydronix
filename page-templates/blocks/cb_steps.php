@@ -1,12 +1,12 @@
 <section class="steps">
         <?php
-        if (get_field('title')) {
+        if (get_field('steps__title')) {
             ?>
 <div class="bg--blue-200">
     <div class="container-xl">
         <div class="row">
             <div class="col-12 text-white p-4">
-                <h2 class="mb-0"><?=get_field('title')?></h2>
+                <h2 class="mb-0"><?=get_field('steps__title')?></h2>
             </div>
         </div>
     </div>

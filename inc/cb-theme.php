@@ -2,7 +2,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-define('CB_THEME_DIR', WP_CONTENT_DIR . '/themes/cb-hydronix');
+// define('CB_THEME_DIR', WP_CONTENT_DIR . '/themes/cb-hydronix');
 
 require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
 require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
@@ -129,7 +129,8 @@ function new_nav_menu_items($items, $args) {
                      
             }
         }
-         
+
+        /*
         $custom_flag_url = "/wp-content/plugins/sitepress-multilingual-cms/res/flags/cn.png";
         $custom_language_link = "#";
          
@@ -143,7 +144,7 @@ function new_nav_menu_items($items, $args) {
     return $items.$final_switcher;
 }
 
-
+/*
 add_filter('wpseo_breadcrumb_links', function( $links ) {
     global $post;
     if ( is_singular( 'products' ) ) {
@@ -179,6 +180,7 @@ add_filter('wpseo_breadcrumb_links', function( $links ) {
     return $links;
 }
 );
+*/
 
 //Custom Dashboard Widget
 add_action( 'wp_dashboard_setup', 'register_cb_dashboard_widget' );
@@ -206,3 +208,50 @@ function cb_dashboard_widget_display() {
    <?php
 }
 
+add_filter( 'wp_nav_menu_objects', 'pst_nav_menu_objects', 10, 2 );
+
+/**
+ * Modify the WordPress menu and remove entries that are not visible for the current
+ * user. This applies to all menus (primary, footer, widget ...)
+ */
+function pst_nav_menu_objects( $items, $args ) {
+    // If you do not want to modify ALL menus, you can check for the menu-location 
+    // or other criteria here.
+    // For example, uncomment following condition to only modify the primary menu:
+    # if ( 'primary' !== $args->theme_location ) {
+    #     return $items;
+    # }
+    
+    foreach ( $items as $key => $item ) {
+        if ( ! in_array( $item->object, array( 'post', 'page' ) ) ) {
+            // We only check visibility state for posts and pages.
+            continue;
+        }
+
+        $post_status = get_post_status( $item->object_id );
+        if ( 'publish' === $post_status ) {
+            // This is a public page or post. No other check is needed.
+            continue;
+        }
+
+        if ( is_user_logged_in() ) {
+            if ( 'protected' === $post_status ) {
+                if ( current_user_can( 'edit_post', $item->object_id ) ) {
+                    // The current user is the author of the password protected post.
+                    continue;
+                }
+            } else {
+                if ( current_user_can( 'read_post', $item->object_id ) ) {
+                    // The current user can read the draft or trashed post.
+                    continue;
+                }
+            }
+        }
+
+        // All positive conditions failed.
+        // Current visitor has no permission to see this menu entry.
+        unset( $items[ $key ] );
+    }
+
+    return $items;
+}
