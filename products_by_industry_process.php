@@ -6,6 +6,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
 
+$lang = $_REQUEST['lang'];
+global $sitepress;
+$sitepress->switch_lang( $lang );
+$curr_lang = apply_filters('wpml_current_language', null);
+
 if ($industry != '%') {
     $ind_tax = array(
         'taxonomy' => 'industries',

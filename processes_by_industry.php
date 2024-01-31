@@ -6,6 +6,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
 
+$lang = $_REQUEST['lang'];
+global $sitepress;
+$sitepress->switch_lang( $lang );
+$curr_lang = apply_filters('wpml_current_language', null);
+
 if ($industry != '%') {
     $ind_tax = array(
         'taxonomy' => 'industries',
@@ -29,7 +34,8 @@ while ($q->have_posts()) {
     $terms = get_the_terms( get_the_ID(), 'process' );
     if ($terms) {
         foreach ($terms as $t) {
-            $industries[$t->slug] = $t->name;
+            // $industries[$t->slug] = $t->name;
+            $industries[$t->slug] = __($t->name,'cb-hydronix');
         }
     }
 }

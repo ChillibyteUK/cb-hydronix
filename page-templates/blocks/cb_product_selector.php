@@ -13,7 +13,10 @@ $industries = get_terms( array(
     'parent'        => 0,
 ) );
 
+global $sitepress;
+$current_lang = apply_filters( 'wpml_current_language', NULL );
 ?>
+<input type="hidden" id="currLang" value="<?=$current_lang?>">
 <!-- product_selector -->
 <section class="product_selector pb-5">
     <div class="container-xl">
@@ -114,11 +117,13 @@ $("#industry").change(function(){
     var selIndustry = $(this).val();
     $("#hiddenIndustry").val(selIndustry);
 
+    var currLang = $('#currLang').val();
+
     $("#resetText").hide();
     $("#spinner").show();
 
     $.ajax({
-        url: endpoint + "?ind=" + selIndustry,
+        url: endpoint + "?lang=" + currLang + "&ind=" + selIndustry,
         contentType: "text/plain",
         dataType: 'JSON',
         success: function(result){
@@ -146,12 +151,13 @@ $("#process").change(function(){
     $("#hiddenProcess").val(selProcess);
 
     var selIndustry = $('#hiddenIndustry').val();
+    var currLang = $('#currLang').val();
 
     $("#resetText").hide();
     $("#spinner").show();
 
     $.ajax({
-        url: endpoint + "?ind=" + selIndustry + "&process=" + selProcess,
+        url: endpoint + "?lang=" + currLang + "&ind=" + selIndustry + "&process=" + selProcess,
         contentType: "text/plain",
         dataType: 'JSON',
         success: function(result) {
@@ -178,12 +184,13 @@ $("#temperature").change(function(){
 
     var selIndustry = $("#hiddenIndustry").val();
     var selProcess = $("#hiddenProcess").val();
-    
+    var currLang = $('#currLang').val();
+
     $("#resetText").hide();
     $("#spinner").show();
 
     $.ajax({
-        url: endpoint + "?ind=" + selIndustry + "&process=" + selProcess + "&temp=" + selTemp,
+        url: endpoint + "?lang=" + currLang + "&ind=" + selIndustry + "&process=" + selProcess + "&temp=" + selTemp,
         contentType: "text/plain",
         dataType: 'JSON',
         success: function(result) {

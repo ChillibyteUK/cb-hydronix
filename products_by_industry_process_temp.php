@@ -6,6 +6,11 @@ header('Content-Type: application/json; charset=utf-8');
 
 $industry = $_REQUEST['ind'];
 
+$lang = $_REQUEST['lang'];
+global $sitepress;
+$sitepress->switch_lang( $lang );
+$curr_lang = apply_filters('wpml_current_language', null);
+
 if ($industry != '%') {
     $ind_tax = array(
         'taxonomy' => 'industries',
@@ -53,13 +58,13 @@ while ($q->have_posts()) {
     $fs = $ex = $ht = 0;
 
     foreach ( get_the_terms(get_the_ID(),'applications') as $t ) {
-        if ($t->slug == 'explosive-atmosphere') {
+        if ($t->slug == __('explosive-atmosphere','cb-hydronix') ) {
             $ex = 1;
         }
-        if ($t->slug == 'food-safe') {
+        if ($t->slug == __('food-safe','cb-hydronix') ) {
             $fs = 1;
         }
-        if ($t->slug == 'high-temperature') {
+        if ($t->slug == __('high-temperature','cb-hydronix') ) {
             $ht = 1;
         }
     }
