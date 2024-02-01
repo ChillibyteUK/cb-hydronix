@@ -131,7 +131,6 @@ defined('ABSPATH') || exit;
                 <div class="link"><a href="<?=$cookies?>" target="_blank"><?=__('Cookies','cb-hydronix')?></a></div>
                 <div class="link"><a href="<?=__('/contact-us/','cb-hydronix')?>"><?=__('Sales','cb-hydronix')?></a></div>
                 <div class="link"><a href="<?=__('/contact-support/','cb-hydronix')?>"><?=__('Support','cb-hydronix')?></a></div>
-                <a href="https://www.chillibyte.co.uk/" rel="nofollow noopener" target="_blank" class="cb" title="<?=__('Digital Marketing by','cb-hydronix')?> Chillibyte"></a>
             </div>
         </div>
     </div>
