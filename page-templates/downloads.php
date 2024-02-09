@@ -35,8 +35,9 @@ $dsub = $_REQUEST['dsub'] ?? null;
                 margin: auto;
                 display: flex;
             }
+
             .mw-100px {
-               max-width: 100px;
+                max-width: 100px;
             }
         </style>
         <?php
@@ -64,6 +65,10 @@ if (!$dtype) {
     ));
     $dtype = wp_list_pluck($dtypes, 'slug');
 }
+
+?>
+        <!--<pre><?=$dlang?></pre>-->
+        <?php
 
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
@@ -137,14 +142,30 @@ if ($q->have_posts()) {
         $type = get_the_terms($ID, 'attachment_category');
 
         $type_icon = 'fa-file';
-        if     ($type[0]->slug == 'application-notes')  { $type_icon = 'App Notes'; } // { $type_icon = 'fa-file-text-o'; }
-        elseif ($type[0]->slug == 'brochures')          { $type_icon = 'Brochure'; } // { $type_icon = 'fa-book'; }
-        elseif ($type[0]->slug == 'software-firmware')  { $type_icon = 'Software'; } // { $type_icon = 'fa-file-code-o'; }
-        elseif ($type[0]->slug == 'engineering-notes')  { $type_icon = 'Eng Notes'; } // { $type_icon = 'fa-flask'; }
-        elseif ($type[0]->slug == 'user-guides')        { $type_icon = 'Guide'; } // { $type_icon = 'fa-graduation-cap'; }
-        elseif ($type[0]->slug == 'articles')           { $type_icon = 'Article'; } // { $type_icon = 'fa-newspaper-o'; }
-        elseif ($type[0]->slug == 'case-studies')       { $type_icon = 'Case Study'; } // { $type_icon = 'fa-briefcase'; }
-        elseif ($type[0]->slug == 'presentations')      { $type_icon = 'Presentation'; } // { $type_icon = 'fa-film'; }
+        if     ($type[0]->slug == 'application-notes') {
+            $type_icon = 'App Notes';
+        } // { $type_icon = 'fa-file-text-o'; }
+        elseif ($type[0]->slug == 'brochures') {
+            $type_icon = 'Brochure';
+        } // { $type_icon = 'fa-book'; }
+        elseif ($type[0]->slug == 'software-firmware') {
+            $type_icon = 'Software';
+        } // { $type_icon = 'fa-file-code-o'; }
+        elseif ($type[0]->slug == 'engineering-notes') {
+            $type_icon = 'Eng Notes';
+        } // { $type_icon = 'fa-flask'; }
+        elseif ($type[0]->slug == 'user-guides') {
+            $type_icon = 'Guide';
+        } // { $type_icon = 'fa-graduation-cap'; }
+        elseif ($type[0]->slug == 'articles') {
+            $type_icon = 'Article';
+        } // { $type_icon = 'fa-newspaper-o'; }
+        elseif ($type[0]->slug == 'case-studies') {
+            $type_icon = 'Case Study';
+        } // { $type_icon = 'fa-briefcase'; }
+        elseif ($type[0]->slug == 'presentations') {
+            $type_icon = 'Presentation';
+        } // { $type_icon = 'fa-film'; }
 
         $sub = 'NONE';
         $sub = get_the_terms(get_the_ID(), 'docprod');
@@ -174,7 +195,8 @@ if ($q->have_posts()) {
         ?>
 
                     <tr class='dl' data-url='<?=$furl?>'>
-                        <td class='text-center align-middle fs-7 mw-100px'><?=$type_icon?></td>
+                        <td class='text-center align-middle fs-7 mw-100px'>
+                            <?=$type_icon?></td>
                         <td class='align-middle'><?=$fdesc?></td>
                         <td dir='<?=$rtl?>'
                             style='vertical-align:middle'>
