@@ -208,7 +208,6 @@ foreach ($dtypes as $dt) {
                     <?php
 $curr_lang = apply_filters('wpml_current_language', null);
 $selected = '';
-echo '<option value="zz">' . __('Multiple Languages', 'cb-hydronix') . '</option>';
 foreach ($dlangs as $dl) {
     $test = preg_replace('/-.*$/', '', $dl->slug);
                         
@@ -406,7 +405,7 @@ add_action('wp_footer', function () {
                     } else {
                         $("#dlBody").append(
                             "<tr><td colspan='6'><?=__('We are sorry, there are no results that match your selection. Please revise your selection and try again.', 'cb-hydronix')?></td></tr>"
-                            );
+                        );
                     }
 
                     // type dropdown
@@ -446,3 +445,4 @@ add_action('wp_footer', function () {
 </script>
 <?php
 }, 9999);
+?>
