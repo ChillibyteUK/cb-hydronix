@@ -23,7 +23,7 @@ cbdump($dlang);
 
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
-$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
+$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => array($dlang,'zz'));
 $dind_tax = $dind == '' ? '' : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
 $q = new WP_Query(array(
@@ -50,11 +50,11 @@ if ($DEBUG == true) {
     // cbdump($_REQUEST);
     // echo '<h1>sub</h1>';
     // cbdump($dsub_tax);
-    echo '<h1>prod</h1>';
-    cbdump($dsub);
-    cbdump($dsub_tax);
-// echo '<h1>lang</h1>';
-// cbdump($dlang_tax);
+    // echo '<h1>prod</h1>';
+    // cbdump($dsub);
+    // cbdump($dsub_tax);
+    echo '<h1>lang</h1>';
+    cbdump($dlang_tax);
 // echo '<h1>text</h1>';
 // cbdump($dtext);
 } else {
