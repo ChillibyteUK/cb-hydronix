@@ -7,17 +7,19 @@ $DEBUG = $_REQUEST['d'] == '1' ? true : false;
 // $dsub = $_REQUEST['dsub'];
 $dtype = $_REQUEST['dtype'];
 if (!$dtype) {
-    $dtypes = get_terms( array(
+    $dtypes = get_terms(array(
         'taxonomy' => 'attachment_category',
         'hide_empty' => true,
         'parent'        => 0,
-    ) );
-    $dtype = wp_list_pluck($dtypes,'slug');
-} 
+    ));
+    $dtype = wp_list_pluck($dtypes, 'slug');
+}
 $dlang = $_REQUEST['dlang'];
 $dtext = $_REQUEST['dtext'];
 $dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
+
+cbdump($dlang);
 
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
@@ -51,12 +53,11 @@ if ($DEBUG == true) {
     echo '<h1>prod</h1>';
     cbdump($dsub);
     cbdump($dsub_tax);
-    // echo '<h1>lang</h1>';
-    // cbdump($dlang_tax);
-    // echo '<h1>text</h1>';
-    // cbdump($dtext);
-}
-else {
+// echo '<h1>lang</h1>';
+// cbdump($dlang_tax);
+// echo '<h1>text</h1>';
+// cbdump($dtext);
+} else {
     header('Content-Type: application/json; charset=utf-8');
 }
 
@@ -76,8 +77,8 @@ if ($q->have_posts()) {
 
         $fdesc = wp_get_attachment_caption($ID);
         $furl = wp_get_attachment_url($ID, false);
-        $title = get_the_title( $ID);
-        $lang = get_the_terms( $ID, 'doclang' );
+        $title = get_the_title($ID);
+        $lang = get_the_terms($ID, 'doclang');
         if ($lang[0]->slug == 'ptb') {
             $lang[0]->slug = 'br';
         }
@@ -85,20 +86,36 @@ if ($q->have_posts()) {
             $lang[0]->slug = 'zz';
             $lang[0]->name = 'All';
         }
-        $type = get_the_terms( $ID, 'attachment_category' );
+        $type = get_the_terms($ID, 'attachment_category');
 
         $type_icon = 'fa-file';
-        if     ($type[0]->slug == 'application-notes')  { $type_icon = 'App Notes'; } // { $type_icon = 'fa-file-text-o'; }
-        elseif ($type[0]->slug == 'brochures')          { $type_icon = 'Brochure'; } // { $type_icon = 'fa-book'; }
-        elseif ($type[0]->slug == 'software-firmware')  { $type_icon = 'Software'; } // { $type_icon = 'fa-file-code-o'; }
-        elseif ($type[0]->slug == 'engineering-notes')  { $type_icon = 'Eng Notes'; } // { $type_icon = 'fa-flask'; }
-        elseif ($type[0]->slug == 'user-guides')        { $type_icon = 'Guide'; } // { $type_icon = 'fa-graduation-cap'; }
-        elseif ($type[0]->slug == 'articles')           { $type_icon = 'Article'; } // { $type_icon = 'fa-newspaper-o'; }
-        elseif ($type[0]->slug == 'case-studies')       { $type_icon = 'Case Study'; } // { $type_icon = 'fa-briefcase'; }
-        elseif ($type[0]->slug == 'presentations')      { $type_icon = 'Presentation'; } // { $type_icon = 'fa-film'; }
+        if     ($type[0]->slug == 'application-notes') {
+            $type_icon = 'App Notes';
+        } // { $type_icon = 'fa-file-text-o'; }
+        elseif ($type[0]->slug == 'brochures') {
+            $type_icon = 'Brochure';
+        } // { $type_icon = 'fa-book'; }
+        elseif ($type[0]->slug == 'software-firmware') {
+            $type_icon = 'Software';
+        } // { $type_icon = 'fa-file-code-o'; }
+        elseif ($type[0]->slug == 'engineering-notes') {
+            $type_icon = 'Eng Notes';
+        } // { $type_icon = 'fa-flask'; }
+        elseif ($type[0]->slug == 'user-guides') {
+            $type_icon = 'Guide';
+        } // { $type_icon = 'fa-graduation-cap'; }
+        elseif ($type[0]->slug == 'articles') {
+            $type_icon = 'Article';
+        } // { $type_icon = 'fa-newspaper-o'; }
+        elseif ($type[0]->slug == 'case-studies') {
+            $type_icon = 'Case Study';
+        } // { $type_icon = 'fa-briefcase'; }
+        elseif ($type[0]->slug == 'presentations') {
+            $type_icon = 'Presentation';
+        } // { $type_icon = 'fa-film'; }
 
         $sub = 'NONE';
-        $sub = get_the_terms( get_the_ID(), 'docprod' );
+        $sub = get_the_terms(get_the_ID(), 'docprod');
         $product = wp_list_pluck($sub, 'name');
         $product = implode(', ', $product);
         // $pVer = get_field('product_version',get_the_ID());
@@ -106,21 +123,21 @@ if ($q->have_posts()) {
         //     $product = $product . '<br><small>(' . $pVer . ')</small>';
         // }
 
-        $file = basename( get_attached_file($ID) );
-        $size = filesize( get_attached_file($ID) );
+        $file = basename(get_attached_file($ID));
+        $size = filesize(get_attached_file($ID));
         $ftype = get_post_mime_type($ID);
-        $ftype = preg_replace('/application\//','',$ftype);
+        $ftype = preg_replace('/application\//', '', $ftype);
         $fsize = formatBytes($size);
 
-$pVer = 'pver';
-preg_match('/(_[0-9])+/', $title, $matches);
-$docVer = $matches[0];
-$docVer = preg_replace('/^_/','v',$docVer);
-$docVer = preg_replace('/_/','.',$docVer);
+        $pVer = 'pver';
+        preg_match('/(_[0-9])+/', $title, $matches);
+        $docVer = $matches[0];
+        $docVer = preg_replace('/^_/', 'v', $docVer);
+        $docVer = preg_replace('/_/', '.', $docVer);
 
-// $product = 'product';
+        // $product = 'product';
 
-        $image = wp_get_attachment_image_url( $ID, 'medium' ) ?: '/wp-content/themes/cb-hydronix/img/missing-image.png';
+        $image = wp_get_attachment_image_url($ID, 'medium') ?: '/wp-content/themes/cb-hydronix/img/missing-image.png';
         
 
         // $ver = preg_match('');
@@ -130,7 +147,7 @@ $docVer = preg_replace('/_/','.',$docVer);
             $type_icon,                                                 // [2]
             $lang[0]->name,                                             // [3]
             $lang[0]->slug,                                             // [4]
-            get_field('release_date',get_the_ID()),                     // [5]
+            get_field('release_date', get_the_ID()),                     // [5]
             $pVer,                                                      // [6]
             $docVer,                                                    // [7]
             $product,                                                   // [8]
@@ -149,7 +166,7 @@ $docVer = preg_replace('/_/','.',$docVer);
         $langs[ $lang[0]->slug ] = $lang[0]->name;
     }
 
-    usort($downloads, function($a, $b) {
+    usort($downloads, function ($a, $b) {
         return strcmp($a[12], $b[12]);
     });
 
@@ -157,12 +174,10 @@ $docVer = preg_replace('/_/','.',$docVer);
     
     if ($DEBUG == true) {
         cbdump($downloads);
-    }
-    else {
+    } else {
         echo json_encode($results);
     }
-}
-else {
+} else {
     echo json_encode("nope");
 }
 
