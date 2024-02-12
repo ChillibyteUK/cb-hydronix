@@ -23,7 +23,7 @@ cbdump($dlang);
 
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
-$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => array($dlang,'zz'), 'operator' => 'IN');
+$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
 $dind_tax = $dind == '' ? '' : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
 $q = new WP_Query(array(
@@ -82,10 +82,10 @@ if ($q->have_posts()) {
         if ($lang[0]->slug == 'ptb') {
             $lang[0]->slug = 'br';
         }
-        if (! $lang) {
-            $lang[0]->slug = 'zz';
-            $lang[0]->name = 'All';
-        }
+        // if (! $lang) {
+        //     $lang[0]->slug = 'zz';
+        //     $lang[0]->name = 'All';
+        // }
         $type = get_the_terms($ID, 'attachment_category');
 
         $type_icon = 'fa-file';
