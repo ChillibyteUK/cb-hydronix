@@ -88,12 +88,15 @@ if ($q->have_posts()) {
         if ($lang[0]->slug == 'ptb') {
             $lang[0]->slug = 'br';
         }
-        if (! $lang) {
+        if (! $lang || count($lang) > 1) {
             $lang[0]->slug = $curr_lang;
             $lang[0]->name = 'Multiple';
         }
         if ($DEBUG == true) {
             echo 'LANG: ';
+            if (count($lang) > 1) {
+                echo $curr_lang;
+            }
             cbdump($lang);
         }
         $type = get_the_terms($ID, 'attachment_category');
