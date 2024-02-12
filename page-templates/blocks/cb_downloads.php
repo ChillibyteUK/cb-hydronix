@@ -324,6 +324,8 @@ add_action('wp_footer', function () {
 
             var selDText = $('#dtext').val() == '' ? '' : $('#dtext').val();
 
+            var currLang = $('#currLang').val();
+
             $("#submitText").hide();
             $("#spinner").show();
             /*
