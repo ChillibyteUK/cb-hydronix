@@ -19,8 +19,6 @@ $dtext = $_REQUEST['dtext'];
 $dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
 
-// cbdump($dlang);
-
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
 $dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
