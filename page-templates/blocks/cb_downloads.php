@@ -265,12 +265,11 @@ foreach ($dlangs as $dl) {
     <input type="hidden" name="hiddenDInd" id="hiddenDInd">
     <input type="hidden" name="hiddenDLang" id="hiddenDLang">
     <input type="hidden" name="hiddenDText" id="hiddenDText">
+    <input type="hidden" name="currLang" id="currLang" value="<?=$curr_lang?>">
 </section>
 
 <?php
 add_action('wp_footer', function () {
-    global $sitepress;
-    $currLang = apply_filters('wpml_current_language', null);
     ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -352,7 +351,7 @@ add_action('wp_footer', function () {
 
             $.ajax({
                 url: endpoint + "?dsub=" + selDSub + "&dtype=" + selDType + "&dlang=" + selDLang +
-                    "&dtext=" + selDText + "&dind=" + selDInd + "&curr=" + $currLang,
+                    "&dtext=" + selDText + "&dind=" + selDInd + "&curr=" + currLang,
                 contentType: "text/plain",
                 dataType: 'JSON',
                 success: function(result) {
