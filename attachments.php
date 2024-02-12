@@ -92,6 +92,10 @@ if ($q->have_posts()) {
             $lang[0]->slug = $curr_lang;
             $lang[0]->name = 'Multiple';
         }
+        if ($DEBUG == true) {
+            echo 'LANG: ';
+            cbdump($lang);
+        }
         $type = get_the_terms($ID, 'attachment_category');
 
         $type_icon = 'fa-file';
