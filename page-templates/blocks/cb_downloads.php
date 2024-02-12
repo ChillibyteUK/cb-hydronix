@@ -350,7 +350,7 @@ add_action('wp_footer', function () {
 
             $.ajax({
                 url: endpoint + "?dsub=" + selDSub + "&dtype=" + selDType + "&dlang=" + selDLang +
-                    "&dtext=" + selDText + "&dind=" + selDInd,
+                    "&dtext=" + selDText + "&dind=" + selDInd + "&curr=" + $curr_lang,
                 contentType: "text/plain",
                 dataType: 'JSON',
                 success: function(result) {

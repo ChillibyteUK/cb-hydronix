@@ -18,9 +18,8 @@ $dlang = $_REQUEST['dlang'];
 $dtext = $_REQUEST['dtext'];
 $dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
+$curr_lang = $_REQUEST['curr'];
 
-global $sitepress;
-$curr_lang = $sitepress->get_current_language();
 
 if ($DEBUG == true) {
     cbdump($dlang);
