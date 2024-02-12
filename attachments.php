@@ -19,6 +19,14 @@ $dtext = $_REQUEST['dtext'];
 $dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
 
+global $sitepress;
+$curr_lang = $sitepress->get_current_language();
+
+if ($DEBUG == true) {
+    cbdump($dlang);
+    cbdump($curr_lang);
+}
+
 $dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
 $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
 $dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
