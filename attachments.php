@@ -82,10 +82,10 @@ if ($q->have_posts()) {
         if ($lang[0]->slug == 'ptb') {
             $lang[0]->slug = 'br';
         }
-        // if (! $lang) {
-        //     $lang[0]->slug = 'zz';
-        //     $lang[0]->name = 'All';
-        // }
+        if (! $lang) {
+            $lang[0]->slug = 'zz';
+            $lang[0]->name = 'All';
+        }
         $type = get_the_terms($ID, 'attachment_category');
 
         $type_icon = 'fa-file';
