@@ -89,8 +89,8 @@ if ($q->have_posts()) {
             $lang[0]->slug = 'br';
         }
         if (! $lang) {
-            $lang[0]->slug = 'zz';
-            $lang[0]->name = 'All';
+            $lang[0]->slug = $curr_lang;
+            $lang[0]->name = 'Multiple';
         }
         $type = get_the_terms($ID, 'attachment_category');
 
