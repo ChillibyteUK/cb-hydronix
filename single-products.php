@@ -700,9 +700,11 @@ do_action( 'wpml_switch_language', $current_lang );
     $tabs = array();
 
     ?>
+    <!--
     <pre>
 <?=var_dump($types)?>
     </pre>
+-->
     <?php
 
     foreach ($types as $t) {
