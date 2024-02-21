@@ -697,16 +697,17 @@ do_action( 'wpml_switch_language', $current_lang );
     $tstate = 'active';
     $tabs = array();
 
-    ?>
-<!--
-    HELLO!
-<pre><?=var_dump($types)?></pre>
--->
-    <?php
-
     foreach ($types as $t) {
         $current_lang = apply_filters( 'wpml_current_language', NULL );
         do_action( 'wpml_switch_language', 'en' );
+
+        ?>
+        <!--
+        <pre><?=var_dump($slug)?></pre>
+        <pre><?=var_dump($currLang)?></pre>
+        <pre><?=var_dump($t->slug)?></pre>
+        -->
+            <?php
 
         $res = new WP_Query(array(
             'post_type' => 'attachment',
