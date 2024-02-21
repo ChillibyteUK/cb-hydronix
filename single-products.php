@@ -687,8 +687,6 @@ function carousel() {
 <div class="tab-content" id="nav-tabContent">
 <?php
 
-__('Brochures','cb-hydronix');
-
 do_action( 'wpml_switch_language', 'en' );
 $types = get_terms(array('taxonomy' =>'attachment_category'));
 do_action( 'wpml_switch_language', $current_lang );
@@ -700,10 +698,9 @@ do_action( 'wpml_switch_language', $current_lang );
     $tabs = array();
 
     ?>
-    <!--
-    <pre>
-<?=var_dump($types)?>
-    </pre>
+<!--
+    HELLO!
+<pre><?=var_dump($types)?></pre>
 -->
     <?php
 
