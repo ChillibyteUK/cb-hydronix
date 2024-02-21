@@ -698,6 +698,13 @@ do_action( 'wpml_switch_language', $current_lang );
     $active = 'show active';
     $tstate = 'active';
     $tabs = array();
+
+    ?>
+    <pre>
+<?=var_dump($types)?>
+    </pre>
+    <?php
+
     foreach ($types as $t) {
         $current_lang = apply_filters( 'wpml_current_language', NULL );
         do_action( 'wpml_switch_language', 'en' );
