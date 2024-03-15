@@ -93,7 +93,8 @@ $active = 'show active';
 $tstate = 'active';
 $tabs = array();
 
-foreach ($types as $doctype) {
+if ($types ?? null) {
+    foreach ($types as $doctype) {
 
     // var_dump($dind_tax);
 
@@ -175,6 +176,7 @@ EOT;
             </div>
             <?php
     }
+}
 }
 
 ?>
