@@ -146,6 +146,9 @@ $dlangs = get_terms(array(
 $ca0022_name = '';
 foreach ($liveProducts as $slug => $name) {
     // cbdump($dt);
+    if ($slug == 'legacy') {
+        continue;
+    }
     if ($slug == 'ca-moisture-probe') {
         $ca0022_slug = $slug;
         $ca0022_name = $name;
@@ -265,7 +268,8 @@ foreach ($dlangs as $dl) {
     <input type="hidden" name="hiddenDInd" id="hiddenDInd">
     <input type="hidden" name="hiddenDLang" id="hiddenDLang">
     <input type="hidden" name="hiddenDText" id="hiddenDText">
-    <input type="hidden" name="currLang" id="currLang" value="<?=$curr_lang?>">
+    <input type="hidden" name="currLang" id="currLang"
+        value="<?=$curr_lang?>">
 </section>
 
 <?php

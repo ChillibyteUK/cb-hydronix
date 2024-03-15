@@ -31,6 +31,8 @@ $dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'fie
 $dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
 $dind_tax = $dind == '' ? '' : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
+$exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
+
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
@@ -42,7 +44,8 @@ $q = new WP_Query(array(
         $dsub_tax,
         $dtype_tax,
         $dind_tax,
-        $dlang_tax
+        $dlang_tax,
+        $exclude
     ),
 ));
 
@@ -60,8 +63,8 @@ if ($DEBUG == true) {
     // cbdump($dsub_tax);
     echo '<h1>lang</h1>';
     cbdump($dlang_tax);
-// echo '<h1>text</h1>';
-// cbdump($dtext);
+    // echo '<h1>text</h1>';
+    // cbdump($dtext);
 } else {
     header('Content-Type: application/json; charset=utf-8');
 }
