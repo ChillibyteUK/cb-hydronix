@@ -12,7 +12,8 @@ defined('ABSPATH') || exit;
 
 $ip = $_SERVER['REMOTE_ADDR'];
 $countryData = json_decode(file_get_contents("http://ip-api.com/json/{$ip}"));
-if ($countryData->countryCode === 'CN') {
+// if ($countryData->countryCode === 'CN') {
+if (isset($countryData) && property_exists($countryData, 'countryCode') && $countryData->countryCode === 'CN') {
     header('Location: https://www.hydronix.cn/');
     exit;
 }
