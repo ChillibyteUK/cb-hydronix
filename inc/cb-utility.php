@@ -338,3 +338,16 @@ add_filter('wp_image_editors', function (array $editors): array {
 
     return $editors;
 });
+
+function wpse_369264_search_attachments( $where, $query ) {
+    global $wpdb;
+
+    // Only modify the query if it's the main query and searching for 'attachment'
+    if ( $query->is_main_query() && isset( $query->query['s'] ) && 'attachment' == $query->get('post_type') ) {
+        $search_term = esc_sql( $wpdb->esc_like( $query->get( 's' ) ) );
+        $where .= " OR {$wpdb->posts}.post_name LIKE '%$search_term%'";
+    }
+    
+    return $where;
+}
+add_filter('posts_where', 'wpse_369264_search_attachments', 10, 2);
