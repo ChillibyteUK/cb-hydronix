@@ -29,7 +29,8 @@ $dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 
 
 // Set up taxonomy queries
 $dtype_tax = empty($dtype) ? array() : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
-$dlang_tax = empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
+// $dlang_tax = empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
+$dlang_tax = ($dtype == 'software-firmware') ? array() : (empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang));
 $dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
 // Exclusion criteria, if any
