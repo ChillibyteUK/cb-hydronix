@@ -4,6 +4,7 @@ require_once("../../../wp-load.php");
 
 $DEBUG = $_REQUEST['d'] == '1' ? true : false;
 
+// $dsub = $_REQUEST['dsub'];
 $dtype = $_REQUEST['dtype'];
 if (!$dtype) {
     $dtypes = get_terms(array(
@@ -19,44 +20,33 @@ $dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
 $curr_lang = $_REQUEST['curr'];
 
+
 if ($DEBUG == true) {
     cbdump($dlang);
     cbdump($curr_lang);
 }
 
-// If there's a specific document sub-category (dsub) set, use it for querying docprod taxonomy
-$dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
+$dsub_tax  = $dsub  == '' ? '' : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
+$dtype_tax = $dtype == '' ? '' : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
+$dlang_tax = $dlang == '' ? '' : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
+$dind_tax = $dind == '' ? '' : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
-// Set up taxonomy queries
-$dtype_tax = empty($dtype) ? array() : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
-$dlang_tax = empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
-$dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
-
-// Exclusion criteria, if any
 $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
-
-// Constructing the query
-$tax_query = array_filter(array(
-    'relation' => 'AND',
-    $dsub_tax,
-    $dtype_tax,
-    $dind_tax,
-    $dlang_tax,
-    $exclude
-));
-
-// Include 'docprod' taxonomy if dtext has a value
-if (!empty($dtext)) {
-    $tax_query[] = array('relation' => 'OR',
-                         array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext, 'operator' => 'LIKE'),
-                         array('s' => $dtext));
-}
 
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
+    // 'post_parent' => null,
     'posts_per_page' => -1,
-    'tax_query' => $tax_query
+    's' => $dtext,
+    'tax_query' => array(
+        array('relation' => 'AND'),
+        $dsub_tax,
+        $dtype_tax,
+        $dind_tax,
+        $dlang_tax,
+        $exclude
+    ),
 ));
 
 if ($DEBUG == true) {
