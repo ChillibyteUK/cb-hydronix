@@ -164,7 +164,7 @@ if ($q->have_posts()) {
         // $product = 'product';
 
 
-        if ($ftype == 'image/jpeg') {
+        if ($ftype == 'image/png') {
             $desc = $title;
             $title = '';
             $fdesc = $desc;
