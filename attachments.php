@@ -166,9 +166,11 @@ if ($q->have_posts()) {
 
         if ($ftype == 'image/jpeg') {
             $desc = $title;
-            $title = $fdesc;
+            $title = '';
             $fdesc = $desc;
             $furl = wp_get_attachment_caption($ID);
+            $pVer = '';
+            $fsize = '';
         }
 
 
