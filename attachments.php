@@ -168,7 +168,7 @@ if ($q->have_posts()) {
             $desc = $title;
             $title = $fdesc;
             $fdesc = $desc;
-            $furl = 'https://www.chillibyte.co.uk/';
+            $furl = wp_get_attachment_caption($ID);
         }
 
 
