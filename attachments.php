@@ -163,6 +163,15 @@ if ($q->have_posts()) {
 
         // $product = 'product';
 
+
+        if ($ftype == 'image/jpeg') {
+            $desc = $title;
+            $title = $fdesc;
+            $fdesc = $desc;
+            $furl = 'https://www.chillibyte.co.uk/';
+        }
+
+
         $image = wp_get_attachment_image_url($ID, 'medium') ?: '/wp-content/themes/cb-hydronix/img/missing-image.png';
         
 
