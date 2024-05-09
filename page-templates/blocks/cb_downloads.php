@@ -101,7 +101,6 @@ $dsubs = get_terms(array(
 $liveProducts = array();
 $legacyProducts = array();
 foreach ($dsubs as $d) {
-
     
     $checkbox_value = get_field('is_current', 'docprod_' . $d->term_id);
     
@@ -284,7 +283,7 @@ foreach ($dlangs as $dl) {
     <input type="hidden" name="currLang" id="currLang"
         value="<?=$curr_lang?>">
 </section>
-
+<div id="resultCount"></div>
 <?php
 add_action('wp_footer', function () {
     ?>
@@ -374,7 +373,7 @@ add_action('wp_footer', function () {
                 contentType: "text/plain",
                 dataType: 'JSON',
                 success: function(result) {
-                    console.log(result);
+                    console.log(result.files.length);
                     if (result.files) {
                         $.each(result.files, function(slug, vals) {
                             let rtl = vals[4] == 'fa' ? 'rtl' : '';
