@@ -34,7 +34,7 @@ $dlang_tax = ($dtype == 'software-firmware') ? array() : (empty($dlang) ? array(
 $dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
 // Exclusion criteria, if any
-$exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
+// $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
 
 // Constructing the query
 $tax_query = array_filter(array(
@@ -42,21 +42,26 @@ $tax_query = array_filter(array(
     $dsub_tax,
     $dtype_tax,
     $dind_tax,
-    $dlang_tax,
-    $exclude
+    $dlang_tax
 ));
 
 // Include 'docprod' taxonomy if dtext has a value
 if (!empty($dtext)) {
     $tax_query[] = array('relation' => 'OR',
-                         array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext, 'operator' => 'LIKE'),
-                         array('s' => $dtext));
+                        array(
+                            'taxonomy' => 'docprod',
+                            'field' => 'name',
+                            'terms' => $dtext,
+                            'operator' => 'LIKE')
+                            // array('s' => $dtext)
+                        );
 }
 
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
+    's' => $dtext,
     'tax_query' => $tax_query
 ));
 
