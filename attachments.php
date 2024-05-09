@@ -37,8 +37,8 @@ $dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' =
 // $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
 
 // Include 'docprod' taxonomy if dtext has a value
-// $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext, 'operator' => 'LIKE' );
-$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
+$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext, 'operator' => 'LIKE' );
+// $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
 
 // Constructing the query
 $tax_query = array_filter(array(
