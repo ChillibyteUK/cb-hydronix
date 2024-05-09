@@ -108,6 +108,10 @@ foreach ($dsubs as $d) {
     // var_dump($checkbox_value);
     // echo '-->';
 
+    if ($d->slug == 'ca-moisture-probe') {
+        continue;
+    }
+
     if ($checkbox_value[0] == 'Yes') {
         $liveProducts[$d->slug] = $d->name;
     } else {
@@ -157,23 +161,15 @@ $dlangs = get_terms(array(
                     $ca0022_slug = '';
 $ca0022_name = '';
 foreach ($liveProducts as $slug => $name) {
-    // cbdump($dt);
-    if ($slug == 'legacy') {
-        continue;
-    }
-    if ($slug == 'ca-moisture-probe') {
-        $ca0022_slug = $slug;
-        $ca0022_name = $name;
-    } else {
-        echo '<option value="' . $slug . '">' . $name . '</option>';
-    }
+    echo '<option value="' . $slug . '">' . $name . '</option>';
 }
-echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
+// echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
 echo '<option value="" disabled>-- ' . __('Legacy Products', 'cb-hydronix') . ' --</option>';
 foreach ($legacyProducts as $slug => $name) {
     // cbdump($dt);
     echo '<option value="' . $slug . '">' . $name . '</option>';
 }
+
 ?>
                 </select>
             </div>
