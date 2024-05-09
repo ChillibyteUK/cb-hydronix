@@ -106,7 +106,7 @@ foreach ($dsubs as $d) {
     var_dump($d);
     echo '-->';
 
-    $checkbox_value = get_field('is_current', 'term_' . $d->term_id);
+    $checkbox_value = get_field('is_current', $d);
 
     if ($checkbox_value == 'Yes') {
         $liveProducts[$d->slug] = $d->name;
