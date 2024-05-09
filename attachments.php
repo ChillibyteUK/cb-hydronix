@@ -55,7 +55,7 @@ if (!empty($dtext)) {
                             'terms' => $dtext,
                             'operator' => 'LIKE')
                         );
-    $dtext_query = array('s' => $dtext);
+    $dtext_query = "'s' => $dtext";
 
 }
 
