@@ -36,34 +36,35 @@ $dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' =
 // Exclusion criteria, if any
 // $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
 
+// Include 'docprod' taxonomy if dtext has a value
+$dtext_query = '';
+if (!empty($dtext)) {
+    $dtext_query =
+            array(
+                'taxonomy' => 'docprod',
+                'field' => 'name',
+                'terms' => $dtext,
+                'operator' => 'LIKE'
+        );
+}
+
 // Constructing the query
 $tax_query = array_filter(array(
     'relation' => 'AND',
     $dsub_tax,
     $dtype_tax,
     $dind_tax,
-    $dlang_tax
+    $dlang_tax,
+    $dtext_query
 ));
 
-// Include 'docprod' taxonomy if dtext has a value
-$dtext_query = null;
-if (!empty($dtext)) {
-    $tax_query[] = array('relation' => 'OR',
-                        array(
-                            'taxonomy' => 'docprod',
-                            'field' => 'name',
-                            'terms' => $dtext,
-                            'operator' => 'LIKE')
-                        );
-    $dtext_query = "'s' => $dtext";
 
-}
 
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
-    $dtext_query,
+    's' => $dtext,
     'tax_query' => $tax_query
 ));
 
