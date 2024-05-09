@@ -56,6 +56,7 @@ if (!empty($dtext)) {
                             'operator' => 'LIKE')
                         );
     // $dtext_query = array('s' => $dtext);
+
 }
 
 $q = new WP_Query(array(
@@ -78,10 +79,13 @@ if ($DEBUG == true) {
     // echo '<h1>prod</h1>';
     // cbdump($dsub);
     // cbdump($dsub_tax);
-    echo '<h1>lang</h1>';
-    cbdump($dlang_tax);
+    // echo '<h1>lang</h1>';
+    // cbdump($dlang_tax);
     // echo '<h1>text</h1>';
     // cbdump($dtext);
+    echo '<h1>SQL</h1>';
+    echo $wpdb->last_query;
+
 } else {
     header('Content-Type: application/json; charset=utf-8');
 }
