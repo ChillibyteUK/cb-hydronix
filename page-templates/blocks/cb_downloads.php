@@ -373,7 +373,6 @@ add_action('wp_footer', function () {
                 contentType: "text/plain",
                 dataType: 'JSON',
                 success: function(result) {
-                    console.log(result.files.length);
                     if (result.files) {
                         $.each(result.files, function(slug, vals) {
                             let rtl = vals[4] == 'fa' ? 'rtl' : '';
