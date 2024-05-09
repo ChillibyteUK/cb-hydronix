@@ -46,6 +46,7 @@ $tax_query = array_filter(array(
 ));
 
 // Include 'docprod' taxonomy if dtext has a value
+$dtext_query = null;
 if (!empty($dtext)) {
     $tax_query[] = array('relation' => 'OR',
                         array(
@@ -53,15 +54,15 @@ if (!empty($dtext)) {
                             'field' => 'name',
                             'terms' => $dtext,
                             'operator' => 'LIKE')
-                            // array('s' => $dtext)
                         );
+    $dtext_query = array('s' => $dtext);
 }
 
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
-    's' => $dtext,
+    $dtext_query,
     'tax_query' => $tax_query
 ));
 
