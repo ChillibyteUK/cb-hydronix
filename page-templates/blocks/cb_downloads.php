@@ -102,11 +102,12 @@ $liveProducts = array();
 $legacyProducts = array();
 foreach ($dsubs as $d) {
 
+    
+    $checkbox_value = get_field('is_current', 'docprod_' . $d->term_id);
+    
     echo '<!--';
-    var_dump($d);
+    var_dump($checkbox_value);
     echo '-->';
-
-    $checkbox_value = get_field('is_current', $d);
 
     if ($checkbox_value == 'Yes') {
         $liveProducts[$d->slug] = $d->name;
