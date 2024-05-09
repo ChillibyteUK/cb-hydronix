@@ -421,8 +421,11 @@ add_action('wp_footer', function () {
                                 "</tr>"
                             );
                         });
-                        document.getElementById('resultCount').textContent = 'Found ' + result
-                            .files.length;
+                        if (result.files.length > 0) {
+                            document.getElementById('resultCount').textContent = 'Found ' +
+                                result
+                                .files.length;
+                        }
                     } else {
                         $("#dlBody").append(
                             "<tr><td colspan='6'><?=__('We are sorry, there are no results that match your selection. Please revise your selection and try again.', 'cb-hydronix')?></td></tr>"
