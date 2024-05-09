@@ -251,6 +251,7 @@ foreach ($dlangs as $dl) {
                 </button>
             </div>
         </div>
+        <div id="resultCount"></div>
         <div class="table-responsive">
             <table id="dlContainer" class="table table-sm table-striped">
                 <thead>
@@ -283,7 +284,6 @@ foreach ($dlangs as $dl) {
     <input type="hidden" name="currLang" id="currLang"
         value="<?=$curr_lang?>">
 </section>
-<div id="resultCount"></div>
 <?php
 add_action('wp_footer', function () {
     ?>
@@ -422,7 +422,7 @@ add_action('wp_footer', function () {
                             );
                         });
                         document.getElementById('resultCount').textContent = result.files
-                        .length;
+                            .length;
                     } else {
                         $("#dlBody").append(
                             "<tr><td colspan='6'><?=__('We are sorry, there are no results that match your selection. Please revise your selection and try again.', 'cb-hydronix')?></td></tr>"
