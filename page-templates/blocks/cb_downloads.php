@@ -102,6 +102,10 @@ $liveProducts = array();
 $legacyProducts = array();
 foreach ($dsubs as $d) {
 
+    echo '<!--';
+    var_dump($d);
+    echo '-->';
+
     $checkbox_value = get_field('is_current', 'term_' . $d->ID);
 
     if ($checkbox_value == 'Yes') {
