@@ -46,7 +46,7 @@ $tax_query = array_filter(array(
 ));
 
 // Include 'docprod' taxonomy if dtext has a value
-// $dtext_query = null;
+$dtext_query = null;
 if (!empty($dtext)) {
     $tax_query[] = array('relation' => 'OR',
                         array(
@@ -55,7 +55,7 @@ if (!empty($dtext)) {
                             'terms' => $dtext,
                             'operator' => 'LIKE')
                         );
-    // $dtext_query = array('s' => $dtext);
+    $dtext_query = array('s' => $dtext);
 
 }
 
@@ -63,7 +63,7 @@ $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
-    's' => $dtext,
+    $dtext_query,
     'tax_query' => $tax_query
 ));
 
@@ -83,8 +83,8 @@ if ($DEBUG == true) {
     // cbdump($dlang_tax);
     // echo '<h1>text</h1>';
     // cbdump($dtext);
-    echo '<h1>SQL</h1>';
-    echo $wpdb->last_query;
+    // echo '<h1>SQL</h1>';
+    // echo $wpdb->last_query;
 
 } else {
     header('Content-Type: application/json; charset=utf-8');
