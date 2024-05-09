@@ -22,6 +22,7 @@ $curr_lang = $_REQUEST['curr'];
 if ($DEBUG == true) {
     cbdump($dlang);
     cbdump($curr_lang);
+    cbdump($dtext);
 }
 
 // If there's a specific document sub-category (dsub) set, use it for querying docprod taxonomy
