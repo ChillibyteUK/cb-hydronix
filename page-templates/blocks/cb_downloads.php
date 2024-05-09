@@ -101,11 +101,19 @@ $dsubs = get_terms(array(
 $liveProducts = array();
 $legacyProducts = array();
 foreach ($dsubs as $d) {
-    if (preg_match('/\(/', $d->name)) {
-        $legacyProducts[$d->slug] = $d->name;
-    } else {
+
+    $checkbox_value = get_field('is_current', 'term_' . $d->ID);
+
+    if ($checkbox_value == 'Yes') {
         $liveProducts[$d->slug] = $d->name;
+    } else {
+        $legacyProducts[$d->slug] = $d->name;
     }
+    // if (preg_match('/\(/', $d->name)) {
+    //     $legacyProducts[$d->slug] = $d->name;
+    // } else {
+    //     $liveProducts[$d->slug] = $d->name;
+    // }
 }
 
 // industry
