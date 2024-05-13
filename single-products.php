@@ -964,7 +964,7 @@ do_action('wpml_switch_language', $current_lang);
 </main>
 <?php
 
-if ($hasContent == 1) {
+if ($hasContent == 1 || $hasContent == 0) {
     echo ob_get_clean();
     add_action('wp_footer', function () use ($tabs) {
         $json = json_encode((array)$tabs);
@@ -995,7 +995,6 @@ if ($hasContent == 1) {
 <?php
     }, 9999);
 } else {
-    echo ob_get_clean();
     ob_end_clean();
     echo '</main>';
 }
