@@ -788,49 +788,16 @@ $types = get_terms(array('taxonomy' =>'attachment_category'));
 do_action('wpml_switch_language', $current_lang);
 
     global $post;
-    $base_slug = $post->post_name;
+    // $slug = $post->post_name;
     $active = 'show active';
     $tstate = 'active';
     $tabs = array();
 
     // // get latest version of product
+    $slug = get_field('latest_slug')->name ?? $post->post_name;
     // get slugs from docprod matching slug-nn
     // if there are none, use the slug as is.
     // if there is more than one, find the one with 'latest' checked.
-
-    $docprod_terms = get_terms([
-        'taxonomy' => 'docprod',
-        'hide_empty' => true,
-    ]);
-    $matching = [];
-    foreach ($terms as $term) {
-        if (preg_match("/^{$base_slug}-\d+$/", $term->slug)) {
-            // Matches the pattern slug-number without additional hyphens
-            $matching_terms[] = $term;
-        }
-    }
-    $latest_term = null;
-
-    // Check ACF 'latest' field for the matching terms
-    foreach ($matching_terms as $term) {
-        var_dump( get_field('is_current', $term) ) ;
-        
-        if (get_field('is_current', $term) === 'Yes') {
-            if ($latest_term !== null) {
-                // Handle error or redefine the criteria if multiple 'latest' are found
-                echo 'Error: More than one "latest" term found. Please verify your data.';
-                continue;
-            }
-            $latest_term = $term;
-        }
-    }
-    if ($latest_term !== null) {
-        $slug = $latest_term->name;
-    } else {
-        $slug = $base_slug;
-    }
-
-    echo '<!-- SLUG IS ' . $slug . ' -->';
 
 
     foreach ($types as $t) {
@@ -966,7 +933,7 @@ do_action('wpml_switch_language', $current_lang);
 </main>
 <?php
 
-if ($hasContent == 1 || $hasContent == 0) {
+if ($hasContent == 1) {
     echo ob_get_clean();
     add_action('wp_footer', function () use ($tabs) {
         $json = json_encode((array)$tabs);
