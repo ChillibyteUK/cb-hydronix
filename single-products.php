@@ -727,7 +727,7 @@ $sku = get_field('product_code') == '' ? get_the_title() : get_field('product_co
     require_once CB_THEME_DIR . '/page-templates/blocks/cb_support_cta.php';
 
 
-// ob_start();
+ob_start();
 $hasContent = 0;
 ?>
     <section id="docs" class="resources py-5">
@@ -796,7 +796,7 @@ do_action('wpml_switch_language', $current_lang);
     // // get latest version of product
     $slug = get_field('latest_slug');
 
-    var_dump($slug);
+    // var_dump($slug);
 
     // get slugs from docprod matching slug-nn
     // if there are none, use the slug as is.
