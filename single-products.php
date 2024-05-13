@@ -795,6 +795,8 @@ do_action('wpml_switch_language', $current_lang);
 
     // // get latest version of product
     $slug = get_field('latest_slug')->name ?? $post->post_name;
+
+    var_dump($slug);
     // get slugs from docprod matching slug-nn
     // if there are none, use the slug as is.
     // if there is more than one, find the one with 'latest' checked.
