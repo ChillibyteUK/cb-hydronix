@@ -828,6 +828,8 @@ do_action('wpml_switch_language', $current_lang);
         $slug = $base_slug;
     }
 
+    echo '<!-- SLUG IS ' . $slug . ' -->';
+
 
     foreach ($types as $t) {
         $current_lang = apply_filters( 'wpml_current_language', NULL );
