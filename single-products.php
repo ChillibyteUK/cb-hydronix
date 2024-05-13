@@ -813,6 +813,8 @@ do_action('wpml_switch_language', $current_lang);
 
     // Check ACF 'latest' field for the matching terms
     foreach ($matching_terms as $term) {
+        var_dump( get_field('is_current', $term) ) ;
+        
         if (get_field('is_current', $term) === 'Yes') {
             if ($latest_term !== null) {
                 // Handle error or redefine the criteria if multiple 'latest' are found
