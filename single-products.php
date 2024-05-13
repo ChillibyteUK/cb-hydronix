@@ -817,7 +817,7 @@ do_action('wpml_switch_language', $current_lang);
             if ($latest_term !== null) {
                 // Handle error or redefine the criteria if multiple 'latest' are found
                 echo 'Error: More than one "latest" term found. Please verify your data.';
-                exit;
+                continue;
             }
             $latest_term = $term;
         }
