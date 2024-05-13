@@ -995,6 +995,7 @@ if ($hasContent == 1) {
 <?php
     }, 9999);
 } else {
+    echo ob_get_clean();
     ob_end_clean();
     echo '</main>';
 }
