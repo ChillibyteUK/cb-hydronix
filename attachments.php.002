@@ -1,7 +1,4 @@
 <?php
-
-/* v3 - Mighty Matt fixed the free text search to also search docprod */
-
 define('WP_USE_THEMES', false); // Don't load theme support functionality
 require_once("../../../wp-load.php");
 
@@ -41,11 +38,7 @@ $dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' =
 // $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
 
 // Include 'docprod' taxonomy if dtext has a value
-$termIds = get_terms([
-    'name__like' => $dtext,
-    'fields' => 'ids'
-]);
-$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'id', 'terms' => $termIds );
+$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext, 'operator' => 'LIKE' );
 // $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
 
 // Constructing the query
@@ -58,38 +51,14 @@ $tax_query = array_filter(array(
     $dtext_query
 ));
 
-$args = array(
-    'post_type' => 'attachment',
-    'post_status' => 'any',
-    'posts_per_page' => -1,
-    's' => $dtext,
-    'tax_query' => $tax_query
-);
 
-$args_tags = array(
-    'post_type' => 'attachment',
-    'post_status' => 'any',
-    'posts_per_page' => -1,
-    'tax_query' => $tax_query
-);
-
-$q_search = get_posts( $args );
-$q_tax = get_posts( $args_tags );
-$unique = array_unique( array_merge( $q_search, $q_tax), SORT_REGULAR);
-
-$uniqueIds = array_map(function ($post) {
-    return $post->ID;
-}, $unique);
-
-if (!$uniqueIds) {
-    array_push($uniqueIds, "0");
-}
 
 $q = new WP_Query(array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
-    'post__in' => $uniqueIds,
+    's' => $dtext,
+    'tax_query' => $tax_query
 ));
 
 if ($DEBUG == true) {
