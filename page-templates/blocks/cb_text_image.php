@@ -6,9 +6,10 @@ $cols_text = (get_field('split') == '5050' || get_field('split') == '') ? 'col-l
 $cols_image = (get_field('split') == '5050' || get_field('split') == '') ? 'col-lg-6' : 'col-lg-4';
 
 $theme = get_field('theme');
+$text = $theme == 'bg--blue' ? 'text-white' : null;
 ?>    
 <!-- text_image -->
-<section class="text_image py-5 <?=$theme?>">
+<section class="text_image py-5 <?=$theme?> <?=$text?>">
     <div class="container-xl">
         <div class="row">
             <div class="<?=$cols_text?> text_image__content my-auto <?=$order_text?>">

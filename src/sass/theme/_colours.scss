@@ -18,9 +18,13 @@
     background-color: $blue-100;
 }
 
-.bg-blue,
+.bg--blue,
 .bg--blue-200 {
     background-color: $blue-200;
+
+    a {
+        color: white;
+    }
 }
 
 .bg--grey {

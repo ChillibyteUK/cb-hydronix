@@ -15794,9 +15794,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, .latest__title, .h99 {
   background-color: #f2f3f4;
 }
 
-.bg-blue,
+.bg--blue,
 .bg--blue-200 {
   background-color: #2988bf;
+}
+.bg--blue a,
+.bg--blue-200 a {
+  color: white;
 }
 
 .bg--grey {
