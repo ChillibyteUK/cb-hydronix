@@ -15802,8 +15802,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, .latest__title, .h99 {
 .bg--blue-200 a {
   color: white;
 }
-.bg--blue .card a,
-.bg--blue-200 .card a {
+.bg--blue .card a:not(.btn):not(.product_range_nav__button),
+.bg--blue-200 .card a:not(.btn):not(.product_range_nav__button) {
   color: #3c3c3c;
 }
 

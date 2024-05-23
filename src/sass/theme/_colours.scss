@@ -26,7 +26,7 @@
         color: white;
     }
     .card {
-        a {
+        a:not(.btn) {
             color: #3c3c3c;
         }
     }
