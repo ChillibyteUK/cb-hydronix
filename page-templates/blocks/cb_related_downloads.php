@@ -150,9 +150,18 @@ EOT;
             do_action('wpml_switch_language', 'en');
     
             $filename = wp_get_attachment_url(get_the_ID());
+
+            $ftype = get_post_mime_type($ID);
+            if ($ftype == 'image/png') {
+                $furl = wp_get_attachment_caption($ID);
+            }
+            else {
+                $furl = $filename;
+            }
+
             ?>
                     <div class="col-md-4 col-lg-3 col-xl-2">
-                        <a class="dl_card" href="<?=$filename?>"
+                        <a class="dl_card" href="<?=$furl?>"
                             download>
                             <?=$img?>
                             <div class="dl_card__bottom">
