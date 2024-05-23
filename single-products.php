@@ -909,6 +909,7 @@ do_action('wpml_switch_language', $current_lang);
             $ftype = get_post_mime_type($ID);
             if ($ftype == 'image/png') {
                 $furl = wp_get_attachment_caption($ID);
+                $fdesc = get_the_title($ID);
             }
             else {
                 $furl = $filename;
