@@ -3,7 +3,10 @@ ob_start();
 $hasContent = 0;
 
 $background = get_field('background') ?? null;
+var_dump($background); // Debugging: Check the value and type of $background
 $bg = !empty($background) && $background[0] === 'dark' ? 'bg--blue-100' : '';
+echo $bg; // Debugging: Check the value of $bg
+
 
 $classes = $block['className'] ?? null;
 
