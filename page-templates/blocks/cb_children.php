@@ -17,14 +17,14 @@ $children = new WP_Query( array(
 ));
 
 
-// sugar exception
-$industries = 36;
-$txindustries = apply_filters( 'wpml_object_id', $industries, 'page', true );
-$sugar = '';
-if (get_the_ID() == $txindustries) {
-    $sugar = 234;
-    $txsugar = apply_filters( 'wpml_object_id', $sugar, 'page', true );
-}
+// // sugar exception
+// $industries = 36;
+// $txindustries = apply_filters( 'wpml_object_id', $industries, 'page', true );
+// $sugar = '';
+// if (get_the_ID() == $txindustries) {
+//     $sugar = 234;
+//     $txsugar = apply_filters( 'wpml_object_id', $sugar, 'page', true );
+// }
 
 if ( $children->have_posts() ) {
     while ( $children->have_posts() ) {
@@ -35,13 +35,14 @@ if ( $children->have_posts() ) {
         </div>
         <?php
     }
-    if ($sugar != '') {
+    /* if ($sugar != '') {
     ?>
     <div class="col-md-4 col-xl-3">
         <a class="child_pages__card child_pages__card--blue" href="<?=get_the_permalink($txsugar)?>"><?=get_the_title($txsugar)?></a>
     </div>
     <?php
     }
+    */
 }
 
 wp_reset_postdata();
