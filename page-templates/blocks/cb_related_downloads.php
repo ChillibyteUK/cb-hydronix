@@ -2,8 +2,7 @@
 ob_start();
 $hasContent = 0;
 
-$background = get_field('background');
-echo '<!-- ' . var_dump($background) . ' -->';
+$background = get_field('background') ?? null;
 $bg = !empty($background) && $background[0] === 'dark' ? 'bg--blue-100' : '';
 
 $classes = $block['className'] ?? null;
