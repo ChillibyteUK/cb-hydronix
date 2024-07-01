@@ -28,6 +28,8 @@
                 $resID = get_page_by_path('resources/downloads');
                 $resIDLang = apply_filters( 'wpml_object_id', $resID->ID, 'page' );
                 $resLink = get_the_permalink($resIDLang);
+
+                $home_url = apply_filters('wpml_home_url', get_option('home'));
                 $trgID = get_page_by_path('training');
                 $trgIDLang = apply_filters( 'wpml_object_id', $trgID->ID, 'page' );
                 $trgLink = get_the_permalink($trgIDLang);
@@ -35,7 +37,7 @@
                 <a href="<?=$suppLink?>" class="btn btn--orange mb-2"><?=__('Contact Support','cb-hydronix')?></a>
                 <a href="<?=$resLink?>" class="btn btn--green mb-2"><?=__('Download Technical Resources','cb-hydronix')?></a>
                 <?php
-                if ($trgLink != null) {
+                if ($trgLink != $home_url) {
                     ?>
                 <a href="<?=$trgLink?>" class="btn btn--grey"><?=__('View Training','cb-hydronix')?></a>
                     <?php
