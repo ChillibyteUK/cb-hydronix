@@ -41,3 +41,10 @@
         color: $grey-100;
     }
 }
+.btn--grey {
+    background-color: $grey-300;
+    color: white;
+    &:hover {
+        color: $grey-100;
+    }
+}

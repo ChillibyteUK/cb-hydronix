@@ -16122,6 +16122,14 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, .latest__title, .h99 {
   color: #e9e9e9;
 }
 
+.btn--grey {
+  background-color: #a1a19f;
+  color: white;
+}
+.btn--grey:hover {
+  color: #e9e9e9;
+}
+
 .news__item {
   display: block;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
