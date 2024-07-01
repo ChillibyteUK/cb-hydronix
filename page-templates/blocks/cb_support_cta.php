@@ -33,7 +33,7 @@
                 $trgLink = get_the_permalink($trgIDLang);
                 ?>
                 <a href="<?=$suppLink?>" class="btn btn--orange mb-2"><?=__('Contact Support','cb-hydronix')?></a>
-                <a href="<?=$resLink?>" class="btn btn--green"><?=__('Download Technical Resources','cb-hydronix')?></a>
+                <a href="<?=$resLink?>" class="btn btn--green mb-2"><?=__('Download Technical Resources','cb-hydronix')?></a>
                 <?php
                 if ($trgLink ?? null) {
                     ?>
