@@ -35,7 +35,7 @@
                 <a href="<?=$suppLink?>" class="btn btn--orange mb-2"><?=__('Contact Support','cb-hydronix')?></a>
                 <a href="<?=$resLink?>" class="btn btn--green mb-2"><?=__('Download Technical Resources','cb-hydronix')?></a>
                 <?php
-                if ($trgLink ?? null) {
+                if ($trgLink != null) {
                     ?>
                 <a href="<?=$trgLink?>" class="btn btn--grey"><?=__('View Training','cb-hydronix')?></a>
                     <?php
