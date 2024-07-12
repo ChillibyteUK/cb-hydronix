@@ -37,7 +37,6 @@ $bg = (get_field('background')) ? 'text_video--bg' : '';
                             ?>
                             <iframe src="//player.bilibili.com/player.html?bvid=<?=get_field('vimeo_id')?>&high_quality=1&autoplay=false"></iframe>
                             <?php
-                            // <iframe src="https://www.bilibili.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         }
                         else {
                             ?>
