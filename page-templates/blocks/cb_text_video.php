@@ -33,12 +33,11 @@ $bg = (get_field('background')) ? 'text_video--bg' : '';
                     <div class="ratio ratio-16x9 mx-auto">
                         <?php
                         $current_language = apply_filters( 'wpml_current_language', NULL );
-                        echo $current_language;
                         if ($current_language == 'zh-hans') {
-                            echo 'BiliBili';
                             ?>
-                            <iframe src="https://www.bilibili.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <iframe src="//player.bilibili.com/player.html?bvid=<?=get_field('vimeo_id')?>&high_quality=1&autoplay=false"></iframe>
                             <?php
+                            // <iframe src="https://www.bilibili.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         }
                         else {
                             ?>
