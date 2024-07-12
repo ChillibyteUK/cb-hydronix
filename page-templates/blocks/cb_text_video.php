@@ -34,8 +34,11 @@ $bg = (get_field('background')) ? 'text_video--bg' : '';
                         <?php
                         $current_language = apply_filters( 'wpml_current_language', NULL );
                         echo $current_language;
-                        if ($current_language == 'zh') {
+                        if ($current_language == 'zh-hans') {
                             echo 'BiliBili';
+                            ?>
+                            <iframe src="https://www.bilibili.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <?php
                         }
                         else {
                             ?>
