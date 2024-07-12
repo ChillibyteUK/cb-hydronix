@@ -46,7 +46,7 @@ lite-vimeo {
             // $bg = get_vimeo_data_from_id(get_sub_field('vimeo_id'), 'thumbnail_url');
             ?>
         <div class="video-container">
-            <div class="video-preview">
+            <div class="video-preview ratio ratio-16x9">
                 <?php
                 $current_language = apply_filters( 'wpml_current_language', NULL );
                 if ($current_language == 'zh-hans') {
