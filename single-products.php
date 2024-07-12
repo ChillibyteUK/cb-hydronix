@@ -320,8 +320,23 @@ if (!get_field('views', get_the_ID())) {
     }
     if (get_field('video_id')) {
         $vid = get_field('video_id');
-        $thumb = get_vimeo_data_from_id($vid, 'thumbnail_url') ?: get_stylesheet_directory_uri() . "/img/missing-video.png" ;
-        ?>
+
+        $current_language = apply_filters( 'wpml_current_language', NULL );
+        if ($current_language == 'zh-hans') {
+            $thumb = get_stylesheet_directory_uri() . "/img/missing-video.png" ;
+            ?>
+            <li
+                data-thumb="<?=$thumb?>">
+                <a href="//player.bilibili.com/player.html?bvid=<?=get_field('vimeo_id')?>&high_quality=1&autoplay=false" data-fancybox="gallery">
+                    <img
+                        src="<?=get_stylesheet_directory_uri()?>/img/missing-video.png">
+                </a>
+            </li>
+            <?php
+        }
+        else {
+            $thumb = get_vimeo_data_from_id($vid, 'thumbnail_url') ?: get_stylesheet_directory_uri() . "/img/missing-video.png" ;
+            ?>
                                             <li
                                                 data-thumb="<?=$thumb?>">
                                                 <a href="https://player.vimeo.com/video/<?=get_field('video_id')?>?byline=0&portrait=0"
@@ -336,6 +351,7 @@ if (!get_field('views', get_the_ID())) {
                                     </a>
                                     </li>
                                     <?php
+        }
     }
     ?>
                                     </ul>

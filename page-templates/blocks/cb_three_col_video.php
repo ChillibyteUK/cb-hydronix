@@ -48,10 +48,20 @@ lite-vimeo {
         <div class="video-container">
             <div class="video-preview">
                 <?php
-                $videometa = mmd_get_vimeo_info(get_sub_field('vimeo_id'));
-                $bg = $videometa['thumbnail_url'];
-                ?>
+                $current_language = apply_filters( 'wpml_current_language', NULL );
+                if ($current_language == 'zh-hans') {
+                    ?>
+                    <iframe src="//player.bilibili.com/player.html?bvid=<?=get_sub_field('vimeo_id')?>&high_quality=1&autoplay=false"></iframe>
+                    <?php
+                }
+                else {
+                    $videometa = mmd_get_vimeo_info(get_sub_field('vimeo_id'));
+                    $bg = $videometa['thumbnail_url'];
+                    ?>
                 <lite-vimeo videoid="<?=get_sub_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo>
+                    <?php
+                }
+                ?>
             </div>
             <div class="video-description p-2">
                 <?=get_sub_field('video_description')?>
