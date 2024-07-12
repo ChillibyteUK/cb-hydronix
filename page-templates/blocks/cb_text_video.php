@@ -31,7 +31,17 @@ $bg = (get_field('background')) ? 'text_video--bg' : '';
                     $bg = get_vimeo_data_from_id(get_field('vimeo_id'), 'thumbnail_url');
                     ?>
                     <div class="ratio ratio-16x9 mx-auto">
+                        <?php
+                        $current_language = apply_filters( 'wpml_current_language', NULL );
+                        if ($current_language == 'zh') {
+                            echo 'BiliBili';
+                        }
+                        else {
+                            ?>
                         <iframe src="https://player.vimeo.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <!-- <lite-vimeo videoid="<?=get_field('vimeo_id')?>" style="background-image:url('<?=$bg?>');"></lite-vimeo> -->
                 </div>
