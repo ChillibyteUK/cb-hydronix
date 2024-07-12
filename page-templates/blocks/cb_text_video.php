@@ -33,6 +33,7 @@ $bg = (get_field('background')) ? 'text_video--bg' : '';
                     <div class="ratio ratio-16x9 mx-auto">
                         <?php
                         $current_language = apply_filters( 'wpml_current_language', NULL );
+                        echo $current_language;
                         if ($current_language == 'zh') {
                             echo 'BiliBili';
                         }
