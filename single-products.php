@@ -327,7 +327,7 @@ if (!get_field('views', get_the_ID())) {
             ?>
             <li
                 data-thumb="<?=$thumb?>">
-                <a href="//player.bilibili.com/player.html?bvid=<?=get_field('video_id')?>&high_quality=1&autoplay=false" data-fancybox="gallery">
+                <a href="//player.bilibili.com/player.html?bvid=<?=get_field('video_id')?>&high_quality=1&autoplay=true" data-fancybox="gallery">
                     <img
                         src="<?=get_stylesheet_directory_uri()?>/img/missing-video.png">
                 </a>
