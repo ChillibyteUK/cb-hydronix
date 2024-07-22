@@ -166,6 +166,7 @@ $s = implode(',', $socials);
 <!-- End Google Tag Manager (noscript) -->
 <?php
 }
+?>
     <?php
 do_action('wp_body_open');
 $home_url = apply_filters('wpml_home_url', get_option('home'));
