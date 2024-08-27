@@ -30,7 +30,7 @@ $curr_lang = apply_filters('wpml_current_language', null);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="preload"
-        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-44-light-webfont.woff2"
+        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-45-light-webfont.woff2"
         as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload"
         href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-55-roman-webfont.woff2"
