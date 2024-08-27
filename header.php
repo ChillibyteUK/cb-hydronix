@@ -29,17 +29,19 @@ $curr_lang = apply_filters('wpml_current_language', null);
         charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <!-- <link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/poppins-v15-latin-300.woff2"
-    as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload"
-        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/poppins-v15-latin-300.ttf"
-        as="font" type="font/ttf" crossorigin="anonymous">
-    <link rel="preload"
-        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/poppins-v15-latin-600.woff2"
+        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-44-light-webfont.woff2"
         as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload"
-        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/poppins-v15-latin-600.ttf"
-        as="font" type="font/ttf" crossorigin="anonymous"> -->
+        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-55-roman-webfont.woff2"
+        as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload"
+        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-65-bold-webfont.woff2"
+        as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload"
+        href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/frutiger-75-black-webfont.woff2"
+        as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
     if (get_field('ga_property', 'options')) {
         ?>

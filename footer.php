@@ -31,7 +31,7 @@ if ($social['twitter_url'] ?? null) {
 if ($social['linkedin_url'] ?? null) {
     ?>
                     <a href="<?=$social['linkedin_url']?>"
-                        target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                     <?php
 }
 if ($social['instagram_url'] ?? null) {
