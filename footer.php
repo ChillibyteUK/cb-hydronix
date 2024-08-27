@@ -19,31 +19,31 @@ defined('ABSPATH') || exit;
 if ($social['facebook_url'] ?? null) {
     ?>
                     <a href="<?=$social['facebook_url']?>"
-                        target="_blank"><i class="fa fa-facebook-f"></i></a>
+                        target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                     <?php
 }
 if ($social['twitter_url'] ?? null) {
     ?>
                     <a href="<?=$social['twitter_url']?>"
-                        target="_blank"><i class="fa fa-twitter"></i></a>
+                        target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                     <?php
 }
 if ($social['linkedin_url'] ?? null) {
     ?>
                     <a href="<?=$social['linkedin_url']?>"
-                        target="_blank"><i class="fa fa-linkedin"></i></a>
+                        target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                     <?php
 }
 if ($social['instagram_url'] ?? null) {
     ?>
                     <a href="<?=$social['instagram_url']?>"
-                        target="_blank"><i class="fa fa-instagram"></i></a>
+                        target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     <?php
 }
 if ($social['youtube_url'] ?? null) {
     ?>
                     <a href="<?=$social['youtube_url']?>"
-                        target="_blank"><i class="fa fa-youtube"></i></a>
+                        target="_blank"><i class="fa-brands fa-youtube"></i></a>
                     <?php
 }
 ?>
