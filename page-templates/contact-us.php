@@ -68,7 +68,13 @@ get_header();
                         <div class="mb-3"><em><?=get_field('eu_locality','options')?></em></div>
                         <ul class="fa-ul">
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('eu_phone','options'))?>"><?=get_field('eu_phone','options')?></a></li>
+                            <?php
+                            if (get_field('eu_fax','options') ?? null) {
+                                ?>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-fax"></i></span> <?=get_field('eu_fax','options')?></li>
+                                <?php
+                            }
+                            ?>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>"><?=__('Hydronix Europe','cb-hydronix')?></a></li>
                         </ul>
                     </div>
