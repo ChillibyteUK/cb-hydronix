@@ -150,4 +150,9 @@ $home_url = apply_filters('wpml_home_url', get_option('home'));
 
 $l = $curr_lang == 'en' ? '/' : '/' . $curr_lang . '/';
 ?>
+<header>
+    <div class="container-xl py-2 text-center bg--light">
+        <img src="<?=get_stylesheet_directory_uri()?>/img/hydronix-logo.svg" alt="Hydronix" width="105" height="73">
+    </div>
+</header>
     <div class="site" id="page">
