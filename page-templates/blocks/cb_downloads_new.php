@@ -254,6 +254,7 @@ foreach ($dlangs as $dl) {
         </div>
     </div>
     <input type="hidden" name="hiddenDSub" id="hiddenDSub">
+    <input type="hidden" name="hiddenDSubModel" id="hiddenDSubModel">
     <input type="hidden" name="hiddenDType" id="hiddenDType">
     <input type="hidden" name="hiddenDInd" id="hiddenDInd">
     <input type="hidden" name="hiddenDLang" id="hiddenDLang">
@@ -300,6 +301,7 @@ add_action('wp_footer', function () {
             $("#dlContainer").hide();
             $("#dlBody").empty();
             $("#dsub").val($("#dsub option:first").val());
+            $("#dsub_model").val($("#dsub_model option:first").val());
             $("#dlang").val($("#dlang option:first").val());
             $("#dtype").val($("#dtype option:first").val());
             $("#dind").val($("#dind option:first").val());
@@ -310,6 +312,7 @@ add_action('wp_footer', function () {
         $("#submit").click(function() {
             let endpoint = '/wp-content/themes/cb-hydronix/attachments_new.php'
             $("#hiddenDSub").empty();
+            $("#hiddenDSubModel").empty();
             $("#hiddenDType").empty();
             $("#hiddenDLang").empty();
             $("#hiddenDInd").empty();
@@ -320,6 +323,9 @@ add_action('wp_footer', function () {
 
             var selDSub = $('#dsub').val() == 'Select all' ? '' : $('#dsub').val();
             $("#hiddenDSub").val(selDSub);
+
+            var selDSubModel = $('#dsub_model').val() == 'Select all' ? '' : $('#dsub_model').val();
+            $("#hiddenDSubModel").val(selDSubModel);
 
             var selDType = $('#dtype').val() == 'Select all' ? '' : $('#dtype').val();;
             $("#hiddenDType").val(selDType);
@@ -360,7 +366,7 @@ add_action('wp_footer', function () {
             */
 
             $.ajax({
-                url: endpoint + "?dsub=" + selDSub + "&dtype=" + selDType + "&dlang=" + selDLang +
+                url: endpoint + "?dsub=" + selDSub + "&dsub_model=" + selDSubModel + "&dtype=" + selDType + "&dlang=" + selDLang +
                     "&dtext=" + selDText + "&dind=" + selDInd + "&curr=" + currLang,
                 contentType: "text/plain",
                 dataType: 'JSON',
