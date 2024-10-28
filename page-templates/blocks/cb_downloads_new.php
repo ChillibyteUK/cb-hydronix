@@ -268,19 +268,15 @@ add_action('wp_footer', function () {
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     (function($) {
-
         $('#dsub').on('change', function() {
-            $first_term = $('#dsub');
-            $slug = $first_term.children('option:selected').text();
             var data = {
-                action: 'tag_slug',
-                slug: $slug
+                action: 'nm_get_tax_children',
+                parent_term_id: this.value
             };
 
-            console.log(data);
-
-            var ajaxurl = '/wp-admin/admin-ajax.php';
-                $.post(ajaxurl, data, function(response) {
+            $.post("<?php echo admin_url('admin-ajax.php'); ?>", data, function (response) {
+                //Update '#taxChild' options based on 'response'
+                console.log(response);
                 $('#dsub_model').empty().append(response);
             });
         });

@@ -90,3 +90,20 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+// Ajax function to get the child terms based on parent term selection
+add_action('wp_ajax_nm_get_tax_children', 'nm_get_tax_children');
+add_action('wp_ajax_nopriv_nm_get_tax_children', 'nm_get_tax_children');
+
+function nm_get_tax_children() {
+	$parent_term_id = $_POST['parent_term_id'];
+	$args = array(
+		'parent' => $parent_term_id,
+	);
+
+	$terms = get_terms('docprod', $args);
+
+	echo json_encode($terms);
+
+	die();
+}
