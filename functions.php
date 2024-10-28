@@ -96,7 +96,7 @@ add_action('wp_ajax_nm_get_tax_children', 'nm_get_tax_children');
 add_action('wp_ajax_nopriv_nm_get_tax_children', 'nm_get_tax_children');
 
 function nm_get_tax_children() {
-	$term = get_term_by('slug', $_POST['parent_term_id'], 'docprod')
+	$term = get_term_by('slug', $_POST['parent_term_id'], 'docprod');
 
 	$parent_term_id = $term->term_id;
 	$args = array(

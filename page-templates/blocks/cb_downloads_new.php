@@ -262,7 +262,7 @@ foreach ($dlangs as $dl) {
         value="<?=$curr_lang?>">
 </section>
 <?php
-$term = get_term_by('slug', 'hydro-mix', 'docprod')
+$term = get_term_by('slug', 'hydro-mix', 'docprod');
 
 $parent_term_id = $term->term_id;
 $args = array(
