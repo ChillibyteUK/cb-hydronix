@@ -119,6 +119,11 @@ if ($DEBUG == true) {
     // cbdump($dtext);
     // echo '<h1>SQL</h1>';
     // echo $wpdb->last_query;
+    echo "<hr>";
+    cbdump($args);
+    echo "<hr>";
+    cbdump($q_search);
+
 
 } else {
     header('Content-Type: application/json; charset=utf-8');
