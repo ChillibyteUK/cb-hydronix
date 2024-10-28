@@ -270,7 +270,7 @@ add_action('wp_footer', function () {
     (function($) {
 
         $first_term = $('#dsub');
-        $name = $first_term.children('option:selected').text();
+        $slug = $first_term.children('option:selected').text();
         var data = {
             action: 'tag_slug',
             slug: $slug
