@@ -20,15 +20,21 @@ $dlang = $_REQUEST['dlang'];
 $dtext = $_REQUEST['dtext'];
 $dsub = $_REQUEST['dsub'];
 $curr_lang = $_REQUEST['curr'];
+$dsub_model = $_REQUEST['dsub_model'];
 
 if ($DEBUG == true) {
     cbdump($dlang);
     cbdump($curr_lang);
     cbdump($dtext);
+    cbdump($dsub_model);
 }
 
 // If there's a specific document sub-category (dsub) set, use it for querying docprod taxonomy
-$dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
+if ( $dsub_model != "" ) {
+    $dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub_model);
+} else {
+    $dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 'slug', 'terms' => $dsub);
+}
 
 // Set up taxonomy queries
 $dtype_tax = empty($dtype) ? array() : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');

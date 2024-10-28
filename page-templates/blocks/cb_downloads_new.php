@@ -262,19 +262,6 @@ foreach ($dlangs as $dl) {
         value="<?=$curr_lang?>">
 </section>
 <?php
-$term = get_term_by('slug', 'hydro-mix', 'docprod');
-
-$parent_term_id = $term->term_id;
-$args = array(
-    'parent' => $parent_term_id,
-);
-
-$terms = get_terms('docprod', $args);
-
-echo json_encode($terms);
-
-
-
 add_action('wp_footer', function () {
     ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
