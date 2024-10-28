@@ -294,7 +294,7 @@ add_action('wp_footer', function () {
                         options += '<option value="' + response[i][j].slug + '">' + response[i][j].name + '</option>';
                     }
                 }
-                $('#dsub_model').empty().append(response);
+                $('#dsub_model').empty().append(options);
             });
         });
 
