@@ -113,10 +113,11 @@ foreach ($dsubs as $d) {
     }
 
     if ($checkbox_value[0] == 'Yes') {
-        $liveProducts[$d->slug] = $d->name;
+        //$liveProducts[$d->slug] = $d->name;
     } else {
-        $legacyProducts[$d->slug] = $d->name;
+        //$legacyProducts[$d->slug] = $d->name;
     }
+        $liveProducts[$d->slug] = $d->name;
     // if (preg_match('/\(/', $d->name)) {
     //     $legacyProducts[$d->slug] = $d->name;
     // } else {
@@ -163,13 +164,6 @@ $ca0022_name = '';
 foreach ($liveProducts as $slug => $name) {
     echo '<option value="' . $slug . '">' . $name . '</option>';
 }
-// echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
-echo '<option value="" disabled>-- ' . __('Legacy Products', 'cb-hydronix') . ' --</option>';
-foreach ($legacyProducts as $slug => $name) {
-    // cbdump($dt);
-    echo '<option value="' . $slug . '">' . $name . '</option>';
-}
-
 ?>
                 </select>
             </div>
