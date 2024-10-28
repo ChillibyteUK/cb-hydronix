@@ -18,7 +18,6 @@ if (!$dtype) {
 }
 $dlang = $_REQUEST['dlang'];
 $dtext = $_REQUEST['dtext'];
-$dind = $_REQUEST['dind'];
 $dsub = $_REQUEST['dsub'];
 $curr_lang = $_REQUEST['curr'];
 
@@ -35,7 +34,6 @@ $dsub_tax  = $dsub == '' ? array() : array('taxonomy' => 'docprod',  'field' => 
 $dtype_tax = empty($dtype) ? array() : array('taxonomy' => 'attachment_category', 'field' => 'slug', 'terms' => $dtype, 'operator' => 'IN');
 // $dlang_tax = empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
 $dlang_tax = ($dtype == 'software-firmware') ? array() : (empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang));
-$dind_tax = empty($dind) ? array() : array('taxonomy' => 'industries', 'field' => 'slug', 'terms' => $dind);
 
 // Exclusion criteria, if any
 // $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
@@ -53,7 +51,6 @@ $tax_query = array_filter(array(
     'relation' => 'AND',
     $dsub_tax,
     $dtype_tax,
-    $dind_tax,
     $dlang_tax,
     $dtext_query
 ));
