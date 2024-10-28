@@ -269,18 +269,20 @@ add_action('wp_footer', function () {
 <script>
     (function($) {
 
-        $first_term = $('#dsub');
-        $slug = $first_term.children('option:selected').text();
-        var data = {
-            action: 'tag_slug',
-            slug: $slug
-        };
+        $('#dsub').on('change', function() {
+            $first_term = $('#dsub');
+            $slug = $first_term.children('option:selected').text();
+            var data = {
+                action: 'tag_slug',
+                slug: $slug
+            };
 
-        console.log(data);
+            console.log(data);
 
-        var ajaxurl = '/wp-admin/admin-ajax.php';
-            $.post(ajaxurl, data, function(response) {
-            $('#dsub_model').empty().append(response);
+            var ajaxurl = '/wp-admin/admin-ajax.php';
+                $.post(ajaxurl, data, function(response) {
+                $('#dsub_model').empty().append(response);
+            });
         });
 
         $('#dtext').keypress(function(e) {
