@@ -78,7 +78,11 @@ $args_tags = array(
 
 $q_search = get_posts( $args );
 
+echo "<hr>";
+print_r($args);
+echo "<hr>";
 print_r($q_search);
+echo "<hr>";
 
 
 $q_tax = get_posts( $args_tags );
