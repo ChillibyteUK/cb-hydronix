@@ -83,17 +83,6 @@ $args_tags = array(
 
 $q_search = get_posts( $args );
 
-echo "<hr>";
-echo "<pre>";
-print_r($args);
-echo "</pre>";
-echo "<hr>";
-echo "<pre>";
-print_r($q_search);
-echo "</pre>";
-echo "<hr>";
-
-
 $q_tax = get_posts( $args_tags );
 $unique = array_unique( array_merge( $q_search, $q_tax), SORT_REGULAR);
 
