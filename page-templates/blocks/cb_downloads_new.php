@@ -289,9 +289,9 @@ add_action('wp_footer', function () {
 
             $.post("<?php echo admin_url('admin-ajax.php'); ?>", data, function (response) {
                 var options = '';
+                options += '<option value="">Select all</option>';
                 var response = $.parseJSON(response)
                 for (var i = 0; i < response.length; i++) {
-                    console.log(response[i]);
                     options += '<option value="' + response[i].slug + '">' + response[i].name + '</option>';
                 }
                 $('#dsub_model').empty().append(options);
