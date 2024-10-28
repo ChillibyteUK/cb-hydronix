@@ -276,6 +276,8 @@ add_action('wp_footer', function () {
             slug: $slug
         };
 
+        console.log(data);
+
         var ajaxurl = '/wp-admin/admin-ajax.php';
             $.post(ajaxurl, data, function(response) {
             $('#dsub_model').empty().append(response);
