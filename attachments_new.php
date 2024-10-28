@@ -79,9 +79,13 @@ $args_tags = array(
 $q_search = get_posts( $args );
 
 echo "<hr>";
+echo "<pre>";
 print_r($args);
+echo "</pre>";
 echo "<hr>";
+echo "<pre>";
 print_r($q_search);
+echo "</pre>";
 echo "<hr>";
 
 
