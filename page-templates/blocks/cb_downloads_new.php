@@ -290,9 +290,7 @@ add_action('wp_footer', function () {
             $.post("<?php echo admin_url('admin-ajax.php'); ?>", data, function (response) {
                 var options = '';
                 for (var i = 0; i < response.length; i++) {
-                    for (var j = 0; j< response[i].length; j++){
-                        options += '<option value="' + response[i][j].slug + '">' + response[i][j].name + '</option>';
-                    }
+                    options += '<option value="' + response[i].slug + '">' + response[i].name + '</option>';
                 }
                 $('#dsub_model').empty().append(options);
             });
