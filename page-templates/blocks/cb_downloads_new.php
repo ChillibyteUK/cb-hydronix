@@ -168,26 +168,12 @@ foreach ($liveProducts as $slug => $name) {
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="dsub"
+                <label for="dsub_model"
                     class="form-label"><?=__('Model Number', 'cb-hydronix')?>:</label>
-                <select name="dsub" id="dsub" data-field-name="dsub" class="form-select mb-4 filter">
+                <select name="dsub_model" id="dsub_model" data-field-name="dsub_model" class="form-select mb-4 filter">
                     <option value="">
                         <?=__('Select all', 'cb-hydronix')?>
                     </option>
-                    <?php
-                    $ca0022_slug = '';
-$ca0022_name = '';
-foreach ($liveProducts as $slug => $name) {
-    echo '<option value="' . $slug . '">' . $name . '</option>';
-}
-// echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
-echo '<option value="" disabled>-- ' . __('Legacy Products', 'cb-hydronix') . ' --</option>';
-foreach ($legacyProducts as $slug => $name) {
-    // cbdump($dt);
-    echo '<option value="' . $slug . '">' . $name . '</option>';
-}
-
-?>
                 </select>
             </div>
             <div class="col-md-3">
@@ -283,6 +269,17 @@ add_action('wp_footer', function () {
 <script>
     (function($) {
 
+        $first_term = $('#dsub');
+        $name = $first_term.children('option:selected').text();
+        var data = {
+            action: 'tag_slug',
+            slug: $slug
+        };
+
+        var ajaxurl = 'wp-admin/admin-ajax.php';
+            $.post(ajaxurl, data, function(response) {
+            $('#dsub_model').empty().append(response);
+        });
 
         $('#dtext').keypress(function(e) {
             if (e.which == 13) {
