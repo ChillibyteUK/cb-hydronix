@@ -49,8 +49,13 @@ $termIds = get_terms([
     'name__like' => $dtext,
     'fields' => 'ids'
 ]);
-$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'id', 'terms' => $termIds );
-// $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
+
+if ( $termIds ) {
+    $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'id', 'terms' => $termIds );
+    // $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
+} else {
+    $dtext_query = "";
+}
 
 // Constructing the query
 $tax_query = array_filter(array(
