@@ -319,7 +319,7 @@ $.each(myJson, function (index, value) {
         dsub_id = $(this).find('option:selected').attr('rel');
         
         $.each(myJson[dsub_id].children, function (index1, value1) {
-            $("#dsub_model").find("option:first").text("Select All");
+            $("#dsub_model").find("option:first").text("Select all");
             $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.slug+'">'+value1.name+'</option>');
         });
         
