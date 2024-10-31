@@ -91,21 +91,36 @@ function understrap_child_customize_controls_js() {
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
 
-// Ajax function to get the child terms based on parent term selection
-add_action('wp_ajax_nm_get_tax_children', 'nm_get_tax_children');
-add_action('wp_ajax_nopriv_nm_get_tax_children', 'nm_get_tax_children');
+/**
+ * Recursively get taxonomy and its children
+ *
+ * @param string $taxonomy
+ * @param int $parent - parent term id
+ * @return array
+ */
+function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
+    $counter = 1;
+    // only 1 taxonomy
+    $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
 
-function nm_get_tax_children() {
-	$term = get_term_by('slug', $_POST['parent_term_id'], 'docprod');
+    // get all direct decendants of the $parent
+    $terms = get_terms( $taxonomy, array( 'orderby' => 'name', 'parent' => $parent ) );
 
-	$parent_term_id = $term->term_id;
-	$args = array(
-		'parent' => $parent_term_id,
-	);
+    // prepare a new array.  these are the children of $parent
+    // we'll ultimately copy all the $terms into this new array, but only after they
+    // find their own children
+    $children = array();
 
-	$terms = get_terms('docprod', $args);
+    // go through all the direct decendants of $parent, and gather their children
+    foreach ( $terms as $term ){
+        // recurse to get the direct decendants of "this" term
+        $term->children = get_taxonomy_hierarchy( $taxonomy, $term->term_id );
 
-	echo json_encode($terms);
+        // add the term to our new array
+        $children[ $counter ] = $term;
+        $counter++;
+    }
 
-	die();
+    // send the results back to the caller
+    return $children;
 }

@@ -263,50 +263,10 @@ foreach ($dlangs as $dl) {
         value="<?=$curr_lang?>">
 </section>
 
-
-<?php
-/**
- * Recursively get taxonomy and its children
- *
- * @param string $taxonomy
- * @param int $parent - parent term id
- * @return array
- */
-function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
-    $counter = 1;
-    // only 1 taxonomy
-    $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
-
-    // get all direct decendants of the $parent
-    $terms = get_terms( $taxonomy, array( 'orderby' => 'name', 'parent' => $parent ) );
-
-    // prepare a new array.  these are the children of $parent
-    // we'll ultimately copy all the $terms into this new array, but only after they
-    // find their own children
-    $children = array();
-
-    // go through all the direct decendants of $parent, and gather their children
-    foreach ( $terms as $term ){
-        // recurse to get the direct decendants of "this" term
-        $term->children = get_taxonomy_hierarchy( $taxonomy, $term->term_id );
-
-        // add the term to our new array
-        $children[ $counter ] = $term;
-        $counter++;
-    }
-
-    // send the results back to the caller
-    return $children;
-}
-?>
-
 <?php
 add_action('wp_footer', function () {
 
 $categories = get_taxonomy_hierarchy( 'docprod' );
-echo "<pre>";
-print_r($categories);
-echo "</pre>";
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -354,7 +314,7 @@ $.each(myJson, function (index, value) {
     
     $("#dsub").change(function () {
         $("#dsub_model").find("option:gt(0)").remove();
-        $("#dsub_model").find("option:first").text("Loading...");
+            $("#dsub_model").find("option:first").text("Select All");
         
         dsub_id = $(this).find('option:selected').attr('rel');
         
