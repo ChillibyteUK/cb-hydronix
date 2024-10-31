@@ -162,7 +162,7 @@ $dlangs = get_terms(array(
                     $ca0022_slug = '';
 $ca0022_name = '';
 foreach ($liveProducts as $slug => $name) {
-    echo '<option value="' . $slug . '">' . $name . '</option>';
+    //echo '<option value="' . $slug . '">' . $name . '</option>';
 }
 ?>
                 </select>
@@ -263,30 +263,6 @@ foreach ($dlangs as $dl) {
         value="<?=$curr_lang?>">
 </section>
 
-
-            <label>Country:</label>
-                <select id="country" name="country">
-                    <option value="000">-Select Country-</option>
-                </select>
-            
-            <br />
-            
-            <label>State:</label>
-                <select id="state" name="state">
-                    <option value="000">-Select State-</option>
-                </select>
-            
-            <br />
-            
-            <label>City:</label>
-                <select id="city" name="city">
-                    <option value="000">-Select City-</option>
-                </select>
-            
-            <br />
-
-
-
 <?php
 add_action('wp_footer', function () {
     ?>
@@ -295,147 +271,60 @@ add_action('wp_footer', function () {
 
 <script type="text/javascript">
 var myJson = {
-    "country": [
+    "product": [
         {
             "name": "United States",
             "id": "usa",
-            "states": [
+            "models": [
                 {
                     "name": "State 1 USA",
                     "id": "usaState1",
-                    "cities": [
-                        {
-                            "name": "City 1",
-                            "id": "usaState1City1",
-                            "area": "12345 sqkm"
-                        },
-                        {
-                            "name": "City 2",
-                            "id": "usaState1City2",
-                            "area": "12345 sqkm"
-                        }
-                    ]
                 },
                 {
                     "name": "State 2 USA",
                     "id": "usaState2",
-                    "cities": [
-                        {
-                            "name": "City 3",
-                            "id": "usaState2City3",
-                            "area": "12345 sqkm"
-                        },
-                        {
-                            "name": "City 4",
-                            "id": "usaState2City4",
-                            "area": "12345 sqkm"
-                        }
-                    ]
+                },
+                {
+                    "name": "State 3 USA",
+                    "id": "usaState3",
                 }
             ]
         },
         {
             "name": "Australia",
             "id": "aus",
-            "states": [
+            "models": [
                 {
                     "name": "State 1 Australia",
-                    "id": "ausState1",
-                    "cities": [
-                        {
-                            "name": "City 5",
-                            "id": "ausState1City5",
-                            "area": "12345 sqkm"
-                        },
-                        {
-                            "name": "City 6",
-                            "id": "ausState1City6",
-                            "area": "12345 sqkm"
-                        }
-                    ]
-                },
-                {
-                    "name": "State 2 Australia",
-                    "id": "ausState2",
-                    "cities": [
-                        {
-                            "name": "City 7",
-                            "id": "ausState2City7",
-                            "area": "12345 sqkm"
-                        },
-                        {
-                            "name": "City 8",
-                            "id": "ausState2City8",
-                            "area": "12345 sqkm"
-                        }
-                    ]
+                    "id": "ausState1"
                 }
             ]
         }
     ]
 };
 
-
-
-$.each(myJson.country, function (index, value) {
-    var country_id;
-    var state_id;
-    var city_id;
+$.each(myJson.product, function (index, value) {
+    var dsub_id;
         
-        $("#country").append('<option rel="' + index + '" value="'+value.id+'">'+value.name+'</option>');
+    $("#dsub").append('<option rel="' + index + '" value="'+value.id+'">'+value.name+'</option>');
+    
+    $("#dsub").change(function () {
+        $("#dsub_model").find("option:gt(0)").remove();
+        $("#dsub_model").find("option:first").text("Loading...");
         
-        $("#country").change(function () {
-            $("#state, #city").find("option:gt(0)").remove();
-            $("#state").find("option:first").text("Loading...");
-            
-            country_id = $(this).find('option:selected').attr('rel');
-            console.log("Country INDEX : " + country_id);
-            
-            $.each(myJson.country[country_id].states, function (index1, value1) {
-                $("#state").find("option:first").text("Choisir");
-                $("#state").append('<option rel="' + index1 + '" value="'+value1.id+'">'+value1.name+'</option>');
-            });
-            
+        dsub_id = $(this).find('option:selected').attr('rel');
+        
+        $.each(myJson.product[dsub_id].models, function (index1, value1) {
+            $("#dsub_model").find("option:first").text("Select All");
+            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.id+'">'+value1.name+'</option>');
         });
-    
         
-        $("#state").change(function () {
-            $("#city").find("option:gt(0)").remove();
-            $("#city").find("option:first").text("Loading...");
-            
-            state_id = $(this).find('option:selected').attr('rel');
-            console.log("State INDEX : " + state_id);
-                        
-            $.each(myJson.country[country_id].states[state_id].cities, function (index2, value2) {
-                $("#city").find("option:first").text("");
-                $("#city").append('<option rel="' + index2 + '" value="'+value2.id+'">'+value2.name+'</option>');
-            });
-            
-                   
-        });     
-    
+    });
 });
 </script>
 
 <script>
     (function($) {
-        $('#dsub').on('change', function() {
-            var data = {
-                action: 'nm_get_tax_children',
-                parent_term_id: this.value
-            };
-
-            $.post("<?php echo admin_url('admin-ajax.php'); ?>", data, function (response) {
-                var options = '';
-                options += '<option value="">Select all</option>';
-                var response = $.parseJSON(response)
-                for (var i = 0; i < response.length; i++) {
-                    options += '<option value="' + response[i].slug + '">' + response[i].name + '</option>';
-                }
-                $('#dsub_model').empty().append(options);
-            });
-        });
-
         $('#dtext').keypress(function(e) {
             if (e.which == 13) {
                 e.preventDefault();
