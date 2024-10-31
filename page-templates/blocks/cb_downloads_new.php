@@ -350,7 +350,7 @@ var myJson = <?php echo json_encode( $categories ); ?>
 $.each(myJson, function (index, value) {
     var dsub_id;
         
-    $("#dsub").append('<option rel="' + index + '" value="'+value.term_id+'">'+value.name+'</option>');
+    $("#dsub").append('<option rel="' + index + '" value="'+value.slug+'">'+value.name+'</option>');
     
     $("#dsub").change(function () {
         $("#dsub_model").find("option:gt(0)").remove();
@@ -358,9 +358,9 @@ $.each(myJson, function (index, value) {
         
         dsub_id = $(this).find('option:selected').attr('rel');
         
-        $.each(myJson.product[dsub_id].children, function (index1, value1) {
+        $.each(myJson[dsub_id].children, function (index1, value1) {
             $("#dsub_model").find("option:first").text("Select All");
-            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.term_id+'">'+value1.name+'</option>');
+            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.slug+'">'+value1.name+'</option>');
         });
         
     });
