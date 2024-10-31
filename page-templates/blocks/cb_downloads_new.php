@@ -265,7 +265,7 @@ foreach ($dlangs as $dl) {
 
 
 <?php
-$categories = wp_list_categories( 'docprod', 'orderby=count&hierarchical=true' );
+$categories = wp_list_categories( 'echo=0&taxonomy=docprod&orderby=count&hierarchical=true' );
 echo "<pre>";
 print_r( json_encode( $categories ) );
 echo "</pre>";
