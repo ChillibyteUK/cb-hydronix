@@ -83,11 +83,11 @@ $args_tags = array(
     'tax_query' => $tax_query
 );
 
-//$q_search = get_posts( $args );
-$q_search = WP_Query( $args );
+$q_search = get_posts( $args );
+//$q_search = WP_Query( $args );
 
-//$q_tax = get_posts( $args_tags );
-$q_tax = WP_Query( $args_tags );
+$q_tax = get_posts( $args_tags );
+//$q_tax = WP_Query( $args_tags );
 $unique = array_unique( array_merge( $q_search, $q_tax), SORT_REGULAR);
 
 $uniqueIds = array_map(function ($post) {
