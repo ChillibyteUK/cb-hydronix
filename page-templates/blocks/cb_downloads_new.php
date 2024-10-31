@@ -310,7 +310,7 @@ add_action('wp_footer', function () {
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-var myJson = {
+var original_myJson = {
     "product": [
         {
             "name": "United States",
@@ -343,10 +343,12 @@ var myJson = {
     ]
 };
 
-$.each(myJson.product, function (index, value) {
+var myJson = <?php echo json_encode( $categories ); ?>
+
+$.each(myJson, function (index, value) {
     var dsub_id;
         
-    $("#dsub").append('<option rel="' + index + '" value="'+value.id+'">'+value.name+'</option>');
+    $("#dsub").append('<option rel="' + index + '" value="'+value.term_id+'">'+value.name+'</option>');
     
     $("#dsub").change(function () {
         $("#dsub_model").find("option:gt(0)").remove();
@@ -354,9 +356,9 @@ $.each(myJson.product, function (index, value) {
         
         dsub_id = $(this).find('option:selected').attr('rel');
         
-        $.each(myJson.product[dsub_id].models, function (index1, value1) {
+        $.each(myJson.product[dsub_id].children, function (index1, value1) {
             $("#dsub_model").find("option:first").text("Select All");
-            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.id+'">'+value1.name+'</option>');
+            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.term_id+'">'+value1.name+'</option>');
         });
         
     });
