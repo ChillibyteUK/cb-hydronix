@@ -263,6 +263,12 @@ foreach ($dlangs as $dl) {
         value="<?=$curr_lang?>">
 </section>
 
+
+<?php
+$categories = get_terms( 'docprod', 'orderby=count&hide_empty=0' );
+print_r( json_encode( $categories ) );
+?>
+
 <?php
 add_action('wp_footer', function () {
     ?>
