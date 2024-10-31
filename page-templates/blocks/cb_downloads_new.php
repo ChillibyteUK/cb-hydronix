@@ -314,7 +314,7 @@ $.each(myJson, function (index, value) {
     
     $("#dsub").change(function () {
         $("#dsub_model").find("option:gt(0)").remove();
-            $("#dsub_model").find("option:first").text("Select All");
+            $("#dsub_model").find("option:first").text("Select all");
         
         dsub_id = $(this).find('option:selected').attr('rel');
         
