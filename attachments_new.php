@@ -80,6 +80,7 @@ $args_tags = array(
     'post_type' => 'attachment',
     'post_status' => 'any',
     'posts_per_page' => -1,
+    's' => "ZZZZZZZZZZZZZZ",
     'tax_query' => $tax_query
 );
 
