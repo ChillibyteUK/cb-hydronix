@@ -296,11 +296,6 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
     // send the results back to the caller
     return $children;
 }
-
-$categories = get_taxonomy_hierarchy( 'docprod' );
-echo "<pre>";
-print_r( json_encode( $categories ) );
-echo "</pre>";
 ?>
 
 <?php
@@ -343,6 +338,9 @@ var original_myJson = {
     ]
 };
 
+<?php
+$categories = get_taxonomy_hierarchy( 'docprod' );
+?>
 var myJson = <?php echo json_encode( $categories ); ?>
 
 $.each(myJson, function (index, value) {
