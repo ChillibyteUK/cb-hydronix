@@ -273,6 +273,7 @@ foreach ($dlangs as $dl) {
  * @return array
  */
 function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
+    $counter = 1;
     // only 1 taxonomy
     $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
 
@@ -290,7 +291,8 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
         $term->children = get_taxonomy_hierarchy( $taxonomy, $term->term_id );
 
         // add the term to our new array
-        $children[ $term->term_id ] = $term;
+        $children[ $counter ] = $term;
+        $counter++;
     }
 
     // send the results back to the caller
