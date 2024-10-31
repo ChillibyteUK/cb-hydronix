@@ -72,6 +72,7 @@ $args = array(
     'post_status' => 'any',
     'posts_per_page' => -1,
     's' => $dtext,
+    'search_columns' => array('post_title'). // You can add 'post_name' or 'post_content' to include slugs or content
     'tax_query' => $tax_query
 );
 
