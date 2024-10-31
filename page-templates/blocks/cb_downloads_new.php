@@ -265,8 +265,10 @@ foreach ($dlangs as $dl) {
 
 
 <?php
-$categories = get_terms( 'docprod', 'orderby=count&hide_empty=0' );
+$categories = wp_list_categories( 'docprod', 'orderby=count&hierarchical=true' );
+echo "<pre>";
 print_r( json_encode( $categories ) );
+echo "</pre>";
 ?>
 
 <?php
