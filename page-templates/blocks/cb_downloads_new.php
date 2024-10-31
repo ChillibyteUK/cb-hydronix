@@ -354,6 +354,7 @@ $.each(myJson, function (index, value) {
         // $(".filter").change(function(){
         $("#submit").click(function() {
             let endpoint = '/wp-content/themes/cb-hydronix/attachments_new.php'
+            $("#resultCount").empty();
             $("#hiddenDSub").empty();
             $("#hiddenDSubModel").empty();
             $("#hiddenDType").empty();
