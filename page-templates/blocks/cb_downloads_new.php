@@ -277,7 +277,7 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
     $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
 
     // get all direct decendants of the $parent
-    $terms = get_terms( $taxonomy, array( 'parent' => $parent ) );
+    $terms = get_terms( $taxonomy, array( 'orderby' => 'name', 'parent' => $parent ) );
 
     // prepare a new array.  these are the children of $parent
     // we'll ultimately copy all the $terms into this new array, but only after they
@@ -300,7 +300,12 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
 
 <?php
 add_action('wp_footer', function () {
-    ?>
+
+$categories = get_taxonomy_hierarchy( 'docprod' );
+echo "<pre>";
+print_r($categories);
+echo "</pre>";
+?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -338,9 +343,6 @@ var original_myJson = {
     ]
 };
 
-<?php
-$categories = get_taxonomy_hierarchy( 'docprod' );
-?>
 var myJson = <?php echo json_encode( $categories ); ?>
 
 $.each(myJson, function (index, value) {
