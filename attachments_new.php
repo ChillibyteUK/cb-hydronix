@@ -53,7 +53,7 @@ $termIds = get_terms([
 if ( $termIds ) {
     //Removed this as seems they don't want text to search terms anymore?
     //$dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'id', 'terms' => $termIds );
-    // $dtext_query = empty($dtext) ? array() : array('taxonomy' => 'docprod', 'field' => 'name', 'terms' => $dtext );
+    $dtext_query = "";
 } else {
     $dtext_query = "";
 }
