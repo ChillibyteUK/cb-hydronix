@@ -104,7 +104,7 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
     $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
 
     // get all direct decendants of the $parent
-    $terms = get_terms( $taxonomy, array( 'orderby' => 'name', 'parent' => $parent ) );
+    $terms = get_terms( $taxonomy, array( 'exclude' => 329, 'orderby' => 'name', 'parent' => $parent ) );
 
     // prepare a new array.  these are the children of $parent
     // we'll ultimately copy all the $terms into this new array, but only after they
