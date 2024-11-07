@@ -229,7 +229,7 @@ foreach ($dlangs as $dl) {
 ?>
                 </select>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 d-none">
                 <label for="dtext"
                     class="form-label"><?=__('Search Text', 'cb-hydronix')?>:</label><input
                     type="text" class="form-control filter" id="dtext">
