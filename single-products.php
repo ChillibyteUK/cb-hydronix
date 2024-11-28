@@ -619,7 +619,14 @@ if (has_term($txterm, 'ptype')) {
                 <div id="collapse-Features" class="collapse" data-bs-parent="#content" role="tabpanel"
                     aria-labelledby="heading-Features">
                     <div class="card-body py-5 cols-lg-3">
-                        <?=get_field('features', 'options')?>
+                        <?php
+                        if (get_field('features_content') ?? null) {
+                            echo get_field('features_content');
+                        }
+                        else {
+                            echo get_field('features', 'options');
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
