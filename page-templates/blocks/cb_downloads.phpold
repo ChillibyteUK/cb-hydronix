@@ -90,11 +90,6 @@
     }
 </style>
 <?php
-// Save the current language before switching
-$current_language = apply_filters('wpml_current_language', null);
-
-// Switch to a different language (e.g., 'es' for Spanish)
-do_action('wpml_switch_language', 'en');
 
 // product TODO
 $dsubs = get_terms(array(
@@ -118,11 +113,10 @@ foreach ($dsubs as $d) {
     }
 
     if ($checkbox_value[0] == 'Yes') {
-        //$liveProducts[$d->slug] = $d->name;
-    } else {
-        //$legacyProducts[$d->slug] = $d->name;
-    }
         $liveProducts[$d->slug] = $d->name;
+    } else {
+        $legacyProducts[$d->slug] = $d->name;
+    }
     // if (preg_match('/\(/', $d->name)) {
     //     $legacyProducts[$d->slug] = $d->name;
     // } else {
@@ -151,8 +145,6 @@ $dlangs = get_terms(array(
     'order'      => 'ASC',
 ));
 
-// Optionally, switch back to the previously active language (if needed)
-do_action('wpml_switch_language', $current_language);
 ?>
 <!-- downloads -->
 <section class="downloads py-5">
@@ -160,7 +152,7 @@ do_action('wpml_switch_language', $current_language);
         <div class="row mb-4">
             <div class="col-md-3">
                 <label for="dsub"
-                    class="form-label"><?=__('Product Name', 'cb-hydronix')?>:</label>
+                    class="form-label"><?=__('Product', 'cb-hydronix')?>:</label>
                 <select name="dsub" id="dsub" data-field-name="dsub" class="form-select mb-4 filter">
                     <option value="">
                         <?=__('Select all', 'cb-hydronix')?>
@@ -169,18 +161,38 @@ do_action('wpml_switch_language', $current_language);
                     $ca0022_slug = '';
 $ca0022_name = '';
 foreach ($liveProducts as $slug => $name) {
-    //echo '<option value="' . $slug . '">' . $name . '</option>';
+    echo '<option value="' . $slug . '">' . $name . '</option>';
 }
+// echo '<option value=' . $ca0022_slug . '">' . $ca0022_name . '</option>';
+echo '<option value="" disabled>-- ' . __('Legacy Products', 'cb-hydronix') . ' --</option>';
+foreach ($legacyProducts as $slug => $name) {
+    // cbdump($dt);
+    echo '<option value="' . $slug . '">' . $name . '</option>';
+}
+
 ?>
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="dsub_model"
-                    class="form-label"><?=__('Model Number', 'cb-hydronix')?>:</label>
-                <select name="dsub_model" id="dsub_model" data-field-name="dsub_model" class="form-select mb-4 filter">
+                <label for="dind"
+                    class="form-label"><?=__('Industry', 'cb-hydronix')?>:</label>
+                <select name="dind" id="dind" data-field-name="dind" class="form-select mb-4 filter">
                     <option value="">
                         <?=__('Select all', 'cb-hydronix')?>
                     </option>
+                    <?php
+foreach ($dinds as $dt) {
+    // cbdump($dt);
+    if ($dt->slug == 'concrete-construction' || $dt->slug == 'organic') {
+        continue;
+    }
+    echo '<option value="' . $dt->slug . '">' . $dt->name . '</option>';
+}
+echo '<option value="" disabled>-- ' . __('General', 'cb-hydronix') . ' --</option>';
+echo '<option value="concrete-construction">' . __('Concrete & Construction', 'cb-hydronix') . '</option>';
+echo '<option value="organic">' . __('Organic', 'cb-hydronix') . '</option>';
+
+?>
                 </select>
             </div>
             <div class="col-md-3">
@@ -217,7 +229,7 @@ foreach ($dlangs as $dl) {
 ?>
                 </select>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 d-none">
                 <label for="dtext"
                     class="form-label"><?=__('Search Text', 'cb-hydronix')?>:</label><input
                     type="text" class="form-control filter" id="dtext">
@@ -261,7 +273,6 @@ foreach ($dlangs as $dl) {
         </div>
     </div>
     <input type="hidden" name="hiddenDSub" id="hiddenDSub">
-    <input type="hidden" name="hiddenDSubModel" id="hiddenDSubModel">
     <input type="hidden" name="hiddenDType" id="hiddenDType">
     <input type="hidden" name="hiddenDInd" id="hiddenDInd">
     <input type="hidden" name="hiddenDLang" id="hiddenDLang">
@@ -269,73 +280,15 @@ foreach ($dlangs as $dl) {
     <input type="hidden" name="currLang" id="currLang"
         value="<?=$curr_lang?>">
 </section>
-
 <?php
 add_action('wp_footer', function () {
-
-$categories = get_taxonomy_hierarchy( 'docprod' );
-?>
+    ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-var original_myJson = {
-    "product": [
-        {
-            "name": "United States",
-            "id": "usa",
-            "models": [
-                {
-                    "name": "State 1 USA",
-                    "id": "usaState1",
-                },
-                {
-                    "name": "State 2 USA",
-                    "id": "usaState2",
-                },
-                {
-                    "name": "State 3 USA",
-                    "id": "usaState3",
-                }
-            ]
-        },
-        {
-            "name": "Australia",
-            "id": "aus",
-            "models": [
-                {
-                    "name": "State 1 Australia",
-                    "id": "ausState1"
-                }
-            ]
-        }
-    ]
-};
-
-var myJson = <?php echo json_encode( $categories ); ?>
-
-$.each(myJson, function (index, value) {
-    var dsub_id;
-        
-    $("#dsub").append('<option rel="' + index + '" value="'+value.slug+'">'+value.name+'</option>');
-    
-    $("#dsub").change(function () {
-        $("#dsub_model").find("option:gt(0)").remove();
-            $("#dsub_model").find("option:first").text("Select all");
-        
-        dsub_id = $(this).find('option:selected').attr('rel');
-        
-        $.each(myJson[dsub_id].children, function (index1, value1) {
-            $("#dsub_model").find("option:first").text("Select all");
-            $("#dsub_model").append('<option rel="' + index1 + '" value="'+value1.slug+'">'+value1.name+'</option>');
-        });
-        
-    });
-});
-</script>
-
 <script>
     (function($) {
+
+
         $('#dtext').keypress(function(e) {
             if (e.which == 13) {
                 e.preventDefault();
@@ -351,7 +304,6 @@ $.each(myJson, function (index, value) {
             $("#dlContainer").hide();
             $("#dlBody").empty();
             $("#dsub").val($("#dsub option:first").val());
-            $("#dsub_model").val($("#dsub_model option:first").val());
             $("#dlang").val($("#dlang option:first").val());
             $("#dtype").val($("#dtype option:first").val());
             $("#dind").val($("#dind option:first").val());
@@ -360,10 +312,8 @@ $.each(myJson, function (index, value) {
 
         // $(".filter").change(function(){
         $("#submit").click(function() {
-            let endpoint = '/wp-content/themes/cb-hydronix/attachments_new.php'
-            $("#resultCount").empty();
+            let endpoint = '/wp-content/themes/cb-hydronix/attachments.php'
             $("#hiddenDSub").empty();
-            $("#hiddenDSubModel").empty();
             $("#hiddenDType").empty();
             $("#hiddenDLang").empty();
             $("#hiddenDInd").empty();
@@ -374,9 +324,6 @@ $.each(myJson, function (index, value) {
 
             var selDSub = $('#dsub').val() == 'Select all' ? '' : $('#dsub').val();
             $("#hiddenDSub").val(selDSub);
-
-            var selDSubModel = $('#dsub_model').val() == 'Select all' ? '' : $('#dsub_model').val();
-            $("#hiddenDSubModel").val(selDSubModel);
 
             var selDType = $('#dtype').val() == 'Select all' ? '' : $('#dtype').val();;
             $("#hiddenDType").val(selDType);
@@ -417,7 +364,7 @@ $.each(myJson, function (index, value) {
             */
 
             $.ajax({
-                url: endpoint + "?dsub=" + selDSub + "&dsub_model=" + selDSubModel + "&dtype=" + selDType + "&dlang=" + selDLang +
+                url: endpoint + "?dsub=" + selDSub + "&dtype=" + selDType + "&dlang=" + selDLang +
                     "&dtext=" + selDText + "&dind=" + selDInd + "&curr=" + currLang,
                 contentType: "text/plain",
                 dataType: 'JSON',
