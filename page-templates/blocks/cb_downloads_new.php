@@ -96,8 +96,6 @@ $current_language = apply_filters('wpml_current_language', null);
 // Switch to a different language (e.g., 'es' for Spanish)
 do_action('wpml_switch_language', 'en');
 
-
-
 // product TODO
 $dsubs = get_terms(array(
     'taxonomy' => 'docprod',
@@ -153,9 +151,8 @@ $dlangs = get_terms(array(
     'order'      => 'ASC',
 ));
 
-// Switch back to the default language
-$default_language = apply_filters('wpml_default_language', null);
-do_action('wpml_switch_language', $default_language);
+// Optionally, switch back to the previously active language (if needed)
+do_action('wpml_switch_language', $current_language);
 ?>
 <!-- downloads -->
 <section class="downloads py-5">
