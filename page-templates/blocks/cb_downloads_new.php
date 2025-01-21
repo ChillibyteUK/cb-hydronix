@@ -90,6 +90,13 @@
     }
 </style>
 <?php
+// Save the current language before switching
+$current_language = apply_filters('wpml_current_language', null);
+
+// Switch to a different language (e.g., 'es' for Spanish)
+do_action('wpml_switch_language', 'en');
+
+
 
 // product TODO
 $dsubs = get_terms(array(
@@ -146,6 +153,9 @@ $dlangs = get_terms(array(
     'order'      => 'ASC',
 ));
 
+// Switch back to the default language
+$default_language = apply_filters('wpml_default_language', null);
+do_action('wpml_switch_language', $default_language);
 ?>
 <!-- downloads -->
 <section class="downloads py-5">
