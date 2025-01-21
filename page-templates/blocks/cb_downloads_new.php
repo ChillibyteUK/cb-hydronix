@@ -273,6 +273,12 @@ foreach ($dlangs as $dl) {
 <?php
 add_action('wp_footer', function () {
 
+// Save the current language before switching
+$current_language = apply_filters('wpml_current_language', null);
+
+// Switch to a different language (e.g., 'es' for Spanish)
+do_action('wpml_switch_language', 'en');
+
 $categories = get_taxonomy_hierarchy( 'docprod' );
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -516,5 +522,8 @@ $.each(myJson, function (index, value) {
     })(jQuery);
 </script>
 <?php
+// Optionally, switch back to the previously active language (if needed)
+do_action('wpml_switch_language', $current_language);
+
 }, 9999);
 ?>
