@@ -99,6 +99,12 @@ add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_co
  * @return array
  */
 function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
+	// Save the current language before switching
+	$current_language = apply_filters('wpml_current_language', null);
+
+	// Switch to a different language (e.g., 'es' for Spanish)
+	do_action('wpml_switch_language', 'en');
+
     $counter = 1;
     // only 1 taxonomy
     $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
@@ -120,6 +126,9 @@ function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
         $children[ $counter ] = $term;
         $counter++;
     }
+    
+	// Optionally, switch back to the previously active language (if needed)
+	do_action('wpml_switch_language', $current_language);
 
     // send the results back to the caller
     return $children;
