@@ -9,6 +9,7 @@ require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
 require_once CB_THEME_DIR . '/inc/cb-utility.php';
 require_once CB_THEME_DIR . '/inc/cb-blocks.php';
 require_once CB_THEME_DIR . '/inc/cb-news.php';
+require_once CB_THEME_DIR . '/inc/cb-cement.php';
 
 
 define('ICL_DONT_LOAD_NAVIGATION_CSS', true);

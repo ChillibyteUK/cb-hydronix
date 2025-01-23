@@ -365,6 +365,9 @@ function updateWCReport() {
     const cementCO2 = math.bignumber(parseFloat(document.getElementById('cementCO2').value) || 0);
     const envNotHydronixY = math.multiply(extraCementPerYear, cementCO2);
     document.getElementById('envNotHydronixY').innerText = Number(math.format(envNotHydronixY, {notation: 'fixed', precision: 2})).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    updateColumnTitle();
+
 }
 
 // Add event listeners to update the WC Report when values change
@@ -374,7 +377,6 @@ document.querySelectorAll('input, select').forEach(element => {
 
 // Initial WC Report update
 updateWCReport();
-updateColumnTitle();
 
 
 function updateSlider(input) {
@@ -385,4 +387,164 @@ function updateSlider(input) {
 function updateNumberInput(slider) {
     const numberInput = document.getElementById(slider.id.replace('-slider', ''));
     numberInput.value = slider.value;
+}
+
+
+// save results
+
+document.addEventListener("DOMContentLoaded", function () {
+    const saveResultsButton = document.getElementById("saveResults");
+
+    if (saveResultsButton) {
+        saveResultsButton.addEventListener("click", function () {
+            const jsonData = prepareTableData();
+            submitData(jsonData);
+        });
+    }
+});
+
+
+function submitData(data) {
+    fetch("/wp-content/themes/cb-hydronix/cement-results.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `data=${encodeURIComponent(JSON.stringify(data))}`,
+    })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else {
+                console.error("Failed to save results.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const emailField = document.getElementById('emailAddress');
+    const saveResultsButton = document.getElementById('saveResultsButton');
+
+    // Add event listener to validate email input
+    emailField.addEventListener('input', function () {
+        if (validateEmail(emailField.value)) {
+            emailField.classList.remove('is-invalid');
+            emailField.classList.add('is-valid');
+            saveResultsButton.disabled = false;
+        } else {
+            emailField.classList.remove('is-valid');
+            emailField.classList.add('is-invalid');
+            saveResultsButton.disabled = true;
+        }
+    });
+});
+
+// Function to validate email format
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+// Helper function to toggle validation styles
+function toggleValidationStyles(field, isValid) {
+    if (isValid) {
+        field.classList.remove('is-invalid');
+        field.classList.add('is-valid');
+    } else {
+        field.classList.remove('is-valid');
+        field.classList.add('is-invalid');
+    }
+}
+
+// Triggered on Save Results button click
+function resultsJson() {
+    const emailField = document.getElementById('emailAddress');
+    const nameField = document.getElementById('nameField');
+    const companyField = document.getElementById('companyField');
+
+    // Validate fields
+    const isEmailValid = validateEmail(emailField.value);
+    const isNameValid = nameField.value.trim() !== '';
+    const isCompanyValid = companyField.value.trim() !== '';
+
+    // Provide feedback for invalid fields
+    toggleValidationStyles(emailField, isEmailValid);
+    toggleValidationStyles(nameField, isNameValid);
+    toggleValidationStyles(companyField, isCompanyValid);
+
+    if (isEmailValid && isNameValid && isCompanyValid) {
+        const email = emailField.value;
+        const name = nameField.value.trim();
+        const company = companyField.value.trim();
+
+        // Prepare JSON data
+        const jsonData = prepareTableData();
+        jsonData.push({ id: 'email', value: email });
+        jsonData.push({ id: 'name', value: name });
+        jsonData.push({ id: 'company', value: company });
+
+        // Submit the data and redirect
+        fetch('/wp-content/themes/cb-hydronix/cement-results.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `data=${encodeURIComponent(JSON.stringify(jsonData))}`,
+        })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    console.error('Failed to save results.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    } else {
+        alert('Please fill out all required fields correctly.');
+    }
+}
+
+// Function to scrape table data
+// function prepareTableData() {
+//     const jsonArray = [];
+//     const tableCells = document.querySelectorAll('#wcReportTable td[id], #wcReportTable th[id]');
+
+//     tableCells.forEach(cell => {
+//         const id = cell.id.trim();
+//         const value = cell.textContent.trim();
+//         if (id) {
+//             jsonArray.push({ id, value });
+//         }
+//     });
+
+//     return jsonArray;
+// }
+
+function prepareTableData() {
+    const jsonArray = [];
+
+    // Select all <td> and <th> elements with an id OR containing a child with an id
+    const tableCells = document.querySelectorAll('#wcReportTable td[id], #wcReportTable th[id], #wcReportTable td span[id], #wcReportTable th span[id]');
+
+    tableCells.forEach(cell => {
+        let id = cell.id.trim();
+        let value = cell.textContent.trim();
+
+        // If the cell has no id but contains a child with an id, use the child's id and text
+        if (!id) {
+            const childWithId = cell.querySelector('[id]');
+            if (childWithId) {
+                id = childWithId.id.trim();
+                value = childWithId.textContent.trim();
+            }
+        }
+
+        // Add to JSON array if an id is present
+        if (id) {
+            jsonArray.push({ id, value });
+        }
+    });
+
+    return jsonArray;
 }
