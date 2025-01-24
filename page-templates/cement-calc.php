@@ -172,8 +172,8 @@ get_header();
 
                     <div class="mb-3 pb-3 row border-bottom justify-content-center">
                         <label class="col-md-3 col-form-label fw-bold">Water / Binder Ratio</label>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control text-end" style="width:min-content" id="waterBinderRatio" readonly>
+                        <div class="col-md-3 d-flex align-items-center">
+                            <input type="text" class="form-control text-end" style="max-width:100px" id="waterBinderRatio" readonly>
                             <span class="cLabel"> : 1</span>
                         </div>
                     </div>
@@ -181,7 +181,7 @@ get_header();
                     <div class="mb-3 pb-3 row border-bottom justify-content-center">
                         <label class="col-md-3 col-form-label fw-bold">Aggregate / Binder Ratio</label>
                         <div class="col-md-3 d-flex align-items-center">
-                            <input type="text" class="form-control text-end" style="width:min-content" id="aggregateBinderRatio" readonly>
+                            <input type="text" class="form-control text-end" style="max-width:100px" id="aggregateBinderRatio" readonly>
                             <span class="cLabel"> : 1</span>
                         </div>
                     </div>
