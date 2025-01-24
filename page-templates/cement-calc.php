@@ -403,39 +403,39 @@ get_header();
                             <tbody>
                                 <tr>
                                     <td>Sand 0 - 2mm</td>
-                                    <td id="sand1Recipe">1000</td>
-                                    <td id="sand1Tolerance">0</td>
-                                    <td id="sand1Hydronix">0</td>
+                                    <td id="sand1Recipe" class="text-end">1000</td>
+                                    <td id="sand1Tolerance" class="text-end">0</td>
+                                    <td id="sand1Hydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Sand 0 - 4mm</td>
-                                    <td id="sand2Recipe">1000</td>
-                                    <td id="sand2Tolerance">0</td>
-                                    <td id="sand2Hydronix">0</td>
+                                    <td id="sand2Recipe" class="text-end">1000</td>
+                                    <td id="sand2Tolerance" class="text-end">0</td>
+                                    <td id="sand2Hydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Aggregate 8 - 16mm</td>
-                                    <td id="aggregateRecipe">650</td>
-                                    <td id="aggregateTolerance">0</td>
-                                    <td id="aggregateHydronix">0</td>
+                                    <td id="aggregateRecipe" class="text-end">650</td>
+                                    <td id="aggregateTolerance" class="text-end">0</td>
+                                    <td id="aggregateHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Other Aggregates</td>
-                                    <td id="otherAggregatesRecipe">0</td>
-                                    <td id="otherAggregatesTolerance">0</td>
-                                    <td id="otherAggregatesHydronix">0</td>
+                                    <td id="otherAggregatesRecipe" class="text-end">0</td>
+                                    <td id="otherAggregatesTolerance" class="text-end">0</td>
+                                    <td id="otherAggregatesHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Weight of uncompensated moisture</td>
-                                    <td id="uncompensatedMoistureRecipe">0</td>
-                                    <td id="uncompensatedMoistureTolerance">0</td>
-                                    <td id="uncompensatedMoistureHydronix">0</td>
+                                    <td id="uncompensatedMoistureRecipe" class="text-end">0</td>
+                                    <td id="uncompensatedMoistureTolerance" class="text-end">0</td>
+                                    <td id="uncompensatedMoistureHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <th>Total Weight</th>
-                                    <th id="totalWeightRecipe">0</th>
-                                    <th id="totalWeightTolerance">0</th>
-                                    <th id="totalWeightHydronix">0</th>
+                                    <th id="totalWeightRecipe" class="text-end">0</th>
+                                    <th id="totalWeightTolerance" class="text-end">0</th>
+                                    <th id="totalWeightHydronix" class="text-end">0</th>
                                 </tr>
 
                                 <tr>
@@ -444,33 +444,33 @@ get_header();
 
                                 <tr>
                                     <td>OPC</td>
-                                    <td id="opcRecipe">0</td>
-                                    <td id="opcTolerance">0</td>
-                                    <td id="opcHydronix">0</td>
+                                    <td id="opcRecipe" class="text-end">0</td>
+                                    <td id="opcTolerance" class="text-end">0</td>
+                                    <td id="opcHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>PFA</td>
-                                    <td id="pfaRecipe">0</td>
-                                    <td id="pfaTolerance">0</td>
-                                    <td id="pfaHydronix">0</td>
+                                    <td id="pfaRecipe" class="text-end">0</td>
+                                    <td id="pfaTolerance" class="text-end">0</td>
+                                    <td id="pfaHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>GGBS</td>
-                                    <td id="ggbsRecipe">0</td>
-                                    <td id="ggbsTolerance">0</td>
-                                    <td id="ggbsHydronix">0</td>
+                                    <td id="ggbsRecipe" class="text-end">0</td>
+                                    <td id="ggbsTolerance" class="text-end">0</td>
+                                    <td id="ggbsHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Other Cement Replacements</td>
-                                    <td id="otherCementRecipe">0</td>
-                                    <td id="otherCementTolerance">0</td>
-                                    <td id="otherCementHydronix">0</td>
+                                    <td id="otherCementRecipe" class="text-end">0</td>
+                                    <td id="otherCementTolerance" class="text-end">0</td>
+                                    <td id="otherCementHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <th>Total Cementitious Materials (Binder)</th>
-                                    <th id="totalCementitiousMaterialsRecipe">0</th>
-                                    <th id="totalCementitiousMaterialsTolerance">0</th>
-                                    <th id="totalCementitiousMaterialsHydronix">0</th>
+                                    <th id="totalCementitiousMaterialsRecipe" class="text-end">0</th>
+                                    <th id="totalCementitiousMaterialsTolerance" class="text-end">0</th>
+                                    <th id="totalCementitiousMaterialsHydronix" class="text-end">0</th>
                                 </tr>
 
                                 <tr>
@@ -479,21 +479,21 @@ get_header();
 
                                 <tr>
                                     <td>Mix design water (litres)</td>
-                                    <td id="mixDesignWaterRecipe">0</td>
-                                    <td id="mixDesignWaterTolerance">0</td>
-                                    <td id="mixDesignWaterHydronix">0</td>
+                                    <td id="mixDesignWaterRecipe" class="text-end">0</td>
+                                    <td id="mixDesignWaterTolerance" class="text-end">0</td>
+                                    <td id="mixDesignWaterHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>uncompensated Water in Aggregates (litres)</td>
-                                    <td id="uncompensatedWaterRecipe">0</td>
-                                    <td id="uncompensatedWaterTolerance">0</td>
-                                    <td id="uncompensatedWaterHydronix">0</td>
+                                    <td id="uncompensatedWaterRecipe" class="text-end">0</td>
+                                    <td id="uncompensatedWaterTolerance" class="text-end">0</td>
+                                    <td id="uncompensatedWaterHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <th>Total Water in mix (litres)</th>
-                                    <th id="totalWaterRecipe">0</th>
-                                    <th id="totalWaterTolerance">0</th>
-                                    <th id="totalWaterHydronix">0</th>
+                                    <th id="totalWaterRecipe" class="text-end">0</th>
+                                    <th id="totalWaterTolerance" class="text-end">0</th>
+                                    <th id="totalWaterHydronix" class="text-end">0</th>
                                 </tr>
 
                                 <tr>
@@ -502,15 +502,15 @@ get_header();
 
                                 <tr>
                                     <td>Designed W/C ratio</td>
-                                    <td id="designedWCRatioRecipe">0</td>
-                                    <td id="designedWCRatioTolerance">0</td>
-                                    <td id="designedWCRatioHydronix">0</td>
+                                    <td id="designedWCRatioRecipe" class="text-end">0</td>
+                                    <td id="designedWCRatioTolerance" class="text-end">0</td>
+                                    <td id="designedWCRatioHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <td>Produced W/C ratio</td>
                                     <td id="producedWCRatioRecipe">&nbsp;</td>
-                                    <td id="producedWCRatioTolerance">0</td>
-                                    <td id="producedWCRatioHydronix">0</td>
+                                    <td id="producedWCRatioTolerance" class="text-end">0</td>
+                                    <td id="producedWCRatioHydronix" class="text-end">0</td>
                                 </tr>
 
                                 <tr>
@@ -535,7 +535,7 @@ get_header();
                                 </tr>
 
                                 <tr>
-                                    <td>Potential cement cost by not using Hydronix moisture measurement</td>
+                                    <th>Potential cement cost by not using Hydronix moisture measurement</th>
                                     <td id="">kg/m<sup>3</sup></td>
                                     <td id="potentialCementCost">0</td>
                                     <td id="">&nbsp;</td>
