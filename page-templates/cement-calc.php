@@ -59,7 +59,7 @@ get_header();
                                 <label for="sand2" class="col-sm-6 col-xl-8 col-form-label">Sand (0-4 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control text-ent" id="sand2" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="sand2" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="sand2-slider" min="0" max="2000" value="1000" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
