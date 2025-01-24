@@ -48,7 +48,7 @@ get_header();
                                 <label for="sand1" class="col-sm-6 col-xl-8 col-form-label">Sand (0-2 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="sand1" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="sand1" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="sand1-slider" min="0" max="2000" value="1000" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -59,7 +59,7 @@ get_header();
                                 <label for="sand2" class="col-sm-6 col-xl-8 col-form-label">Sand (0-4 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="sand2" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-ent" id="sand2" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="sand2-slider" min="0" max="2000" value="1000" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -70,7 +70,7 @@ get_header();
                                 <label for="aggregate" class="col-sm-6 col-xl-8 col-form-label">Aggregate (8-16 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="aggregate" value="650" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="aggregate" value="650" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="aggregate-slider" min="0" max="2000" value="1000" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -81,7 +81,7 @@ get_header();
                                 <label for="otherAggregates" class="col-sm-6 col-xl-8 col-form-label">Other Aggregates</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="otherAggregates" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="otherAggregates" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="otherAggregates-slider" min="0" max="2000" value="0" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -90,8 +90,9 @@ get_header();
 
                             <div class="mb-3 row">
                                 <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Dry Weight of Aggregates</label>
-                                <div class="col-sm-6 col-xl-4">
-                                    <input type="text" class="form-control" id="totalWeight" readonly> kg/m<sup>3</sup>
+                                <div class="col-sm-6 col-xl-4 d-flex align-items-center">
+                                    <input type="text" class="form-control text-end" id="totalWeight" readonly>
+                                    <span>kg/m<sup>3</sup></span>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +103,7 @@ get_header();
                                 <label for="opc" class="col-sm-6 col-xl-8 col-form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Ordinary Portland Cement">OPC</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="opc" value="300" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="opc" value="300" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="opc-slider" min="0" max="1000" value="300" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -113,7 +114,7 @@ get_header();
                                 <label for="pfa" class="col-sm-6 col-xl-8 col-form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Pulverized Fuel Ash">PFA</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="pfa" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="pfa" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="pfa-slider" min="0" max="1000" value="0" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -124,7 +125,7 @@ get_header();
                                 <label for="ggbs" class="col-sm-6 col-xl-8 col-form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Ground Granulated Blast-Furnace Slag">GGBS</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="ggbs" value="50" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="ggbs" value="50" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="ggbs-slider" min="0" max="1000" value="50" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -135,7 +136,7 @@ get_header();
                                 <label for="otherCement" class="col-sm-6 col-xl-8 col-form-label">Other Cement Replacements</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="otherCement" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                        <input type="number" class="form-control text-end" id="otherCement" value="0" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                         <span class="input-group-text">kg/m<sup>3</sup></span>
                                     </div>
                                     <input type="range" class="form-range" id="otherCement-slider" min="0" max="1000" value="0" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -143,26 +144,26 @@ get_header();
                             </div>
                             <div class="mb-3 row">
                                 <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Cementitious Materials (Binder)</label>
-                                <div class="col-sm-6 col-xl-4">
-                                    <input type="text" class="form-control" id="totalBinderWeight" readonly> kg/m<sup>3</sup>
+                                <div class="col-sm-6 col-xl-4 d-flex align-items-center">
+                                    <input type="text" class="form-control text-end" id="totalBinderWeight" readonly>
+                                    <span>kg/m<sup>3</sup></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <!-- Total Dry Weight and Water Section -->
-                    <div class="mb-3 pb-3 row border-bottom">
-                        <label class="col-sm-6 col-form-label cLabel fw-bold">Total Dry Weight for Recipe</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="totalDryWeight" readonly> kg/m<sup>3</sup>
-                        </div>
+                    <div class="mb-3 pb-3 border-bottom d-flex align-items-center justify-content-center">
+                        <label class="col-form-label cLabel fw-bold">Total Dry Weight for Recipe</label>
+                        <input type="text" class="form-control text-end" style="width:min-content" id="totalDryWeight" readonly>
+                        <span>kg/m<sup>3</sup></span>
                     </div>
 
                     <div class="mb-3 row border-bottom">
                         <label for="water" class="col-sm-6 col-form-label">Water (litres)</label>
                         <div class="col-sm-6">
                             <div class="input-group mb-2">
-                                <input type="number" class="form-control" id="water" value="150" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                <input type="number" class="form-control text-end" id="water" value="150" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                             </div>
                             <input type="range" class="form-range" id="water-slider" min="0" max="1000" value="150" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                         </div>
@@ -171,14 +172,15 @@ get_header();
                     <div class="mb-3 pb-3 row border-bottom">
                         <label class="col-sm-6 col-form-label fw-bold">Water / Binder Ratio</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="waterBinderRatio" readonly>
+                            <input type="text" class="form-control text-end" id="waterBinderRatio" readonly>
                         </div>
                     </div>
 
                     <div class="mb-3 pb-3 row border-bottom">
                         <label class="col-sm-6 col-form-label fw-bold">Aggregate / Binder Ratio</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="aggregateBinderRatio" readonly>
+                        <div class="col-sm-6 d-flex align-items-center">
+                            <input type="text" class="form-control text-end" id="aggregateBinderRatio" readonly>
+                            <span> : 1</span>
                         </div>
                     </div>
                 </div>
