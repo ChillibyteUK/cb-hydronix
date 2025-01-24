@@ -159,9 +159,9 @@ get_header();
                         <span>kg/m<sup>3</sup></span>
                     </div>
 
-                    <div class="mb-3 row border-bottom">
-                        <label for="water" class="col-sm-6 col-form-label">Water</label>
-                        <div class="col-sm-6">
+                    <div class="mb-3 row border-bottom justify-content-center">
+                        <label for="water" class="col-sm-3 col-form-label">Water</label>
+                        <div class="col-sm-3">
                             <div class="input-group mb-2">
                                 <input type="number" class="form-control text-end" id="water" value="150" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                                 <span class="input-group-text">litres</span>
@@ -173,7 +173,7 @@ get_header();
                     <div class="mb-3 pb-3 row border-bottom justify-content-center">
                         <label class="col-sm-3 col-form-label fw-bold">Water / Binder Ratio</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control text-end" id="waterBinderRatio" readonly>
+                            <input type="text" class="form-control text-end" style="width:min-content" id="waterBinderRatio" readonly>
                             <span class="cLabel"> : 1</span>
                         </div>
                     </div>
@@ -181,7 +181,7 @@ get_header();
                     <div class="mb-3 pb-3 row border-bottom justify-content-center">
                         <label class="col-sm-3 col-form-label fw-bold">Aggregate / Binder Ratio</label>
                         <div class="col-sm-3 d-flex align-items-center">
-                            <input type="text" class="form-control text-end" id="aggregateBinderRatio" readonly>
+                            <input type="text" class="form-control text-end" style="width:min-content" id="aggregateBinderRatio" readonly>
                             <span class="cLabel"> : 1</span>
                         </div>
                     </div>
