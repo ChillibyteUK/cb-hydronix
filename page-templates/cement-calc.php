@@ -520,14 +520,14 @@ get_header();
                                 <tr>
                                     <td>Total Cement Needed to maintain SD target</td>
                                     <td id="totalCementNeededRecipe">&nbsp;</td>
-                                    <td id="totalCementNeededTolerance">0</td>
-                                    <td id="totalCementNeededHydronix">0</td>
+                                    <td id="totalCementNeededTolerance" class="text-end">0</td>
+                                    <td id="totalCementNeededHydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
                                     <th>Extra cement needed to maintain SD target</th>
                                     <th id="extraCementNeededRecipe">&nbsp;</th>
-                                    <th id="extraCementNeededTolerance">0</th>
-                                    <th id="extraCementNeededHydronix">0</th>
+                                    <th id="extraCementNeededTolerance" class="text-end">0</th>
+                                    <th id="extraCementNeededHydronix" class="text-end">0</th>
                                 </tr>
 
                                 <tr>
