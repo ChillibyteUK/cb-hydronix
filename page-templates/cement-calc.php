@@ -153,7 +153,7 @@ get_header();
                     </div>
                     <hr>
                     <!-- Total Dry Weight and Water Section -->
-                    <div class="mb-4 pb-3 border-bottom d-flex align-items-center justify-content-center">
+                    <div class="mb-3 pb-3 border-bottom d-flex align-items-center justify-content-center">
                         <label class="col-form-label cLabel fw-bold">Total Dry Weight for Recipe:</label>
                         <input type="text" class="form-control text-end" style="width:min-content" id="totalDryWeight" readonly>
                         <span class="cLabel">kg/m<sup>3</sup></span>
