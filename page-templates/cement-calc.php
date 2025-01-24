@@ -186,7 +186,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" onclick="document.getElementById('production-data-tab').click();">Next</button>
+                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('production-data-tab').click();">Next</button>
             </div>
             <!-- Production Data Tab -->
             <div class="tab-pane fade" id="production-data" role="tabpanel" aria-labelledby="production-data-tab">
@@ -253,7 +253,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
+                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
             </div>
             <!-- Material Moisture Tab -->
             <div class="tab-pane fade" id="material-moisture" role="tabpanel" aria-labelledby="material-moisture-tab">
@@ -381,7 +381,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" onclick="document.getElementById('wc-report-tab').click();">Next</button>
+                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('wc-report-tab').click();">Next</button>
             </div>
             <div class="tab-pane fade" id="wc-report" role="tabpanel" aria-labelledby="wc-report-tab">
                 <div class="mt-3">
@@ -573,12 +573,7 @@ get_header();
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="wc-save" role="tabpanel" aria-labelledby="wc-save-tab">
-                <div class="mt-3">
-                    <h2>Save Results</h2>
+                    <button class="btn btn-primary mt-3 ms-auto me-0" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
                 </div>
             </div>
         </div>
