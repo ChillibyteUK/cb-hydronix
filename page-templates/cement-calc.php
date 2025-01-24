@@ -89,7 +89,7 @@ get_header();
                             </div>
 
                             <div class="mb-3 row">
-                                <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Dry Weight of Aggregates</label>
+                                <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Dry Weight of Aggregates:</label>
                                 <div class="col-sm-6 col-xl-4 d-flex align-items-center">
                                     <input type="text" class="form-control text-end" id="totalWeight" readonly>
                                     <span>kg/m<sup>3</sup></span>
@@ -143,7 +143,7 @@ get_header();
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Cementitious Materials (Binder)</label>
+                                <label class="col-sm-6 col-xl-8 col-form-label cLabel fw-bold">Total Cementitious Materials (Binder):</label>
                                 <div class="col-sm-6 col-xl-4 d-flex align-items-center">
                                     <input type="text" class="form-control text-end" id="totalBinderWeight" readonly>
                                     <span>kg/m<sup>3</sup></span>
@@ -154,33 +154,35 @@ get_header();
                     <hr>
                     <!-- Total Dry Weight and Water Section -->
                     <div class="mb-3 pb-3 border-bottom d-flex align-items-center justify-content-center">
-                        <label class="col-form-label cLabel fw-bold">Total Dry Weight for Recipe</label>
+                        <label class="col-form-label cLabel fw-bold">Total Dry Weight for Recipe:</label>
                         <input type="text" class="form-control text-end" style="width:min-content" id="totalDryWeight" readonly>
                         <span>kg/m<sup>3</sup></span>
                     </div>
 
                     <div class="mb-3 row border-bottom">
-                        <label for="water" class="col-sm-6 col-form-label">Water (litres)</label>
+                        <label for="water" class="col-sm-6 col-form-label">Water</label>
                         <div class="col-sm-6">
                             <div class="input-group mb-2">
                                 <input type="number" class="form-control text-end" id="water" value="150" oninput="calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
+                                <span class="input-group-text">litres</span>
                             </div>
                             <input type="range" class="form-range" id="water-slider" min="0" max="1000" value="150" step="1" oninput="updateNumberInput(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 row border-bottom">
-                        <label class="col-sm-6 col-form-label fw-bold">Water / Binder Ratio</label>
-                        <div class="col-sm-6">
+                    <div class="mb-3 pb-3 row border-bottom justify-content-center">
+                        <label class="col-sm-3 col-form-label fw-bold">Water / Binder Ratio</label>
+                        <div class="col-sm-3">
                             <input type="text" class="form-control text-end" id="waterBinderRatio" readonly>
+                            <span class="cLabel"> : 1</span>
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3 row border-bottom">
-                        <label class="col-sm-6 col-form-label fw-bold">Aggregate / Binder Ratio</label>
-                        <div class="col-sm-6 d-flex align-items-center">
+                    <div class="mb-3 pb-3 row border-bottom justify-content-center">
+                        <label class="col-sm-3 col-form-label fw-bold">Aggregate / Binder Ratio</label>
+                        <div class="col-sm-3 d-flex align-items-center">
                             <input type="text" class="form-control text-end" id="aggregateBinderRatio" readonly>
-                            <span> : 1</span>
+                            <span class="cLabel"> : 1</span>
                         </div>
                     </div>
                 </div>
