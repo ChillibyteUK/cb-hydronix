@@ -141,3 +141,49 @@ function numeric_posts_nav() {
     echo '</ul></div>' . "\n";
  
 }
+
+
+add_action('wp_head', 'fix_wpml_hreflang_on_pagination', 1);
+
+function fix_wpml_hreflang_on_pagination() {
+    if (!function_exists('icl_get_languages') || !is_archive()) {
+        return;
+    }
+
+    global $wp_query;
+
+    $current_page = max(1, get_query_var('paged'));
+    $languages = icl_get_languages('skip_missing=0');
+
+    if (empty($languages)) {
+        return;
+    }
+
+    foreach ($languages as $lang) {
+        // Get translated URL for current archive page
+        $url = get_permalink(get_queried_object_id());
+
+        // For archives, use wpml_permalink if available
+        if (function_exists('wpml_permalink')) {
+            $url = wpml_permalink($url, $lang['language_code']);
+        }
+
+        // Append pagination if needed
+        if ($current_page > 1) {
+            $url = trailingslashit($url) . 'page/' . $current_page . '/';
+        }
+
+        echo '<link rel="alternate" hreflang="' . esc_attr($lang['language_code']) . '" href="' . esc_url($url) . '" />' . "\n";
+    }
+
+    // Add x-default if needed
+    $default_lang = apply_filters('wpml_default_language', null);
+    if ($default_lang && isset($languages[$default_lang])) {
+        $default_url = $languages[$default_lang]['url'];
+        if ($current_page > 1) {
+            $default_url = trailingslashit($default_url) . 'page/' . $current_page . '/';
+        }
+
+        echo '<link rel="alternate" hreflang="x-default" href="' . esc_url($default_url) . '" />' . "\n";
+    }
+}
