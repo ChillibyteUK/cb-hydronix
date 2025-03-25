@@ -166,6 +166,15 @@ add_action('init', function () {
     do_action('wpml_register_single_string', 'Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
 });
 
+add_filter('register_post_type_args', function ($args, $post_type) {
+    if ($post_type === 'events' && function_exists('icl_translate')) {
+        $translated_slug = icl_translate('Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
+        $args['rewrite']['slug'] = $translated_slug;
+    }
+    return $args;
+}, 20, 2);
+
+
 add_action( 'after_switch_theme', 'cb_rewrite_flush' );
 function cb_rewrite_flush() {
     cb_register_post_types();
