@@ -161,6 +161,11 @@ register_post_type( "events", $args );
 }
 add_action( 'init', 'cb_register_post_types' );
 
+// bag of shite WPML
+add_action('init', function () {
+    do_action('wpml_register_single_string', 'Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
+});
+
 add_action( 'after_switch_theme', 'cb_rewrite_flush' );
 function cb_rewrite_flush() {
     cb_register_post_types();
