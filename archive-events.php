@@ -29,6 +29,7 @@ $lang = $curr_lang == 'en' ? '' : '/' . $curr_lang;
     <div class="container py-3">
         <h1 class="mb-4">
             <?=__('Hydronix Events', 'cb-hydronix')?>
+            <?= get_post_type_archive_link('events') ?>
         </h1>
         <?php
         if (get_field('news_archive', 'options')) {
