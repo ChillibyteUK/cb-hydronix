@@ -93,38 +93,9 @@ $args = [
     "show_in_graphql" => false,
 ];
 
-// register_post_type( "news", $args );
-
-// $labels = [
-//     "name" => __( "Downloads", "cb-hydronix" ),
-//     "singular_name" => __( "Download", "cb-hydronix" ),
-// ];
-
-// $args = [
-//     "label" => __( "Downloads", "cb-hydronix" ),
-//     "labels" => $labels,
-//     "description" => "",
-//     "public" => true,
-//     "publicly_queryable" => true,
-//     "show_ui" => true,
-//     "show_in_rest" => true,
-//     "rest_base" => "",
-//     "rest_controller_class" => "WP_REST_Posts_Controller",
-//     "has_archive" => false,
-//     "show_in_menu" => true,
-//     "show_in_nav_menus" => true,
-//     "delete_with_user" => false,
-//     "exclude_from_search" => false,
-//     "capability_type" => "post",
-//     "map_meta_cap" => true,
-//     "hierarchical" => false,
-//     "rewrite" => [ "slug" => "downloads", "with_front" => false ],
-//     "query_var" => true,
-//     "supports" => [ "title" ],
-//     "show_in_graphql" => false,
-// ];
-
-// register_post_type( "downloads", $args );
+$translated_slug = function_exists('icl_translate')
+? icl_translate('Custom Post Type Slugs', 'events_archive_slug', 'resources/events')
+: 'resources/events';
 
 $labels = [
     "name" => __( "Events", "cb-hydronix" ),
@@ -149,7 +120,7 @@ $args = [
     "capability_type" => "post",
     "map_meta_cap" => true,
     "hierarchical" => false,
-    "rewrite" => [ "slug" => "resources/events", "with_front" => false ],
+    "rewrite" => [ "slug" => $translated_slug, "with_front" => false ],
     "query_var" => true,
     "supports" => [ "title", "thumbnail" ],
     "show_in_graphql" => false,
@@ -163,17 +134,10 @@ add_action( 'init', 'cb_register_post_types' );
 
 // bag of shite WPML
 add_action('init', function () {
-    do_action('wpml_register_single_string', 'Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
-});
-
-add_filter('register_post_type_args', function ($args, $post_type) {
-    if ($post_type === 'events' && function_exists('icl_translate')) {
-        $translated_slug = icl_translate('Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
-        $args['rewrite']['slug'] = $translated_slug;
+    if (function_exists('wpml_register_single_string')) {
+        do_action('wpml_register_single_string', 'Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
     }
-    return $args;
-}, 20, 2);
-
+});
 
 add_action( 'after_switch_theme', 'cb_rewrite_flush' );
 function cb_rewrite_flush() {
