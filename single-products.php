@@ -576,7 +576,7 @@ if (get_field('accessories')) {
                         <ul class="cols-lg-3 nopad">
                             <?php
             foreach (get_field('accessories') as $i) {
-                if (get_the_post_thumbnail($i)) {
+                if (get_the_post_thumbnail($i) ?? null) {
                     $img = get_the_post_thumbnail_url($i, 'full');
                     echo '<li><a href="' . $img . '" data-lightbox="gallery">' . get_the_title($i) . '</a></li>';
                 // echo '<li>' . get_the_title($i) . '</li>';
