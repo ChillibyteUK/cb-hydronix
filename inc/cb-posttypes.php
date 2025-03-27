@@ -141,6 +141,22 @@ function cb_register_post_types() {
 }
 add_action( 'init', 'cb_register_post_types' );
 
+add_action('after_setup_theme', function () {
+    if (function_exists('icl_translate')) {
+        $translated_slug = icl_translate('Custom Post Type Slugs', 'events_archive_slug', 'resources/events');
+
+        // Generate the expected archive URL
+        $expected_url = home_url(trailingslashit($translated_slug));
+        $actual_url = get_post_type_archive_link('events');
+
+        // Compare the rewritten archive URL to the translated one
+        if ($expected_url !== $actual_url || !get_option('custom_events_rewrite_flushed')) {
+            flush_rewrite_rules();
+            update_option('custom_events_rewrite_flushed', true);
+            error_log('Rewriting rules flushed to use: ' . $translated_slug);
+        }
+    }
+})
 
 add_action( 'after_switch_theme', 'cb_rewrite_flush' );
 function cb_rewrite_flush() {
