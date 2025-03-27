@@ -577,7 +577,7 @@ if (get_field('accessories')) {
                             <?php
             foreach (get_field('accessories') as $i) {
                 if (has_term('option','atype',$i)) {
-                // $img = get_the_post_thumbnail_url($i, 'full');
+                    $img = get_the_post_thumbnail_url($i, 'full');
                     echo '<li><a href="' . $img . '" data-lightbox="gallery">' . get_the_title($i) . '</a></li>';
                 // echo '<li>' . get_the_title($i) . '</li>';
                 }
