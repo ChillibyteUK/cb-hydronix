@@ -6,48 +6,54 @@
  */
 
 // Exit if accessed directly.
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
-add_action('wp_head', function () {
-    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/css/jquery.fancybox.min.css" />';
-    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/css/lightslider.min.css" />';
-});
+add_action(
+	'wp_head',
+	function () {
+    	echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() ) . '/css/jquery.fancybox.min.css" />';
+    	echo '<link rel="stylesheet" href="' . esc_url( get_stylesheet_directory_uri() ) . '/css/lightslider.min.css" />';
+	}
+);
 
 
 get_header();
 the_post();
 
-$bg = wp_get_attachment_image_url(get_field('hero_background'), 'full');
-if ($bg == '') {
+$bg = wp_get_attachment_image_url( get_field( 'hero_background' ), 'full' );
+if ( '' === $bg ) {
     $bg = '/wp-content/uploads/2022/09/product-bg-organic-2.jpg';
 }
-$ptype = array_shift(get_the_terms(get_the_ID(), 'ptype'));
+
+$terms = get_the_terms( get_the_ID(), 'ptype' );
+$ptype = is_array( $terms ) ? array_shift( $terms ) : null;
+
 ?>
 <main id="main">
     <!-- hero -->
-    <section class="phero" style="background-image:url(<?=$bg?>)">
+    <section class="phero" style="background-image:url(<?= esc_url( $bg ); ?>)">
         <div class="container my-auto pb-5">
             <div class="row">
                 <div class="col-lg-7 d-flex justify-content-center align-items-center px-5">
                     <?php
-                    if (get_the_post_thumbnail_url(get_the_ID(), 'full')) {
+                    if ( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) {
                         ?>
-                    <img src="<?=get_the_post_thumbnail_url(get_the_ID(), 'full')?>"
+                    <img src="<?= esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>"
                         class="phero__image">
-                    <?php
+                    	<?php
                     }
-?>
+					?>
                 </div>
                 <div class="col-lg-5 phero__content d-flex flex-column my-auto">
-                    <h1><?=get_the_title()?></h1>
+                    <h1><?= esc_html( get_the_title() ); ?></h1>
                     <div class="phero__subtitle mb-4">
-                        <?=get_field('hero_subtitle')?>
+                        <?= esc_html( get_field( 'hero_subtitle' ) ); ?>
                     </div>
                     <div class="d-flex justify-content-between flex-wrap">
                         <a class="btn btn--orange mb-2"
-                            href="#form"><?=__('Request More Info', 'cb-hydronix')?></a>
+                            href="#form"><?= esc_html__( 'Request More Info', 'cb-hydronix' ); ?></a>
                         <a class="btn btn--green mb-2 d-none" id="docBtn"
-                            href="#docs"><?=__('Download Resources', 'cb-hydronix')?></a>
+                            href="#docs"><?= esc_html__( 'Download Resources', 'cb-hydronix' ); ?></a>
                     </div>
                 </div>
             </div>
@@ -56,81 +62,79 @@ $ptype = array_shift(get_the_terms(get_the_ID(), 'ptype'));
     <!--section class="sub_page_title py-1 mb-4">
     <div class="container-xl">
         <?php
-        if (function_exists('yoast_breadcrumb')) {
-            yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+        if ( function_exists( 'yoast_breadcrumb' ) ) {
+            yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
         }
-?>
+		?>
     </div>
     </section-->
     <?php
-    $thisApp = get_the_terms(get_the_ID(), 'applications');
+    $thisApp = get_the_terms( get_the_ID(), 'applications' );
         
-$allApps = get_terms(array('taxonomy'=>'applications','hide_empty'=>false)) ?? null;
-$thisAppIDs = wp_list_pluck($thisApp, 'term_id') ?? null;
+	$allApps = get_terms( array( 'taxonomy' => 'applications', 'hide_empty' => false ) ) ?? null;
+	$thisAppIDs = wp_list_pluck( $thisApp, 'term_id' ) ?? null;
 
-if ($thisApp) {
-    $appIDs = wp_list_pluck($allApps, 'term_id');
-    ?>
+	if ( $thisApp ) {
+		$appIDs = wp_list_pluck( $allApps, 'term_id' );
+    	?>
     <div class="container py-4">
         <h2 class="fs-4 text-center mb-4">
-            <?=__('Typical Applications', 'cb-hydronix')?>
+            <?= esc_html__( 'Typical Applications', 'cb-hydronix' ); ?>
         </h2>
         <div class="applications row g-4">
-            <?php
-    global $sitepress;
+		<?php
+    	global $sitepress;
 
-    foreach ($allApps as $a) {
-        // inactive defaults - grey on desktop blue on mobile
-        $icon = '--grey'; // TODO - colour icons
-        $icon2 = '--blue'; // TODO - colour icons
-        $active = '';
-            
-        $en_id = apply_filters('wpml_object_id', $a->term_id, 'applications', true, 'en');
+		foreach ( $allApps as $a ) {
+			// inactive defaults - grey on desktop blue on mobile.
+			$icon   = '--grey'; // TODO - colour icons.
+			$icon2  = '--blue'; // TODO - colour icons.
+			$active = '';
 
-        $current_lang = apply_filters('wpml_current_language', null);
-        $sitepress->switch_lang('en');
-        $en_term = get_term($en_id, 'applications');
-        $sitepress->switch_lang($current_lang);
+			$en_id = apply_filters( 'wpml_object_id', $a->term_id, 'applications', true, 'en' );
 
-        $imgslug = $en_term->slug;
+			$current_lang = apply_filters( 'wpml_current_language', null );
+			$sitepress->switch_lang( 'en' );
+			$en_term = get_term( $en_id, 'applications' );
+			$sitepress->switch_lang( $current_lang );
 
+			$imgslug = $en_term->slug;
 
-        foreach ($thisAppIDs as $i) {
-            if ($i == $a->term_id) {
-                // active - blue on desktop colour on mobile
-                $icon = '--blue'; //
-                $icon2 = '--colour'; //
-                $active = 'active';
-            }
-        }
-        ?>
+			foreach ( $thisAppIDs as $i ) {
+				if ( $i == $a->term_id ) {
+					// active - blue on desktop colour on mobile.
+					$icon   = '--blue';
+					$icon2  = '--colour';
+					$active = 'active';
+				}
+			}
+        	?>
             <div
-                class="col-sm-4 col-lg-2 applications__card <?=$active?>">
+                class="col-sm-4 col-lg-2 applications__card <?= esc_attr( $active ); ?>">
                 <a
-                    href="<?=__('/measure/', 'cb-hydronix')?><?=$a->slug?>/">
+                    href="<?= esc_url( __( '/measure/', 'cb-hydronix' ) ); ?><?= esc_html( $a->slug ); ?>/">
                     <img class="d-md-none"
-                        src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$imgslug?><?=$icon2?>.svg"
-                        alt="X <?=$icon2?>">
+                        src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icons/icon__' . $imgslug . $icon2 . '.svg' ); ?>"
+                        alt="X <?= esc_html( $icon2 ); ?>">
                     <img class="d-none d-md-block"
-                        src="<?=get_stylesheet_directory_uri()?>/img/icons/icon__<?=$imgslug?><?=$icon?>.svg"
-                        alt="X <?=$icon?>">
-                    <div class="applications__title"><?=$a->name?>
-                    </div>
+                        src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icons/icon__' . $imgslug . $icon . '.svg' ); ?>"
+                        alt="X <?= esc_html( $icon ); ?>">
+                    <div class="applications__title"><?= esc_html( $a->name ); ?></div>
                 </a>
             </div>
             <?php
-    }
-    ?>
+		}
+		?>
         </div>
     </div>
-    <?php
-}
-$img = '/wp-content/uploads/2022/09/loader-1846346.jpg';
-if (get_field('detail_bg') != '') {
-    // echo 'DETBG:' . get_field('detail_bg');
-    $img = wp_get_attachment_image_url(get_field('detail_bg'), 'full');
-}
-?>
+    	<?php
+	}
+	$img = '/wp-content/uploads/2022/09/loader-1846346.jpg';
+	if ( get_field( 'detail_bg' ) != '' ) {
+    // echo 'DETBG:' . get_field('detail_bg');.
+    	$img = wp_get_attachment_image_url(get_field('detail_bg'), 'full');
+	}
+	?>
     <section class="details py-5"
         style="background-image:url(<?=$img?>)">
         <div class="container responsive-tabs">
@@ -288,72 +292,83 @@ if (is_array($allApps)) {
                                 </div>
                                 <div class="col-lg-4 order-1 order-lg-3">
                                     <?php
-echo '<!--';
-echo var_dump(get_field('views'));
-echo '-->';
-                                                                            
-if (!get_field('views', get_the_ID())) {
-    ?>
-                                    <img src="<?=get_the_post_thumbnail_url(get_the_ID(), 'full')?>"
+									echo '<!--';
+									echo var_dump( get_field( 'views' ) );
+									echo '-->';
+									?>
+									<div class="product__card mb-4">
+										<h3 class="fs-5 mb-3">
+											<?= esc_html__( 'Product Code', 'cb-hydronix' ); ?>:
+										</h3>
+										<div class="product__code">
+											<?= esc_html( get_field( 'product_code' ) ); ?>
+										</div>
+									</div>
+									<?php
+
+									if ( ! get_field( 'views', get_the_ID() ) ) {
+										?>
+                                    <img src="<?= esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>"
                                         class="">
-                                    <?php
-} else {
-    ?>
+	                                    <?php
+									} else {
+										?>
                                     <div class="tl_slide_photo_container mb-5">
                                         <ul class="image-gallery" id="light-slider">
-
                                             <?php
     // echo get_the_post_thumbnail($id,'large',['class' => 'viewSlider']);
-    foreach (get_field('views', get_the_ID()) as $i) {
-
-        ?>
+											$views = get_field( 'views', get_the_ID() );
+											if ( is_array( $views ) ) {
+    											foreach ( $views as $i ) {
+											        ?>
                                             <li
-                                                data-thumb="<?=wp_get_attachment_image_url($i, 'medium')?>">
-                                                <a href="<?=wp_get_attachment_image_url($i, 'full')?>"
+                                                data-thumb="<?= esc_url( wp_get_attachment_image_url( $i, 'medium' ) ); ?>">
+                                                <a href="<?= esc_url( wp_get_attachment_image_url( $i, 'full' ) ); ?>"
                                                     data-fancybox="gallery">
                                                     <img
-                                                        src="<?=wp_get_attachment_image_url($i, 'large')?>">
+                                                        src="<?= esc_url( wp_get_attachment_image_url( $i, 'large' ) ); ?>">
                                                 </a>
                                             </li>
-                                            <?php
-        echo wp_get_attachment_image($id, 'large', '', ['class' => 'viewSlider']);
-    }
-    if (get_field('video_id')) {
-        $vid = get_field('video_id');
+                                        	    	<?php
+										        	echo wp_get_attachment_image( $i, 'large', '', array( 'class' => 'viewSlider' ) );
+											    }
+    											if ( get_field( 'video_id' ) ) {
+        											$vid = get_field( 'video_id' );
 
-        $current_language = apply_filters( 'wpml_current_language', NULL );
-        if ($current_language == 'zh-hans') {
-            $thumb = get_stylesheet_directory_uri() . "/img/missing-video.png" ;
-            ?>
-            <li
-                data-thumb="<?=$thumb?>">
-                <a href="//player.bilibili.com/player.html?bvid=<?=get_field('video_id')?>&high_quality=1&autoplay=true" data-fancybox="gallery">
-                    <img
-                        src="<?=get_stylesheet_directory_uri()?>/img/missing-video.png">
-                </a>
-            </li>
-            <?php
-        }
-        else {
-            $thumb = get_vimeo_data_from_id($vid, 'thumbnail_url') ?: get_stylesheet_directory_uri() . "/img/missing-video.png" ;
-            ?>
+													$current_language = apply_filters( 'wpml_current_language', null );
+													if ( 'zh-hans' === $current_language ) {
+														$thumb = get_stylesheet_directory_uri() . '/img/missing-video.png' ;
+														?>
+											<li
+												data-thumb="<?=$thumb?>">
+												<a href="//player.bilibili.com/player.html?bvid=<?=get_field('video_id')?>&high_quality=1&autoplay=true" data-fancybox="gallery">
+													<img
+														src="<?=get_stylesheet_directory_uri()?>/img/missing-video.png">
+												</a>
+											</li>
+														<?php
+													}
+        											else {
+            											$thumb = get_vimeo_data_from_id($vid, 'thumbnail_url') ?: get_stylesheet_directory_uri() . "/img/missing-video.png" ;
+            											?>
                                             <li
                                                 data-thumb="<?=$thumb?>">
-                                                <a href="https://player.vimeo.com/video/<?=get_field('video_id')?>?byline=0&portrait=0"
+                                                <a href="https://player.vimeo.com/video/<?= esc_attr( get_field( 'video_id' ) ); ?>?byline=0&portrait=0"
                                                     data-fancybox="gallery">
                                                     <img
-                                                        src="<?=get_stylesheet_directory_uri()?>/img/missing-video.png">
+                                                        src="<?= esc_url( get_stylesheet_directory_uri() ); ?>/img/missing-video.png">
                                                     <!-- <div class="ratio ratio-16x9 mx-auto">
                                                         <iframe src="https://player.vimeo.com/video/<?=get_field('vimeo_id')?>?byline=0&portrait=0"
                                                     allow="autoplay; fullscreen; picture-in-picture"
                                                     webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                    </div> -->
-                                    </a>
-                                    </li>
-                                    <?php
-        }
-    }
-    ?>
+													</div> -->
+                                    			</a>
+											</li>
+                                    					<?php
+        											}
+    											}
+											}
+										?>
                                     </ul>
                                 </div>
                                 <?php
@@ -575,19 +590,19 @@ if (get_field('accessories')) {
                     <div class="card-body py-5">
                         <ul class="cols-lg-3 nopad">
                             <?php
-        if (get_field('accessories') ?? null) {
-            foreach (get_field('accessories') as $i) {
-                if (has_post_thumbnail($i)) {
-                    $img = get_the_post_thumbnail_url($i, 'full');
-                    echo '<li><a href="' . $img . '" data-lightbox="gallery">' . get_the_title($i) . '</a></li>';
-                // echo '<li>' . get_the_title($i) . '</li>';
-                }
-                else {
-                    echo '<li><a href="' . get_the_permalink($i) . '">' . get_the_title($i) . '</a></li>';
-                }
-            }
-        }
-    ?>
+								if ( get_field( 'accessories' ) ?? null ) {
+									foreach ( get_field( 'accessories' ) as $i ) {
+										if ( has_post_thumbnail( $i )) {
+											$img = get_the_post_thumbnail_url( $i, 'full' );
+											echo '<li><a href="' . $img . '" data-lightbox="gallery">' . get_the_title( $i ) . '</a></li>';
+										// echo '<li>' . get_the_title($i) . '</li>';
+										}
+										else {
+											echo '<li><a href="' . get_the_permalink( $i ) . '">' . get_the_title( $i ) . '</a></li>';
+										}
+									}
+								}
+							?>
                         </ul>
                     </div>
                 </div>
@@ -931,10 +946,10 @@ do_action('wpml_switch_language', $current_lang);
             $filename = wp_get_attachment_url(get_the_ID());
 
             
-            $ftype = get_post_mime_type($ID);
+            $ftype = get_post_mime_type( get_the_ID() );
             if ($ftype == 'image/png') {
-                $furl = wp_get_attachment_caption($ID);
-                $fdesc = get_the_title($ID);
+                $furl = wp_get_attachment_caption( get_the_ID() );
+                $fdesc = get_the_title( get_the_ID() );
             }
             else {
                 $furl = $filename;
