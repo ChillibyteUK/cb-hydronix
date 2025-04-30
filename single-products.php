@@ -590,22 +590,18 @@ if (get_field('accessories')) {
                     <div class="card-body py-5">
                         <ul class="cols-lg-3 nopad">
                             <?php
-                            $accessories = get_field( 'accessories' );
-                            if ( is_array( $accessories ) ) {
-                                foreach ( $accessories as $i ) {
-                                    $post = get_post( $i );
-                                    if ( ! $post ) {
-                                        continue;
-                                    }
-                            
-                                    if ( has_post_thumbnail( $post ) ) {
-                                        $img = get_the_post_thumbnail_url( $post, 'full' );
-                                        echo '<li><a href="' . esc_url( $img ) . '" data-lightbox="gallery">' . esc_html( get_the_title( $post ) ) . '</a></li>';
-                                    } else {
-                                        echo '<li><a href="' . esc_url( get_the_permalink( $post ) ) . '">' . esc_html( get_the_title( $post ) ) . '</a></li>';
-                                    }
-                                }
-                            }
+								if ( get_field( 'accessories' ) ?? null ) {
+									foreach ( get_field( 'accessories' ) as $i ) {
+										if ( has_post_thumbnail( $i )) {
+											$img = get_the_post_thumbnail_url( $i, 'full' );
+											echo '<li><a href="' . $img . '" data-lightbox="gallery">' . get_the_title( $i ) . '</a></li>';
+										// echo '<li>' . get_the_title($i) . '</li>';
+										}
+										else {
+											echo '<li><a href="' . get_the_permalink( $i ) . '">' . get_the_title( $i ) . '</a></li>';
+										}
+									}
+								}
 							?>
                         </ul>
                     </div>
