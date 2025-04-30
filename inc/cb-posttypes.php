@@ -156,7 +156,7 @@ add_action('after_setup_theme', function () {
             error_log('Rewriting rules flushed to use: ' . $translated_slug);
         }
     }
-})
+});
 
 add_action( 'after_switch_theme', 'cb_rewrite_flush' );
 function cb_rewrite_flush() {
