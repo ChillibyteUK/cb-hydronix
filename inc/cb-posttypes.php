@@ -56,7 +56,7 @@ function cb_register_post_types() {
         "capability_type" => "post",
         "map_meta_cap" => true,
         "hierarchical" => false,
-        "rewrite" => false ,
+        "rewrite" =>  [ "slug" => "accessories", "with_front" => false ],
         "query_var" => true,
         "supports" => [ "title", "thumbnail" ],
         "show_in_graphql" => false,
