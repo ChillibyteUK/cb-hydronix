@@ -598,7 +598,7 @@ if (get_field('accessories')) {
                                     // echo '<li>' . get_the_title($i) . '</li>';
                                     }
                                     else {
-                                        echo '<li><a href="' . get_the_permalink( $i ) . '">' . get_the_title( $i ) . '</a></li>';
+                                        echo '<li>' . get_the_title( $i ) . '</li>';
                                     }
                                 }
                             }
