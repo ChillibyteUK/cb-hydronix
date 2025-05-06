@@ -295,16 +295,6 @@ if (is_array($allApps)) {
 									echo '<!--';
 									echo var_dump( get_field( 'views' ) );
 									echo '-->';
-									?>
-									<div class="product__card mb-4">
-										<h3 class="fs-5 mb-3">
-											<?= esc_html__( 'Product Code', 'cb-hydronix' ); ?>:
-										</h3>
-										<div class="product__code">
-											<?= esc_html( get_field( 'product_code' ) ); ?>
-										</div>
-									</div>
-									<?php
 
 									if ( ! get_field( 'views', get_the_ID() ) ) {
 										?>
