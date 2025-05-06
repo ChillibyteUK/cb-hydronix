@@ -309,15 +309,16 @@ if (is_array($allApps)) {
     // echo get_the_post_thumbnail($id,'large',['class' => 'viewSlider']);
 											$views = get_field( 'views', get_the_ID() );
 											if ( is_array( $views ) ) {
-    											foreach ( $views as $i ) {
+                                                foreach ( $views as $i ) {
 
-                                                    if ( wp_get_attachment_image_url( $i, 'full' ) == false ) {
+                                                    $full_image_url = esc_url( wp_get_attachment_image_url( $i, 'full' ) );
+                                                    if ( empty( $full_image_url ) ) {
                                                         continue;
                                                     }
-											        ?>
+                                                    ?>
                                             <li
                                                 data-thumb="<?= esc_url( wp_get_attachment_image_url( $i, 'medium' ) ); ?>">
-                                                <a href="<?= esc_url( wp_get_attachment_image_url( $i, 'full' ) ); ?>"
+                                                <a href="<?= $full_image_url; ?>"
                                                     data-fancybox="gallery">
                                                     <img
                                                         src="<?= esc_url( wp_get_attachment_image_url( $i, 'large' ) ); ?>">
