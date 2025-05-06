@@ -590,11 +590,11 @@ if (get_field('accessories')) {
                                     if ( has_post_thumbnail( $i )) {
                                         $img   = get_the_post_thumbnail_url( $i, 'full' );
                                         $thumb = get_the_post_thumbnail_url( $i, 'thumbnail' );
-                                        echo '<li><a href="' . $img . '" data-lightbox="gallery"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
+                                        echo '<li class="mb-2"><a href="' . $img . '" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
                                     // echo '<li>' . get_the_title($i) . '</li>';
                                     }
                                     else {
-                                        echo '<li>' . get_the_title( $i ) . '</li>';
+                                        echo '<li class="mb-2">' . get_the_title( $i ) . '</li>';
                                     }
                                 }
                             }
