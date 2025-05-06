@@ -590,7 +590,7 @@ if (get_field('accessories')) {
                                     if ( has_post_thumbnail( $i )) {
                                         $img   = get_the_post_thumbnail_url( $i, 'full' );
                                         $thumb = get_the_post_thumbnail_url( $i, 'thumbnail' );
-                                        echo '<li><a href="' . $img . '" data-lightbox="gallery">' . $thumb . '&nbsp;' . get_the_title( $i ) . '</a></li>';
+                                        echo '<li><a href="' . $img . '" data-lightbox="gallery"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
                                     // echo '<li>' . get_the_title($i) . '</li>';
                                     }
                                     else {
