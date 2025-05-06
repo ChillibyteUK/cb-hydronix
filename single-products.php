@@ -20,7 +20,10 @@ add_action(
 get_header();
 the_post();
 
-$bg = wp_get_attachment_image_url( get_field( 'hero_background' ), 'full' ) ?? '/wp-content/uploads/2022/09/product-bg-organic-2.jpg';
+$bg = wp_get_attachment_image_url( get_field( 'hero_background' ), 'full' );
+if ( ! $bg ) {
+    $bg = '/wp-content/uploads/2022/09/product-bg-organic-2.jpg';
+}
 
 $terms = get_the_terms( get_the_ID(), 'ptype' );
 $ptype = is_array( $terms ) ? array_shift( $terms ) : null;
