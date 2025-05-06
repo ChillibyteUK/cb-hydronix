@@ -310,6 +310,10 @@ if (is_array($allApps)) {
 											$views = get_field( 'views', get_the_ID() );
 											if ( is_array( $views ) ) {
     											foreach ( $views as $i ) {
+
+                                                    if ( wp_get_attachment_image_url( $i, 'full' ) == false ) {
+                                                        continue;
+                                                    }
 											        ?>
                                             <li
                                                 data-thumb="<?= esc_url( wp_get_attachment_image_url( $i, 'medium' ) ); ?>">
