@@ -325,7 +325,7 @@ if (is_array($allApps)) {
                                                 </a>
                                             </li>
                                         	    	<?php
-										        	echo wp_get_attachment_image( $i, 'large', '', array( 'class' => 'viewSlider' ) );
+										        	// echo wp_get_attachment_image( $i, 'large', '', array( 'class' => 'viewSlider' ) );
 											    }
     											if ( get_field( 'video_id' ) ) {
         											$vid = get_field( 'video_id' );
