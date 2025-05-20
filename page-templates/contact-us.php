@@ -13,6 +13,11 @@ get_header();
         <div class="row g-4">
             <div class="col-lg-6">
                 <?=get_the_content()?>
+                <div class="d-flex w-100 justify-content-between flex-wrap">
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
+                </div>
             </div>
             <div id="form" class="col-lg-6">
                 <!--[if lte IE 8]>
@@ -49,11 +54,6 @@ get_header();
                                     <li class="mb-4"><span class="fa-li"><i class="fa fa-arrow-circle-o-up"></i></span> <a class="noline" href="<?=get_field('directions_link','options')?>" target="_blank"><?=__('Get directions','cb-hydronix')?></a></li>
                                     <li><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('ho_phone','options'))?>"><?=get_field('ho_phone','options')?></a></li>
                                 </ul>
-                                <div class="d-flex w-100 justify-content-between flex-wrap">
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
-                                </div>
                             </div>
                             <div class="col-md-6">
                                 <iframe src="<?=get_field('ho_map_url','options')?>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
