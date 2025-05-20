@@ -50,9 +50,9 @@ get_header();
                                     <li><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('ho_phone','options'))?>"><?=get_field('ho_phone','options')?></a></li>
                                 </ul>
                                 <div class="d-flex w-100 justify-content-between flex-wrap">
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
-                                    <a class="btn btn-primary btn--small mb-2 noline" href="mailto:<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
+                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
+                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
+                                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -75,7 +75,7 @@ get_header();
                                 <?php
                             }
                             ?>
-                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('eu_email','options')?>"><?=__('Hydronix Europe','cb-hydronix')?></a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('eu_email','options')?>"><?=__('Hydronix Europe','cb-hydronix')?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ get_header();
                         <div class="mb-3"><em><?=get_field('fr_locality','options')?></em></div>
                         <ul class="fa-ul">
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('fr_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
-                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('fr_email','options')?>"><?=__('Hydronix France','cb-hydronix')?></a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('fr_email','options')?>"><?=__('Hydronix France','cb-hydronix')?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -97,6 +97,7 @@ get_header();
                         <div class="mb-3"><em><?=get_field('cn_locality','options')?></em></div>
                         <ul class="fa-ul">
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('cn_phone','options'))?>"><?=get_field('cn_phone','options')?></a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('cn_email','options')?>"><?=__('Hydronix China','cb-hydronix')?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -114,7 +115,7 @@ get_header();
                                 <li class="mb-4"><span class="fa-li"><i class="fa fa-mobile"></i></span>
                                     <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
                                     <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
-                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="mailto:<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
+                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
                             </ul>
                         </div>
                     </div>
