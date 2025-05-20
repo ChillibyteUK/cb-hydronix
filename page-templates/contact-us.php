@@ -6,6 +6,10 @@ Template Name: Contact Page
 defined('ABSPATH') || exit;
 
 get_header();
+
+$ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_email','options'), ICL_LANGUAGE_CODE );
+$ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), ICL_LANGUAGE_CODE );
+$ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), ICL_LANGUAGE_CODE );
 ?>
 <main id="main">
     <div class="container py-5">
@@ -14,9 +18,9 @@ get_header();
             <div class="col-lg-6">
                 <?=get_the_content()?>
                 <div class="d-flex w-100 justify-content-between flex-wrap">
-                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_enquiries_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
-                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_support_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
-                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=get_field('ho_service_email','options')?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=$ho_enquiries_email?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Enquiries','cb-hydronix')?></a>
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=$ho_support_email?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Support','cb-hydronix')?></a>
+                    <a class="btn btn-primary btn--small mb-2 noline" href="<?=$ho_service_email?>"><i class="fa fa-envelope"></i>&nbsp;<?=__('Service','cb-hydronix')?></a>
                 </div>
             </div>
             <div id="form" class="col-lg-6">
