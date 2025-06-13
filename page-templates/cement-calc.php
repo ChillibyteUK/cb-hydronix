@@ -423,13 +423,11 @@ get_header();
                                 <th>Potential cement cost by not using Hydronix moisture measurement</th>
                                 <td id="">kg/m<sup>3</sup></td>
                                 <td id="potentialCementCost">0</td>
-                                <td id="">&nbsp;</td>
                             </tr>
                             <tr>
                                 <th>Extra Cement required to maintain w/c ratio per year</th>
                                 <td id="">Tonnes</td>
                                 <td id="extraCementPerYear">0</td>
-                                <td id="">&nbsp;</td>
                             </tr>
 
                             <tr>
@@ -440,18 +438,15 @@ get_header();
                                 <th>Cost of not using Hydronix per m<sup>3</sup></th>
                                 <td id="">£/$/€ <span id="costNotHydronixM"></span></td>
                                 <td id="">&nbsp;</td>
-                                <td id="">&nbsp;</td>
                             </tr>
                             <tr>
                                 <th>Cost of not using Hydronix per year</th>
                                 <td id="">£/$/€ <span id="costNotHydronixY"></span></td>
                                 <td id="">&nbsp;</td>
-                                <td id="">&nbsp;</td>
                             </tr>
                             <tr>
                                 <th>Environmental Cost of not using Hydronix per year</th>
                                 <td id=""><span id="envNotHydronixY"></span> kgCO<sub>2</sub>e/t</td>
-                                <td id="">&nbsp;</td>
                                 <td id="">&nbsp;</td>
                             </tr>
                         </table>
