@@ -4,7 +4,7 @@
         <nav id="plantNav">
             <div class="nav nav-tabs" id="diag-tab" role="tablist">
                 <button class="nav-link active" id="nav-dryer-tab" data-bs-toggle="tab" data-bs-target="#nav-dryer" type="button" role="tab" aria-controls="nav-dryer" aria-selected="true"><?=__('Dryer','cb-hydronix')?></button>
-                <button class="nav-link" id="nav-grinder-tab" data-bs-toggle="tab" data-bs-target="#nav-grinder" type="button" role="tab" aria-controls="nav-grinder" aria-selected="true"><?=__('Grinder','cb-hydronix')?></button>
+                <button class="nav-link" id="nav-grinder-tab" data-bs-toggle="tab" data-bs-target="#nav-grinder" type="button" role="tab" aria-controls="nav-grinder" aria-selected="true"><?=__('Mill','cb-hydronix')?></button>
                 <button class="nav-link" id="nav-mixer-tab" data-bs-toggle="tab" data-bs-target="#nav-mixer" type="button" role="tab" aria-controls="nav-mixer" aria-selected="true"><?=__('Mixer','cb-hydronix')?></button>
                 <button class="nav-link" id="nav-pelletiser-tab" data-bs-toggle="tab" data-bs-target="#nav-pelletiser" type="button" role="tab" aria-controls="nav-pelletiser" aria-selected="true"><?=__('Pelletiser','cb-hydronix')?></button>
             </div>
@@ -128,10 +128,10 @@
         </div>
             </div>
             <div class="tab-pane fade pt-4" id="nav-grinder" role="tabpanel" aria-labelledby="nav-grinder-tab" tabindex=0>
-        <h3><?=__('Grinder','cb-hydronix')?></h3>
+        <h3><?=__('Mill','cb-hydronix')?></h3>
         <div class="row mb-4">
             <div class="col-md-8 mb-4">
-                <img src="<?=get_stylesheet_directory_uri()?>/img/plant/organic-plant__grinder--dots.png" alt="organic plant - grinder" class="sc-map img-fluid" usemap="#imageMap2">
+                <img src="<?=get_stylesheet_directory_uri()?>/img/plant/organic-plant__grinder--dots.png" alt="organic plant - Mill" class="sc-map img-fluid" usemap="#imageMap2">
             </div>
             <div class="col-md-4">
                 <div class="plant" id="plantInfo2">
@@ -499,8 +499,8 @@
 </map>
 
 <map name="imageMap2"><!-- grinder -->
-    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeOne" alt="Grinder -  Pipe One" title="Grinder -  Pipe One" href="#" coords="229,290,202,305,203,336,470,493,471,464,495,450" shape="poly">
-    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeTwo" alt="Grinder -  Pipe Two" title="Grinder -  Pipe Two" href="#" coords="653,411,631,438,659,469,695,487,739,465,732,431,702,414" shape="poly">
+    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeOne" alt="Mill -  Pipe One" title="Mill -  Pipe One" href="#" coords="229,290,202,305,203,336,470,493,471,464,495,450" shape="poly">
+    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeTwo" alt="Mill -  Pipe Two" title="Mill -  Pipe Two" href="#" coords="653,411,631,438,659,469,695,487,739,465,732,431,702,414" shape="poly">
 </map>
 
 <map name="imageMap3">
