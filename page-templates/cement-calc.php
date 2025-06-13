@@ -1,9 +1,11 @@
 <?php
-/*
-Template Name: Cement Calculator
-*/
-// Exit if accessed directly.
-defined('ABSPATH') || exit;
+/**
+ * Template Name: Cement Calculator
+ *
+ * @package cb-hydronix
+ */
+
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
@@ -578,9 +580,6 @@ get_header();
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
-    <script src="<?= get_stylesheet_directory_uri() ?>/js/cementCalc.js"></script>
 </main>
 <!-- Modal -->
 <div class="modal fade" id="saveResultsModal" tabindex="-1" aria-labelledby="saveResultsModalLabel" aria-hidden="true">
@@ -620,4 +619,36 @@ get_header();
     </div>
 </div>
 <?php
+
+/**
+ * Enqueue scripts.
+ */
+function cb_hydronix_enqueue_cement_calc_scripts() {
+    // Bootstrap Bundle JS.
+    wp_enqueue_script(
+        'bootstrap-bundle',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
+        array(),
+        null,
+        true
+    );
+    // MathJS.
+    wp_enqueue_script(
+        'mathjs',
+        'https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js',
+        array(),
+        null,
+        true
+    );
+    // Local cementCalc.js, depends on mathjs and bootstrap.
+    wp_enqueue_script(
+        'cement-calc',
+        get_stylesheet_directory_uri() . '/js/cementCalc.js',
+        array( 'mathjs', 'bootstrap-bundle' ),
+        null,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'cb_hydronix_enqueue_cement_calc_scripts' );
+
 get_footer();
