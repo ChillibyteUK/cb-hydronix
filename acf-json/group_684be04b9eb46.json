@@ -73,7 +73,7 @@
       "label": "Report Intro",
       "name": "report_intro",
       "aria-label": "",
-      "type": "wysiwyg",
+      "type": "textarea",
       "instructions": "",
       "required": 0,
       "conditional_logic": 0,
@@ -84,11 +84,11 @@
       },
       "wpml_cf_preferences": 2,
       "default_value": "",
+      "maxlength": "",
       "allow_in_bindings": 0,
-      "tabs": "all",
-      "toolbar": "full",
-      "media_upload": 1,
-      "delay": 0
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
     },
     {
       "key": "field_684be0b123fd5",
