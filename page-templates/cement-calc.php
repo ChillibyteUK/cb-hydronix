@@ -601,7 +601,7 @@ get_header();
     <div class="container">
         <?php
         if ( get_field( 'disclaimer' ) ) {
-            echo '<div class="alert alert-info" role="alert">';
+            echo '<div class="alert alert-light" role="alert">';
             echo wp_kses_post( get_field( 'disclaimer' ) );
             echo '</div>';
         }
