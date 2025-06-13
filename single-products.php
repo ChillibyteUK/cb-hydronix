@@ -587,11 +587,17 @@ if (get_field('accessories')) {
                             <?php
                             if ( get_field( 'accessories' ) ?? null ) {
                                 foreach ( get_field( 'accessories' ) as $i ) {
+                                    $en_id = apply_filters( 'wpml_object_id', $i, 'accessory', true, 'en' );
                                     if ( has_post_thumbnail( $i )) {
                                         $img   = get_the_post_thumbnail_url( $i, 'full' );
                                         $thumb = get_the_post_thumbnail_url( $i, 'thumbnail' );
                                         echo '<li class="mb-2"><a href="' . $img . '" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
                                     // echo '<li>' . get_the_title($i) . '</li>';
+                                    }
+                                    elseif ( has_post_thumbnail( $en_id )) {
+                                        $img   = get_the_post_thumbnail_url( $en_id, 'full' );
+                                        $thumb = get_the_post_thumbnail_url( $en_id, 'thumbnail' );
+                                        echo '<li class="mb-2"><a href="' . $img . '" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
                                     }
                                     else {
                                         echo '<li class="mb-2">' . get_the_title( $i ) . '</li>';
