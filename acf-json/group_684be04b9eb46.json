@@ -1,0 +1,135 @@
+{
+  "key": "group_684be04b9eb46",
+  "title": "Cement Calculator",
+  "fields": [
+    {
+      "key": "field_684be03f23fd4",
+      "label": "Recipe Intro",
+      "name": "recipe_intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_684be0d623fd6",
+      "label": "Production Data Intro",
+      "name": "production_data_intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_684be0fa23fd7",
+      "label": "Moisture Intro",
+      "name": "moisture_intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_684be11623fd8",
+      "label": "Report Intro",
+      "name": "report_intro",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_684be0b123fd5",
+      "label": "Disclaimer",
+      "name": "disclaimer",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "page-templates/cement-calc.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfml_field_group_mode": "translation"
+}

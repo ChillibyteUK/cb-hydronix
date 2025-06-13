@@ -42,6 +42,13 @@ get_header();
             <div class="tab-pane fade show active" id="recipe" role="tabpanel" aria-labelledby="recipe-tab">
                 <div class="mt-3">
                     <h2 class="mb-4">Mix Design for 1m<sup>3</sup> of Concrete</h2>
+                    <?php
+                    if ( get_field( 'recipe_intro' ) ) {
+                        echo '<div class="alert alert-info" role="alert">';
+                        echo wp_kses_post( get_field( 'recipe_intro' ) );
+                        echo '</div>';
+                    }
+                    ?>
                     <div class="row g-5">
                         <div class="col-lg-6">
                             <h4>Aggregates</h4>
@@ -194,6 +201,13 @@ get_header();
             <div class="tab-pane fade" id="production-data" role="tabpanel" aria-labelledby="production-data-tab">
                 <div class="mt-3">
                     <h2>Production Data</h2>
+                    <?php
+                    if ( get_field( 'production_data_intro' ) ) {
+                        echo '<div class="alert alert-info" role="alert">';
+                        echo wp_kses_post( get_field( 'production_data_intro' ) );
+                        echo '</div>';
+                    }
+                    ?>
                     <div class="mb-3 row border-bottom">
                         <label for="volumePerDay" class="col-sm-6 col-xl-8 col-form-label">Volume of concrete per day</label>
                         <div class="col-sm-6 col-xl-4">
@@ -261,6 +275,13 @@ get_header();
             <div class="tab-pane fade" id="material-moisture" role="tabpanel" aria-labelledby="material-moisture-tab">
                 <div class="mt-3">
                     <h2>Material Moisture</h2>
+                    <?php
+                    if ( get_field( 'moisture_intro' ) ) {
+                        echo '<div class="alert alert-info" role="alert">';
+                        echo wp_kses_post( get_field( 'moisture_intro' ) );
+                        echo '</div>';
+                    }
+                    ?>
                     <div class="mb-3 row">
                         <label for="moistureMethod" class="col-sm-8 col-form-label">How is the moisture currently measured?</label>
                         <div class="col-sm-4">
@@ -388,6 +409,13 @@ get_header();
             <div class="tab-pane fade" id="wc-report" role="tabpanel" aria-labelledby="wc-report-tab">
                 <div class="mt-3">
                     <h2>Water/Cement Report</h2>
+                    <?php
+                    if ( get_field( 'report_intro' ) ) {
+                        echo '<div class="alert alert-info" role="alert">';
+                        echo wp_kses_post( get_field( 'report_intro' ) );
+                        echo '</div>';
+                    }
+                    ?>
                     <div class="table-responsive">
                         <table class="table table-sm table-bordered" id="wcReportTable">
                             <thead>
@@ -579,6 +607,15 @@ get_header();
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+        <?php
+        if ( get_field( 'disclaimer' ) ) {
+            echo '<div class="alert alert-info" role="alert">';
+            echo wp_kses_post( get_field( 'disclaimer' ) );
+            echo '</div>';
+        }
+        ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
