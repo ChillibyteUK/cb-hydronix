@@ -500,7 +500,7 @@
 
 <map name="imageMap2"><!-- grinder -->
     <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeOne" alt="<?=__('Grinder - Pipe One','cb-hydronix')?>" title="<?=__('Grinder - Pipe One','cb-hydronix')?>" href="#" coords="229,290,202,305,203,336,470,493,471,464,495,450" shape="poly">
-    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeTwo" alt="<?=__('Grinder - Pipe One','cb-hydronix')?>" title="<?=__('Grinder - Pipe One','cb-hydronix')?>" href="#" coords="653,411,631,438,659,469,695,487,739,465,732,431,702,414" shape="poly">
+    <area data-maphilight='{"fillColor":"ef9829","fillOpacity":0.6}' id="grinderPipeTwo" alt="<?=__('Grinder - Pipe Two','cb-hydronix')?>" title="<?=__('Grinder - Pipe Two','cb-hydronix')?>" href="#" coords="653,411,631,438,659,469,695,487,739,465,732,431,702,414" shape="poly">
 </map>
 
 <map name="imageMap3">
