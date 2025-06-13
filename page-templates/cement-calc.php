@@ -408,7 +408,7 @@ get_header();
             </div>
             <div class="tab-pane fade" id="wc-report" role="tabpanel" aria-labelledby="wc-report-tab">
                 <div class="mt-3">
-                    <h2>Water/Cement Report</h2>
+                    <h2>Return on Investment Report</h2>
                     <?php
                     if ( get_field( 'report_intro' ) ) {
                         echo '<div class="alert alert-info" role="alert">';
@@ -416,6 +416,47 @@ get_header();
                         echo '</div>';
                     }
                     ?>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered" id="wcReportTable">
+
+                            <tr>
+                                <th>Potential cement cost by not using Hydronix moisture measurement</th>
+                                <td id="">kg/m<sup>3</sup></td>
+                                <td id="potentialCementCost">0</td>
+                                <td id="">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th>Extra Cement required to maintain w/c ratio per year</th>
+                                <td id="">Tonnes</td>
+                                <td id="extraCementPerYear">0</td>
+                                <td id="">&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+
+                            <tr>
+                                <th>Cost of not using Hydronix per m<sup>3</sup></th>
+                                <td id="">£/$/€ <span id="costNotHydronixM"></span></td>
+                                <td id="">&nbsp;</td>
+                                <td id="">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th>Cost of not using Hydronix per year</th>
+                                <td id="">£/$/€ <span id="costNotHydronixY"></span></td>
+                                <td id="">&nbsp;</td>
+                                <td id="">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <th>Environmental Cost of not using Hydronix per year</th>
+                                <td id=""><span id="envNotHydronixY"></span> kgCO<sub>2</sub>e/t</td>
+                                <td id="">&nbsp;</td>
+                                <td id="">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-sm table-bordered" id="wcReportTable">
                             <thead>
@@ -559,47 +600,6 @@ get_header();
                                     <th id="extraCementNeededTolerance" class="text-end">0</th>
                                     <th id="extraCementNeededHydronix" class="text-end">0</th>
                                 </tr>
-
-                                <tr>
-                                    <td colspan="4"></td>
-                                </tr>
-
-                                <tr>
-                                    <th>Potential cement cost by not using Hydronix moisture measurement</th>
-                                    <td id="">kg/m<sup>3</sup></td>
-                                    <td id="potentialCementCost">0</td>
-                                    <td id="">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <th>Extra Cement required to maintain w/c ratio per year</th>
-                                    <td id="">Tonnes</td>
-                                    <td id="extraCementPerYear">0</td>
-                                    <td id="">&nbsp;</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="4"></td>
-                                </tr>
-
-                                <tr>
-                                    <th>Cost of not using Hydronix per m<sup>3</sup></th>
-                                    <td id="">£/$/€ <span id="costNotHydronixM"></span></td>
-                                    <td id="">&nbsp;</td>
-                                    <td id="">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <th>Cost of not using Hydronix per year</th>
-                                    <td id="">£/$/€ <span id="costNotHydronixY"></span></td>
-                                    <td id="">&nbsp;</td>
-                                    <td id="">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <th>Environmental Cost of not using Hydronix per year</th>
-                                    <td id=""><span id="envNotHydronixY"></span> kgCO<sub>2</sub>e/t</td>
-                                    <td id="">&nbsp;</td>
-                                    <td id="">&nbsp;</td>
-                                </tr>
-
                             </tbody>
                         </table>
                     </div>
