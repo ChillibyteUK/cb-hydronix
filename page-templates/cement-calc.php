@@ -416,7 +416,7 @@ get_header();
                         echo '</div>';
                     }
                     ?>
-                    <div class="table-responsive">
+                    <div class="table-responsive alert alert-success h5">
                         <table class="table table-sm table-bordered" id="wcReportTable">
 
                             <tr>
