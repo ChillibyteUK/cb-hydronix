@@ -588,6 +588,7 @@ if (get_field('accessories')) {
                             if ( get_field( 'accessories' ) ?? null ) {
                                 foreach ( get_field( 'accessories' ) as $i ) {
                                     $en_id = apply_filters( 'wpml_object_id', $i, 'accessory', true, 'en' );
+                                    echo $en_id;
                                     if ( has_post_thumbnail( $i )) {
                                         $img   = get_the_post_thumbnail_url( $i, 'full' );
                                         $thumb = get_the_post_thumbnail_url( $i, 'thumbnail' );
