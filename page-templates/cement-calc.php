@@ -610,6 +610,12 @@ get_header();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"></script>
     <script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cementCalc.js' ); ?>"></script>
+    <style>
+        .modal-dialog {
+            width: min(90vw, 800px);
+            max-width: 800px;
+        }
+    </style>
 </main>
 <!-- Modal -->
 <div class="modal fade" id="saveResultsModal" tabindex="-1" aria-labelledby="saveResultsModalLabel" aria-hidden="true">
@@ -620,6 +626,13 @@ get_header();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <?php
+                if ( get_field( 'email_intro' ) ) {
+                    echo '<div class="alert alert-info" role="alert">';
+                    echo wp_kses_post( get_field( 'email_intro' ) );
+                    echo '</div>';
+                }
+                ?>
                 <form id="resultsForm">
                     <div class="mb-3">
                         <label for="nameField" class="form-label">Name</label>

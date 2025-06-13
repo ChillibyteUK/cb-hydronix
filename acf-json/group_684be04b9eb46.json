@@ -20,9 +20,9 @@
       "default_value": "",
       "maxlength": "",
       "allow_in_bindings": 0,
-      "rows": "",
+      "rows": 4,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "wpautop"
     },
     {
       "key": "field_684be0d623fd6",
@@ -42,9 +42,9 @@
       "default_value": "",
       "maxlength": "",
       "allow_in_bindings": 0,
-      "rows": "",
+      "rows": 4,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "wpautop"
     },
     {
       "key": "field_684be0fa23fd7",
@@ -64,9 +64,9 @@
       "default_value": "",
       "maxlength": "",
       "allow_in_bindings": 0,
-      "rows": "",
+      "rows": 4,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "wpautop"
     },
     {
       "key": "field_684be11623fd8",
@@ -86,9 +86,9 @@
       "default_value": "",
       "maxlength": "",
       "allow_in_bindings": 0,
-      "rows": "",
+      "rows": 4,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "wpautop"
     },
     {
       "key": "field_684be0b123fd5",
@@ -108,9 +108,31 @@
       "default_value": "",
       "maxlength": "",
       "allow_in_bindings": 0,
-      "rows": "",
+      "rows": 4,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "wpautop"
+    },
+    {
+      "key": "field_684be80ad9248",
+      "label": "Email Intro",
+      "name": "email_intro",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "wpml_cf_preferences": 2,
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": 4,
+      "placeholder": "",
+      "new_lines": "wpautop"
     }
   ],
   "location": [
