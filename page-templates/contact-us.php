@@ -15,7 +15,13 @@ $url_path = get_field('ho_enquiries_email','options');
 $full_url = home_url( $url_path );
 $page_id = url_to_postid( $full_url );
 
-echo 'Page ID: ' . $page_id;
+$page_id = $page_id; // Original page ID
+$translated_id = apply_filters( 'wpml_object_id', $page_id, 'page', false, ICL_LANGUAGE_CODE ); // Replace 'fr' with target language code
+
+if ( $translated_id ) {
+    $translated_url = get_permalink( $translated_id );
+    echo $translated_url;
+}
 ?>
 <main id="main">
     <div class="container py-5">
