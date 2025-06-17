@@ -12,7 +12,7 @@ $ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_e
 $ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), $current_language );
 $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), $current_language );
 
-$url_path = get_field('ho_enquiries_email','options');
+$url_path = get_field('ho_enquiries_email','options','en');
 echo $url_path . "<br>";
 $full_url = home_url( $url_path );
 echo $full_url . "<br>";
