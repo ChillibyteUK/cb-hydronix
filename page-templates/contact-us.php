@@ -13,8 +13,11 @@ $ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email
 $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), $current_language );
 
 $url_path = get_field('ho_enquiries_email','options');
+echo $url_path . "<br>";
 $full_url = home_url( $url_path );
+echo $full_url . "<br>";
 $page_id = url_to_postid( $full_url );
+echo $page_id . "<br>";
 $current_language = apply_filters( 'wpml_current_language', null );
 
 $page_id = $page_id; // Original page ID
