@@ -10,6 +10,12 @@ get_header();
 $ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_email','options'), ICL_LANGUAGE_CODE );
 $ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), ICL_LANGUAGE_CODE );
 $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), ICL_LANGUAGE_CODE );
+
+$url_path = get_field('ho_enquiries_email','options');
+$full_url = home_url( $url_path );
+$page_id = url_to_postid( $full_url );
+
+echo 'Page ID: ' . $page_id;
 ?>
 <main id="main">
     <div class="container py-5">
