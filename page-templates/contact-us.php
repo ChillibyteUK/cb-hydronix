@@ -7,26 +7,10 @@ defined('ABSPATH') || exit;
 
 get_header();
 
-$ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_email','options'), ICL_LANGUAGE_CODE );
-$ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), ICL_LANGUAGE_CODE );
-$ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), ICL_LANGUAGE_CODE );
-
-$url_path = get_field('ho_enquiries_email','options');
-$full_url = home_url( $url_path );
-$page_id = url_to_postid( $full_url );
-
-$page_id = $page_id; // Original page ID
-$translated_id = apply_filters( 'wpml_object_id', $page_id, 'page', false, ICL_LANGUAGE_CODE ); // Replace 'fr' with target language code
-
 $current_language = apply_filters( 'wpml_current_language', null );
-echo $current_language; // e.g., 'en', 'fr', 'de'
-
-if ( $translated_id ) {
-    $translated_url = get_permalink( $translated_id );
-    echo $translated_url;
-} else {
-    echo "not found ";
-}
+$ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_email','options'), $current_language );
+$ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), $current_language );
+$ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), $current_language );
 ?>
 <main id="main">
     <div class="container py-5">
