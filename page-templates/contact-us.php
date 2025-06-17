@@ -18,11 +18,14 @@ $page_id = url_to_postid( $full_url );
 $page_id = $page_id; // Original page ID
 $translated_id = apply_filters( 'wpml_object_id', $page_id, 'page', false, ICL_LANGUAGE_CODE ); // Replace 'fr' with target language code
 
+$current_language = apply_filters( 'wpml_current_language', null );
+echo $current_language; // e.g., 'en', 'fr', 'de'
+
 if ( $translated_id ) {
     $translated_url = get_permalink( $translated_id );
-    echo $translated_url . ICL_LANGUAGE_CODE;
+    echo $translated_url;
 } else {
-    echo "not found " . ICL_LANGUAGE_CODE;
+    echo "not found ";
 }
 ?>
 <main id="main">
