@@ -11,6 +11,21 @@ $current_language = apply_filters( 'wpml_current_language', null );
 $ho_enquiries_email = apply_filters( 'wpml_permalink', get_field('ho_enquiries_email','options'), $current_language );
 $ho_support_email = apply_filters( 'wpml_permalink', get_field('ho_support_email','options'), $current_language );
 $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email','options'), $current_language );
+
+$url_path = get_field('ho_enquiries_email','options');
+$full_url = home_url( $url_path );
+$page_id = url_to_postid( $full_url );
+$current_language = apply_filters( 'wpml_current_language', null );
+
+$page_id = $page_id; // Original page ID
+$translated_id = apply_filters( 'wpml_object_id', $page_id, 'page', false, $current_language ); // Replace 'fr' with target language code
+
+if ( $translated_id ) {
+    $translated_url = get_permalink( $translated_id );
+    echo $translated_url;
+} else {
+    echo "not found ";
+}
 ?>
 <main id="main">
     <div class="container py-5">
