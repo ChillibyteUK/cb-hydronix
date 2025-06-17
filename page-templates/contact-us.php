@@ -21,6 +21,8 @@ $translated_id = apply_filters( 'wpml_object_id', $page_id, 'page', false, ICL_L
 if ( $translated_id ) {
     $translated_url = get_permalink( $translated_id );
     echo $translated_url;
+} else {
+    echo "not found";
 }
 ?>
 <main id="main">
