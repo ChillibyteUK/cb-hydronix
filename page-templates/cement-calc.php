@@ -196,7 +196,7 @@ get_header();
                     </div>
                 </div>
 				<div class="d-flex justify-content-end">
-					<button class="btn btn-primary mt-3" onclick="document.getElementById('production-data-tab').click();">Next</button>
+					<button class="btn btn-primary mt-3 me-0" onclick="document.getElementById('production-data-tab').click();">Next</button>
 				</div>
             </div>
             <!-- Production Data Tab -->
@@ -273,7 +273,7 @@ get_header();
                 </div>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-secondary mt-3" onclick="document.getElementById('recipe-tab').click();">Back</button>
-                    <button class="btn btn-primary mt-3" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
+                    <button class="btn btn-primary mt-3 me-0" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
                 </div>
             </div>
             <!-- Material Moisture Tab -->
@@ -420,14 +420,14 @@ get_header();
                 </div>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-secondary mt-3" onclick="document.getElementById('production-data-tab').click();">Back</button>
-                    <button class="btn btn-primary mt-3" onclick="document.getElementById('wc-report-tab').click();">Next</button>
+                    <button class="btn btn-primary mt-3 me-0" onclick="document.getElementById('wc-report-tab').click();">Next</button>
                 </div>
             </div>
             <div class="tab-pane fade" id="wc-report" role="tabpanel" aria-labelledby="wc-report-tab">
                 <div class="mt-3">
 					<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
 						<h2>Return on Investment Report</h2>
-						<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
+						<button class="btn btn-primary me-0" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
 					</div>
                     <?php
                     if ( get_field( 'report_intro' ) ) {
@@ -615,7 +615,7 @@ get_header();
                     </div>
 					<div class="d-flex justify-content-between">
 						<button class="btn btn-secondary mt-3" onclick="document.getElementById('material-moisture-tab').click();">Back</button>
-						<button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
+						<button class="btn btn-primary mt-3 me-0" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
 					</div>
                 </div>
             </div>
