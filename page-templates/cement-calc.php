@@ -483,19 +483,19 @@ get_header();
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Sand 0 - 2mm</td>
+                                    <td>Fine Sand 0 - 2mm</td>
                                     <td id="sand1Recipe" class="text-end">1000</td>
                                     <td id="sand1Tolerance" class="text-end">0</td>
                                     <td id="sand1Hydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
-                                    <td>Sand 0 - 4mm</td>
+                                    <td>Coarse Sand 0 - 4mm</td>
                                     <td id="sand2Recipe" class="text-end">1000</td>
                                     <td id="sand2Tolerance" class="text-end">0</td>
                                     <td id="sand2Hydronix" class="text-end">0</td>
                                 </tr>
                                 <tr>
-                                    <td>Aggregate 8 - 16mm</td>
+                                    <td>Gravel 8 - 16mm</td>
                                     <td id="aggregateRecipe" class="text-end">650</td>
                                     <td id="aggregateTolerance" class="text-end">0</td>
                                     <td id="aggregateHydronix" class="text-end">0</td>
