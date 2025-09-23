@@ -304,7 +304,7 @@ get_header();
                             <label for="sand1Nominal" class="col-sm-4 col-form-label">Fine Sand (0-2 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text">Nominal Moisture</span>
+                                    <span class="input-group-text">Average Moisture</span>
                                     <input type="number" class="form-control" id="sand1Nominal" value="6.5" oninput="calculatePotentialManual(); calculatePotentialAutomatic();">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -331,7 +331,7 @@ get_header();
                             <label for="sand2Nominal" class="col-sm-4 col-form-label">Coarse Sand (0-4 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text">Nominal Moisture</span>
+                                    <span class="input-group-text">Average Moisture</span>
                                     <input type="number" class="form-control" id="sand2Nominal" value="5.5" oninput="calculatePotentialManual(); calculatePotentialAutomatic();">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -358,7 +358,7 @@ get_header();
                             <label for="aggregateNominal" class="col-sm-4 col-form-label">Gravel (8-16 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text">Nominal Moisture</span>
+                                    <span class="input-group-text">Average Moisture</span>
                                     <input type="number" class="form-control" id="aggregateNominal" value="2.5" oninput="calculatePotentialManual(); calculatePotentialAutomatic();">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -385,7 +385,7 @@ get_header();
                             <label for="otherAggregatesNominal" class="col-sm-4 col-form-label">Other Aggregates</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text">Nominal Moisture</span>
+                                    <span class="input-group-text">Average Moisture</span>
                                     <input type="number" class="form-control" id="otherAggregatesNominal" value="0.0" oninput="calculatePotentialManual(); calculatePotentialAutomatic();">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -680,7 +680,7 @@ get_header();
                     </div>
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-secondary" onclick="document.getElementById('material-moisture-tab').click();">Back</button>
-                        <button type="button" class="btn btn-primary" id="saveResultsButton" onclick="resultsJson()" disabled>Save Results</button>
+                        <button type="button" class="btn btn-primary me-0" id="saveResultsButton" onclick="resultsJson()" disabled>Save Results</button>
                     </div>
                 </form>
             </div>
