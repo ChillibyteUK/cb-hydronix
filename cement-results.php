@@ -50,9 +50,21 @@ if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['data'] ) ) {
             }
         }
 
-        // Redirect to the newly created post.
-        wp_safe_redirect( home_url( '/cement-results/' . $post_slug ) );
-        exit;
+        // Check if this is an AJAX request expecting JSON response.
+        $http_x_requested_with = sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_REQUESTED_WITH'] ?? '' ) );
+        if ( ! empty( $http_x_requested_with ) && 'xmlhttprequest' === strtolower( $http_x_requested_with ) ) {
+            // Return JSON response for AJAX requests.
+            wp_send_json_success(
+                array(
+                    'post_id'     => $post_id,
+                    'results_url' => home_url( '/cement-results/' . $post_slug ),
+                )
+            );
+        } else {
+            // Redirect to the newly created post for regular form submissions.
+            wp_safe_redirect( home_url( '/cement-results/' . $post_slug ) );
+            exit;
+        }
     }
 }
 

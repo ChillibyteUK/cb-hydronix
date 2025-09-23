@@ -517,25 +517,17 @@ function resultsJson() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest', // This tells the server it's an AJAX request
             },
             body: `data=${encodeURIComponent(JSON.stringify(jsonData))}`,
         })
-            .then(response => {
-                if (response.ok) {
-                    return response.text().then(text => {
-                        // Extract post ID from the redirect URL
-                        const urlMatch = text.match(/cement-results\/(\d+)/);
-                        if (urlMatch) {
-                            const postId = urlMatch[1];
-                            
-                            // Now send the email with the post ID
-                            return sendResultsEmail(name, company, email, postId);
-                        } else {
-                            throw new Error('Could not extract post ID from response');
-                        }
-                    });
+            .then(response => response.json()) // Expect JSON response now
+            .then(data => {
+                if (data.success && data.data.post_id) {
+                    // Now send the email with the post ID
+                    return sendResultsEmail(name, company, email, data.data.post_id);
                 } else {
-                    throw new Error('Failed to save results');
+                    throw new Error('Failed to save results: ' + (data.data?.message || 'Unknown error'));
                 }
             })
             .then(emailResponse => {
