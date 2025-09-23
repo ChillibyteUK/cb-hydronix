@@ -680,7 +680,7 @@ get_header();
                     </div>
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary me-0" id="saveResultsButton" onclick="resultsJson()" disabled>Save Results</button>
+                        <button type="button" class="btn btn-primary me-0" id="saveResultsButton" onclick="resultsJson()" disabled>Send My Results</button>
                     </div>
                 </form>
             </div>
