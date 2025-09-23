@@ -500,13 +500,19 @@ function resultsJson() {
         const name = nameField.value.trim();
         const company = companyField.value.trim();
 
+        // Disable the button and show loading state
+        const saveButton = document.getElementById('saveResultsButton');
+        const originalText = saveButton.textContent;
+        saveButton.disabled = true;
+        saveButton.textContent = 'Sending...';
+
         // Prepare JSON data
         const jsonData = prepareTableData();
         jsonData.push({ id: 'email', value: email });
         jsonData.push({ id: 'name', value: name });
         jsonData.push({ id: 'company', value: company });
 
-        // Submit the data and redirect
+        // First, submit the data to create the post
         fetch('/wp-content/themes/cb-hydronix/cement-results.php', {
             method: 'POST',
             headers: {
@@ -515,16 +521,66 @@ function resultsJson() {
             body: `data=${encodeURIComponent(JSON.stringify(jsonData))}`,
         })
             .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
+                if (response.ok) {
+                    return response.text().then(text => {
+                        // Extract post ID from the redirect URL
+                        const urlMatch = text.match(/cement-results\/(\d+)/);
+                        if (urlMatch) {
+                            const postId = urlMatch[1];
+                            
+                            // Now send the email with the post ID
+                            return sendResultsEmail(name, company, email, postId);
+                        } else {
+                            throw new Error('Could not extract post ID from response');
+                        }
+                    });
                 } else {
-                    console.error('Failed to save results.');
+                    throw new Error('Failed to save results');
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .then(emailResponse => {
+                if (emailResponse.success) {
+                    // Show success message and redirect
+                    alert('Results saved and email sent successfully!');
+                    window.location.href = emailResponse.data.results_url;
+                } else {
+                    // Results saved but email failed - still redirect but show warning
+                    alert('Results saved but email failed to send: ' + emailResponse.data.message);
+                    window.location.href = emailResponse.data.results_url || '/cement-results/';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred: ' + error.message);
+                
+                // Re-enable button
+                saveButton.disabled = false;
+                saveButton.textContent = originalText;
+            });
     } else {
         alert('Please fill out all required fields correctly.');
     }
+}
+
+// Function to send results email via AJAX
+function sendResultsEmail(name, company, email, postId) {
+    const formData = new FormData();
+    formData.append('action', 'send_cement_results_email');
+    formData.append('name', name);
+    formData.append('company', company);
+    formData.append('email', email);
+    formData.append('post_id', postId);
+    formData.append('nonce', cementCalcNonce); // We'll need to add this nonce to the PHP template
+
+    return fetch(ajaxUrl, { // We'll need to add ajaxUrl to the PHP template
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .catch(error => {
+        console.error('Email error:', error);
+        return { success: false, data: { message: 'Email service unavailable' } };
+    });
 }
 
 // Function to scrape table data
