@@ -378,6 +378,28 @@ document.querySelectorAll('input, select').forEach(element => {
 // Initial WC Report update
 updateWCReport();
 
+// Add scroll to top functionality for Next buttons
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Add event listeners to all Next buttons
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all buttons with "Next" or "Back" text that navigate between tabs
+    const navButtons = document.querySelectorAll('button');
+    navButtons.forEach(button => {
+        const buttonText = button.textContent.trim();
+        if ((buttonText === 'Next' || buttonText === 'Back') && button.onclick) {
+            button.addEventListener('click', function() {
+                // Small delay to allow tab change to complete, then scroll to top
+                setTimeout(scrollToTop, 100);
+            });
+        }
+    });
+});
 
 function updateSlider(input) {
     const slider = document.getElementById(input.id + '-slider');

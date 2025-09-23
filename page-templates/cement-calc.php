@@ -54,7 +54,7 @@ get_header();
                             <h4>Aggregates</h4>
 
                             <div class="mb-3 row border-bottom">
-                                <label for="sand1" class="col-sm-6 col-xl-8 col-form-label">Sand (0-2 mm)</label>
+                                <label for="sand1" class="col-sm-6 col-xl-8 col-form-label">Fine Sand (0-2 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
                                         <input type="number" class="form-control text-end" id="sand1" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -65,7 +65,7 @@ get_header();
                             </div>
 
                             <div class="mb-3 row border-bottom">
-                                <label for="sand2" class="col-sm-6 col-xl-8 col-form-label">Sand (0-4 mm)</label>
+                                <label for="sand2" class="col-sm-6 col-xl-8 col-form-label">Coarse Sand (0-4 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
                                         <input type="number" class="form-control text-end" id="sand2" value="1000" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -76,7 +76,7 @@ get_header();
                             </div>
 
                             <div class="mb-3 row border-bottom">
-                                <label for="aggregate" class="col-sm-6 col-xl-8 col-form-label">Aggregate (8-16 mm)</label>
+                                <label for="aggregate" class="col-sm-6 col-xl-8 col-form-label">Gravel (8-16 mm)</label>
                                 <div class="col-sm-6 col-xl-4">
                                     <div class="input-group mb-2">
                                         <input type="number" class="form-control text-end" id="aggregate" value="650" oninput="updateSlider(this); calculateAggregateTotal(); calculateBinderTotal(); calculateTotalDryWeight(); calculateRatios();">
@@ -195,7 +195,9 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('production-data-tab').click();">Next</button>
+				<div class="d-flex justify-content-end">
+					<button class="btn btn-primary mt-3" onclick="document.getElementById('production-data-tab').click();">Next</button>
+				</div>
             </div>
             <!-- Production Data Tab -->
             <div class="tab-pane fade" id="production-data" role="tabpanel" aria-labelledby="production-data-tab">
@@ -239,7 +241,7 @@ get_header();
                         </div>
                     </div>
                     <div class="mb-3 row border-bottom">
-                        <label for="cementCO2" class="col-sm-6 col-xl-8 col-form-label">Cement CO2 Equivalent</label>
+                        <label for="cementCO2" class="col-sm-6 col-xl-8 col-form-label">Cement CO<sub>2</sub> Equivalent</label>
                         <div class="col-sm-6 col-xl-4">
                             <div class="input-group mb-2">
                                 <input type="number" class="form-control" id="cementCO2" value="928">
@@ -249,7 +251,7 @@ get_header();
                         </div>
                     </div>
                     <div class="mb-3 row border-bottom">
-                        <label for="productionCost" class="col-sm-6 col-xl-8 col-form-label">Production Cost</label>
+                        <label for="productionCost" class="col-sm-6 col-xl-8 col-form-label">Final Concrete Production Cost</label>
                         <div class="col-sm-6 col-xl-4">
                             <div class="input-group mb-2">
                                 <input type="number" class="form-control" id="productionCost" value="100">
@@ -259,7 +261,7 @@ get_header();
                         </div>
                     </div>
                     <div class="mb-3 row border-bottom">
-                        <label for="salePrice" class="col-sm-6 col-xl-8 col-form-label">Sale price</label>
+                        <label for="salePrice" class="col-sm-6 col-xl-8 col-form-label">Final Concrete Sale Price</label>
                         <div class="col-sm-6 col-xl-4">
                             <div class="input-group mb-2">
                                 <input type="number" class="form-control" id="salePrice" value="150">
@@ -269,7 +271,10 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-secondary mt-3" onclick="document.getElementById('recipe-tab').click();">Back</button>
+                    <button class="btn btn-primary mt-3" onclick="document.getElementById('material-moisture-tab').click();">Next</button>
+                </div>
             </div>
             <!-- Material Moisture Tab -->
             <div class="tab-pane fade" id="material-moisture" role="tabpanel" aria-labelledby="material-moisture-tab">
@@ -296,7 +301,7 @@ get_header();
                     <div id="moistureFields">
                         <h4>Moisture Content</h4>
                         <div class="mb-3 pb-3 row border-bottom">
-                            <label for="sand1Nominal" class="col-sm-4 col-form-label">Sand (0-2 mm)</label>
+                            <label for="sand1Nominal" class="col-sm-4 col-form-label">Fine Sand (0-2 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
                                     <span class="input-group-text">Nominal Moisture</span>
@@ -313,7 +318,7 @@ get_header();
                                 </div>
                                 <div class="input-group mb-2 automatic-field" style="display: none;">
                                     <span class="input-group-text">Accuracy</span>
-                                    <input type="number" class="form-control" id="sand1Accuracy" value="0.5" oninput="calculatePotentialAutomatic();">
+                                    <input type="number" class="form-control" id="sand1Accuracy" value="1" oninput="calculatePotentialAutomatic();">
                                     <span class="input-group-text">+/- %</span>
                                 </div>
                                 <span class="cLabel">Potential Maximum Unknown Moisture</span>
@@ -323,7 +328,7 @@ get_header();
                         </div>
                         <!-- Similar setup for other moisture materials -->
                         <div class="mb-3 pb-3 row border-bottom">
-                            <label for="sand2Nominal" class="col-sm-4 col-form-label">Sand (0-4 mm)</label>
+                            <label for="sand2Nominal" class="col-sm-4 col-form-label">Coarse Sand (0-4 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
                                     <span class="input-group-text">Nominal Moisture</span>
@@ -340,7 +345,7 @@ get_header();
                                 </div>
                                 <div class="input-group mb-2 automatic-field" style="display: none;">
                                     <span class="input-group-text">Accuracy</span>
-                                    <input type="number" class="form-control" id="sand2Accuracy" value="0.5" oninput="calculatePotentialAutomatic();">
+                                    <input type="number" class="form-control" id="sand2Accuracy" value="1" oninput="calculatePotentialAutomatic();">
                                     <span class="input-group-text">+/- %</span>
                                 </div>
                                 <span class="cLabel">Potential Maximum Unknown Moisture</span>
@@ -350,7 +355,7 @@ get_header();
                         </div>
                         <!-- Aggregate Moisture Content -->
                         <div class="mb-3 pb-3 row border-bottom">
-                            <label for="aggregateNominal" class="col-sm-4 col-form-label">Aggregate (8-16 mm)</label>
+                            <label for="aggregateNominal" class="col-sm-4 col-form-label">Gravel (8-16 mm)</label>
                             <div class="col-sm-8">
                                 <div class="input-group mb-2">
                                     <span class="input-group-text">Nominal Moisture</span>
@@ -367,7 +372,7 @@ get_header();
                                 </div>
                                 <div class="input-group mb-2 automatic-field" style="display: none;">
                                     <span class="input-group-text">Accuracy</span>
-                                    <input type="number" class="form-control" id="aggregateAccuracy" value="0.5" oninput="calculatePotentialAutomatic();">
+                                    <input type="number" class="form-control" id="aggregateAccuracy" value="1" oninput="calculatePotentialAutomatic();">
                                     <span class="input-group-text">+/- %</span>
                                 </div>
                                 <span class="cLabel">Potential Maximum Unknown Moisture</span>
@@ -394,7 +399,7 @@ get_header();
                                 </div>
                                 <div class="input-group mb-2 automatic-field" style="display: none;">
                                     <span class="input-group-text">Accuracy</span>
-                                    <input type="number" class="form-control" id="otherAggregatesAccuracy" value="0.5" oninput="calculatePotentialAutomatic();">
+                                    <input type="number" class="form-control" id="otherAggregatesAccuracy" value="1" oninput="calculatePotentialAutomatic();">
                                     <span class="input-group-text">+/- %</span>
                                 </div>
                                 <span class="cLabel">Potential Maximum Unknown Moisture</span>
@@ -402,13 +407,28 @@ get_header();
                                 <span class="cLabel">%</span>
                             </div>
                         </div>
+						<div class="mb-3 pb-3 row border-bottom">
+							<div class="col alert alert-info">
+								<div class="fw-bold">Typical accuracies:</div>
+								<ul class="mb-0">
+									<li>Analogue/Microwave - +/-0.5%</li>
+									<li>Capacitance - +/-1%</li>
+								</ul>
+							</div>
+						</div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3 ms-auto me-0" onclick="document.getElementById('wc-report-tab').click();">Next</button>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-secondary mt-3" onclick="document.getElementById('production-data-tab').click();">Back</button>
+                    <button class="btn btn-primary mt-3" onclick="document.getElementById('wc-report-tab').click();">Next</button>
+                </div>
             </div>
             <div class="tab-pane fade" id="wc-report" role="tabpanel" aria-labelledby="wc-report-tab">
                 <div class="mt-3">
-                    <h2>Return on Investment Report</h2>
+					<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+						<h2>Return on Investment Report</h2>
+						<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
+					</div>
                     <?php
                     if ( get_field( 'report_intro' ) ) {
                         echo '<div class="alert alert-info" role="alert">';
@@ -593,7 +613,10 @@ get_header();
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-primary mt-3 ms-auto me-0" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
+					<div class="d-flex justify-content-between">
+						<button class="btn btn-secondary mt-3" onclick="document.getElementById('material-moisture-tab').click();">Back</button>
+						<button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#saveResultsModal">Get Report</button>
+					</div>
                 </div>
             </div>
         </div>
@@ -655,7 +678,10 @@ get_header();
                             Please provide a valid email address.
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" id="saveResultsButton" onclick="resultsJson()" disabled>Save Results</button>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-secondary" onclick="document.getElementById('material-moisture-tab').click();">Back</button>
+                        <button type="button" class="btn btn-primary" id="saveResultsButton" onclick="resultsJson()" disabled>Save Results</button>
+                    </div>
                 </form>
             </div>
         </div>
