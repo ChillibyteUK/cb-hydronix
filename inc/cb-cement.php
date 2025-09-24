@@ -167,9 +167,15 @@ function handle_save_cement_results() {
         return;
     }
 
-    // Sanitize and validate input data.
-    $post_data = sanitize_textarea_field( wp_unslash( $_POST['data'] ?? '' ) );
+    // Get and validate JSON data.
+    $post_data = wp_unslash( $_POST['data'] ?? '' );
     $data      = json_decode( $post_data, true );
+    
+    // Validate that we have valid JSON data.
+    if ( json_last_error() !== JSON_ERROR_NONE ) {
+        wp_send_json_error( array( 'message' => 'Invalid JSON data provided' ) );
+        return;
+    }
 
     // Generate a random string for the slug.
     $post_slug = wp_generate_password( 32, false );
