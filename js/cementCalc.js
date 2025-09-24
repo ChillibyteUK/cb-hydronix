@@ -531,8 +531,8 @@ function resultsJson() {
                 
                 // Get the response text first to see what we're actually getting
                 return response.text().then(text => {
-                    console.log('Raw response:', text); // Debug log
-                    console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+                    // console.log('Raw response:', text); // Debug log
+                    // console.log('Response headers:', Object.fromEntries(response.headers.entries()));
                     
                     // Check if we got an empty response
                     if (!text || text.trim() === '') {
@@ -568,7 +568,7 @@ function resultsJson() {
             .then(emailResponse => {
                 if (emailResponse.success) {
                     // Show success message and redirect
-                    alert('Results saved and email sent successfully!');
+                    // alert('Results saved and email sent successfully!');
                     window.location.href = emailResponse.data.results_url;
                 } else {
                     // Results saved but email failed - still redirect but show warning
