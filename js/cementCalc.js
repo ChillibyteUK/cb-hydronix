@@ -521,7 +521,27 @@ function resultsJson() {
             },
             body: `data=${encodeURIComponent(JSON.stringify(jsonData))}`,
         })
-            .then(response => response.json()) // Expect JSON response now
+            .then(response => {
+                // Check if response is ok
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // Get the response text first to see what we're actually getting
+                return response.text().then(text => {
+                    console.log('Raw response:', text); // Debug log
+                    
+                    // Try to parse as JSON
+                    try {
+                        const data = JSON.parse(text);
+                        return data;
+                    } catch (jsonError) {
+                        console.error('JSON parse error:', jsonError);
+                        console.error('Response text:', text);
+                        throw new Error('Invalid JSON response from server');
+                    }
+                });
+            })
             .then(data => {
                 if (data.success && data.data.post_id) {
                     // Now send the email with the post ID
