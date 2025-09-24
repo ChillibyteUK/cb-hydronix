@@ -286,7 +286,7 @@ echo $header;
 					$products = array( 10993, 337, 10240 );
 					$p        = new WP_Query(
 						array(
-							'post_type'      => 'product',
+							'post_type'      => 'products',
 							'posts_per_page' => -1,
 							'post__in'       => $products,
 							'post_status'    => 'publish',
