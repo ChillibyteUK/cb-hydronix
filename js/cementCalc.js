@@ -513,7 +513,7 @@ function resultsJson() {
         jsonData.push({ id: 'company', value: company });
 
         // First, submit the data to create the post
-        fetch('/wp-content/themes/cb-hydronix/cement-results.php', {
+        fetch('/wp-content/themes/cb-hydronix/inc/cement-results.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
