@@ -111,39 +111,39 @@ echo $header;
                         <tbody>
                             <tr>
                                 <td>Fine Sand 0 - 2mm</td>
-                                <td id="sand1Recipe"><?= isset( $meta['sand1recipe'] ) ? esc_html( $meta['sand1recipe'][0] ) : '0'; ?></td>
-                                <td id="sand1Tolerance"><?= isset( $meta['sand1tolerance'] ) ? esc_html( $meta['sand1tolerance'][0] ) : '0'; ?></td>
-                                <td id="sand1Hydronix"><?= isset( $meta['sand1hydronix'] ) ? esc_html( $meta['sand1hydronix'][0] ) : '0'; ?></td>
+                                <td id="sand1Recipe" class="text-end"><?= isset( $meta['sand1recipe'] ) ? esc_html( $meta['sand1recipe'][0] ) : '0'; ?></td>
+                                <td id="sand1Tolerance" class="text-end"><?= isset( $meta['sand1tolerance'] ) ? esc_html( $meta['sand1tolerance'][0] ) : '0'; ?></td>
+                                <td id="sand1Hydronix" class="text-end"><?= isset( $meta['sand1hydronix'] ) ? esc_html( $meta['sand1hydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Coarse Sand 0 - 4mm</td>
-                                <td id="sand2Recipe"><?= isset( $meta['sand2recipe'] ) ? esc_html( $meta['sand2recipe'][0] ) : '0'; ?></td>
-                                <td id="sand2Tolerance"><?= isset( $meta['sand2tolerance'] ) ? esc_html( $meta['sand2tolerance'][0] ) : '0'; ?></td>
-                                <td id="sand2Hydronix"><?= isset( $meta['sand2hydronix'] ) ? esc_html( $meta['sand2hydronix'][0] ) : '0'; ?></td>
+                                <td id="sand2Recipe" class="text-end"><?= isset( $meta['sand2recipe'] ) ? esc_html( $meta['sand2recipe'][0] ) : '0'; ?></td>
+                                <td id="sand2Tolerance" class="text-end"><?= isset( $meta['sand2tolerance'] ) ? esc_html( $meta['sand2tolerance'][0] ) : '0'; ?></td>
+                                <td id="sand2Hydronix" class="text-end"><?= isset( $meta['sand2hydronix'] ) ? esc_html( $meta['sand2hydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Gravel 8 - 16mm</td>
-                                <td id="aggregateRecipe"><?= isset( $meta['aggregaterecipe'] ) ? esc_html( $meta['aggregaterecipe'][0] ) : '0'; ?></td>
-                                <td id="aggregateTolerance"><?= isset( $meta['aggregatetolerance'] ) ? esc_html( $meta['aggregatetolerance'][0] ) : '0'; ?></td>
-                                <td id="aggregateHydronix"><?= isset( $meta['aggregatehydronix'] ) ? esc_html( $meta['aggregatehydronix'][0] ) : '0'; ?></td>
+                                <td id="aggregateRecipe" class="text-end"><?= isset( $meta['aggregaterecipe'] ) ? esc_html( $meta['aggregaterecipe'][0] ) : '0'; ?></td>
+                                <td id="aggregateTolerance" class="text-end"><?= isset( $meta['aggregatetolerance'] ) ? esc_html( $meta['aggregatetolerance'][0] ) : '0'; ?></td>
+                                <td id="aggregateHydronix" class="text-end"><?= isset( $meta['aggregatehydronix'] ) ? esc_html( $meta['aggregatehydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Other Aggregates</td>
-                                <td id="otherAggregatesRecipe"><?= isset( $meta['otheraggregatesrecipe'] ) ? esc_html( $meta['otheraggregatesrecipe'][0] ) : '0'; ?></td>
-                                <td id="otherAggregatesTolerance"><?= isset( $meta['otheraggregatestolerance'] ) ? esc_html( $meta['otheraggregatestolerance'][0] ) : '0'; ?></td>
-                                <td id="otherAggregatesHydronix"><?= isset( $meta['otheraggregateshydronix'] ) ? esc_html( $meta['otheraggregateshydronix'][0] ) : '0'; ?></td>
+                                <td id="otherAggregatesRecipe" class="text-end"><?= isset( $meta['otheraggregatesrecipe'] ) ? esc_html( $meta['otheraggregatesrecipe'][0] ) : '0'; ?></td>
+                                <td id="otherAggregatesTolerance" class="text-end"><?= isset( $meta['otheraggregatestolerance'] ) ? esc_html( $meta['otheraggregatestolerance'][0] ) : '0'; ?></td>
+                                <td id="otherAggregatesHydronix" class="text-end"><?= isset( $meta['otheraggregateshydronix'] ) ? esc_html( $meta['otheraggregateshydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Weight of uncompensated moisture</td>
-                                <td id="uncompensatedMoistureRecipe"><?= isset( $meta['uncompensatedmoisturerecipe'] ) ? esc_html( $meta['uncompensatedmoisturerecipe'][0] ) : '0'; ?></td>
-                                <td id="uncompensatedMoistureTolerance"><?= isset( $meta['uncompensatedmoisturetolerance'] ) ? esc_html( $meta['uncompensatedmoisturetolerance'][0] ) : '0'; ?></td>
-                                <td id="uncompensatedMoistureHydronix"><?= isset( $meta['uncompensatedmoisturehydronix'] ) ? esc_html( $meta['uncompensatedmoisturehydronix'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedMoistureRecipe" class="text-end"><?= isset( $meta['uncompensatedmoisturerecipe'] ) ? esc_html( $meta['uncompensatedmoisturerecipe'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedMoistureTolerance" class="text-end"><?= isset( $meta['uncompensatedmoisturetolerance'] ) ? esc_html( $meta['uncompensatedmoisturetolerance'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedMoistureHydronix" class="text-end"><?= isset( $meta['uncompensatedmoisturehydronix'] ) ? esc_html( $meta['uncompensatedmoisturehydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <th>Total Weight</th>
-                                <th id="totalWeightRecipe"><?= isset( $meta['totalweightrecipe'] ) ? esc_html( $meta['totalweightrecipe'][0] ) : '0'; ?></th>
-                                <th id="totalWeightTolerance"><?= isset( $meta['totalweighttolerance'] ) ? esc_html( $meta['totalweighttolerance'][0] ) : '0'; ?></th>
-                                <th id="totalWeightHydronix"><?= isset( $meta['totalweighthydronix'] ) ? esc_html( $meta['totalweighthydronix'][0] ) : '0'; ?></th>
+                                <th id="totalWeightRecipe" class="text-end"><?= isset( $meta['totalweightrecipe'] ) ? esc_html( $meta['totalweightrecipe'][0] ) : '0'; ?></th>
+                                <th id="totalWeightTolerance" class="text-end"><?= isset( $meta['totalweighttolerance'] ) ? esc_html( $meta['totalweighttolerance'][0] ) : '0'; ?></th>
+                                <th id="totalWeightHydronix" class="text-end"><?= isset( $meta['totalweighthydronix'] ) ? esc_html( $meta['totalweighthydronix'][0] ) : '0'; ?></th>
                             </tr>
                         
                             <tr>
@@ -152,33 +152,33 @@ echo $header;
 
                             <tr>
                                 <td>OPC</td>
-                                <td id="opcRecipe"><?= isset( $meta['opcrecipe'] ) ? esc_html( $meta['opcrecipe'][0] ) : '0'; ?></td>
-                                <td id="opcTolerance"><?= isset( $meta['opctolerance'] ) ? esc_html( $meta['opctolerance'][0] ) : '0'; ?></td>
-                                <td id="opcHydronix"><?= isset( $meta['opchydronix'] ) ? esc_html( $meta['opchydronix'][0] ) : '0'; ?></td>
+                                <td id="opcRecipe" class="text-end"><?= isset( $meta['opcrecipe'] ) ? esc_html( $meta['opcrecipe'][0] ) : '0'; ?></td>
+                                <td id="opcTolerance" class="text-end"><?= isset( $meta['opctolerance'] ) ? esc_html( $meta['opctolerance'][0] ) : '0'; ?></td>
+                                <td id="opcHydronix" class="text-end"><?= isset( $meta['opchydronix'] ) ? esc_html( $meta['opchydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>PFA</td>
-                                <td id="pfaRecipe"><?= isset( $meta['pfarecipe'] ) ? esc_html( $meta['pfarecipe'][0] ) : '0'; ?></td>
-                                <td id="pfaTolerance"><?= isset( $meta['pfatolerance'] ) ? esc_html( $meta['pfatolerance'][0] ) : '0'; ?></td>
-                                <td id="pfaHydronix"><?= isset( $meta['pfahydronix'] ) ? esc_html( $meta['pfahydronix'][0] ) : '0'; ?></td>
+                                <td id="pfaRecipe" class="text-end"><?= isset( $meta['pfarecipe'] ) ? esc_html( $meta['pfarecipe'][0] ) : '0'; ?></td>
+                                <td id="pfaTolerance" class="text-end"><?= isset( $meta['pfatolerance'] ) ? esc_html( $meta['pfatolerance'][0] ) : '0'; ?></td>
+                                <td id="pfaHydronix" class="text-end"><?= isset( $meta['pfahydronix'] ) ? esc_html( $meta['pfahydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>GGBS</td>
-                                <td id="ggbsRecipe"><?= isset( $meta['ggbsrecipe'] ) ? esc_html( $meta['ggbsrecipe'][0] ) : '0'; ?></td>
-                                <td id="ggbsTolerance"><?= isset( $meta['ggbstolerance'] ) ? esc_html( $meta['ggbstolerance'][0] ) : '0'; ?></td>
-                                <td id="ggbsHydronix"><?= isset( $meta['ggbshydronix'] ) ? esc_html( $meta['ggbshydronix'][0] ) : '0'; ?></td>
+                                <td id="ggbsRecipe" class="text-end"><?= isset( $meta['ggbsrecipe'] ) ? esc_html( $meta['ggbsrecipe'][0] ) : '0'; ?></td>
+                                <td id="ggbsTolerance" class="text-end"><?= isset( $meta['ggbstolerance'] ) ? esc_html( $meta['ggbstolerance'][0] ) : '0'; ?></td>
+                                <td id="ggbsHydronix" class="text-end"><?= isset( $meta['ggbshydronix'] ) ? esc_html( $meta['ggbshydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Other Cement Replacements</td>
-                                <td id="otherCementRecipe"><?= isset( $meta['othercementrecipe'] ) ? esc_html( $meta['othercementrecipe'][0] ) : '0'; ?></td>
-                                <td id="otherCementTolerance"><?= isset( $meta['othercementtolerance'] ) ? esc_html( $meta['othercementtolerance'][0] ) : '0'; ?></td>
-                                <td id="otherCementHydronix"><?= isset( $meta['othercementhydronix'] ) ? esc_html( $meta['othercementhydronix'][0] ) : '0'; ?></td>
+                                <td id="otherCementRecipe" class="text-end"><?= isset( $meta['othercementrecipe'] ) ? esc_html( $meta['othercementrecipe'][0] ) : '0'; ?></td>
+                                <td id="otherCementTolerance" class="text-end"><?= isset( $meta['othercementtolerance'] ) ? esc_html( $meta['othercementtolerance'][0] ) : '0'; ?></td>
+                                <td id="otherCementHydronix" class="text-end"><?= isset( $meta['othercementhydronix'] ) ? esc_html( $meta['othercementhydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <th>Total Cementitious Materials (Binder)</th>
-                                <th id="totalCementitiousMaterialsRecipe"><?= isset( $meta['totalcementitiousmaterialsrecipe'] ) ? esc_html( $meta['totalcementitiousmaterialsrecipe'][0] ) : '0'; ?></th>
-                                <th id="totalCementitiousMaterialsTolerance"><?= isset( $meta['totalcementitiousmaterialstolerance'] ) ? esc_html( $meta['totalcementitiousmaterialstolerance'][0] ) : '0'; ?></th>
-                                <th id="totalCementitiousMaterialsHydronix"><?= isset( $meta['totalcementitiousmaterialshydronix'] ) ? esc_html( $meta['totalcementitiousmaterialshydronix'][0] ) : '0'; ?></th>
+                                <th id="totalCementitiousMaterialsRecipe" class="text-end"><?= isset( $meta['totalcementitiousmaterialsrecipe'] ) ? esc_html( $meta['totalcementitiousmaterialsrecipe'][0] ) : '0'; ?></th>
+                                <th id="totalCementitiousMaterialsTolerance" class="text-end"><?= isset( $meta['totalcementitiousmaterialstolerance'] ) ? esc_html( $meta['totalcementitiousmaterialstolerance'][0] ) : '0'; ?></th>
+                                <th id="totalCementitiousMaterialsHydronix" class="text-end"><?= isset( $meta['totalcementitiousmaterialshydronix'] ) ? esc_html( $meta['totalcementitiousmaterialshydronix'][0] ) : '0'; ?></th>
                             </tr>
 
                             <tr>
@@ -187,21 +187,21 @@ echo $header;
 
                             <tr>
                                 <td>Mix design water (litres)</td>
-                                <td id="mixDesignWaterRecipe"><?= isset( $meta['mixdesignwaterrecipe'] ) ? esc_html( $meta['mixdesignwaterrecipe'][0] ) : '0'; ?></td>
-                                <td id="mixDesignWaterTolerance"><?= isset( $meta['mixdesignwatertolerance'] ) ? esc_html( $meta['mixdesignwatertolerance'][0] ) : '0'; ?></td>
-                                <td id="mixDesignWaterHydronix"><?= isset( $meta['mixdesignwaterhydronix'] ) ? esc_html( $meta['mixdesignwaterhydronix'][0] ) : '0'; ?></td>
+                                <td id="mixDesignWaterRecipe" class="text-end"><?= isset( $meta['mixdesignwaterrecipe'] ) ? esc_html( $meta['mixdesignwaterrecipe'][0] ) : '0'; ?></td>
+                                <td id="mixDesignWaterTolerance" class="text-end"><?= isset( $meta['mixdesignwatertolerance'] ) ? esc_html( $meta['mixdesignwatertolerance'][0] ) : '0'; ?></td>
+                                <td id="mixDesignWaterHydronix" class="text-end"><?= isset( $meta['mixdesignwaterhydronix'] ) ? esc_html( $meta['mixdesignwaterhydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>uncompensated Water in Aggregates (litres)</td>
-                                <td id="uncompensatedWaterRecipe"><?= isset( $meta['uncompensatedwaterrecipe'] ) ? esc_html( $meta['uncompensatedwaterrecipe'][0] ) : '0'; ?></td>
-                                <td id="uncompensatedWaterTolerance"><?= isset( $meta['uncompensatedwatertolerance'] ) ? esc_html( $meta['uncompensatedwatertolerance'][0] ) : '0'; ?></td>
-                                <td id="uncompensatedWaterHydronix"><?= isset( $meta['uncompensatedwaterhydronix'] ) ? esc_html( $meta['uncompensatedwaterhydronix'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedWaterRecipe" class="text-end"><?= isset( $meta['uncompensatedwaterrecipe'] ) ? esc_html( $meta['uncompensatedwaterrecipe'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedWaterTolerance" class="text-end"><?= isset( $meta['uncompensatedwatertolerance'] ) ? esc_html( $meta['uncompensatedwatertolerance'][0] ) : '0'; ?></td>
+                                <td id="uncompensatedWaterHydronix" class="text-end"><?= isset( $meta['uncompensatedwaterhydronix'] ) ? esc_html( $meta['uncompensatedwaterhydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <th>Total Water in mix (litres)</th>
-                                <th id="totalWaterRecipe"><?= isset( $meta['totalwaterrecipe'] ) ? esc_html( $meta['totalwaterrecipe'][0] ) : '0'; ?></th>
-                                <th id="totalWaterTolerance"><?= isset( $meta['totalwatertolerance'] ) ? esc_html( $meta['totalwatertolerance'][0] ) : '0'; ?></th>
-                                <th id="totalWaterHydronix"><?= isset( $meta['totalwaterhydronix'] ) ? esc_html( $meta['totalwaterhydronix'][0] ) : '0'; ?></th>
+                                <th id="totalWaterRecipe" class="text-end"><?= isset( $meta['totalwaterrecipe'] ) ? esc_html( $meta['totalwaterrecipe'][0] ) : '0'; ?></th>
+                                <th id="totalWaterTolerance" class="text-end"><?= isset( $meta['totalwatertolerance'] ) ? esc_html( $meta['totalwatertolerance'][0] ) : '0'; ?></th>
+                                <th id="totalWaterHydronix" class="text-end"><?= isset( $meta['totalwaterhydronix'] ) ? esc_html( $meta['totalwaterhydronix'][0] ) : '0'; ?></th>
                             </tr>
 
                             <tr>
@@ -210,15 +210,15 @@ echo $header;
 
                             <tr>
                                 <td>Designed W/C ratio</td>
-                                <td id="designedWCRatioRecipe"><?= isset( $meta['designedwcratiorecipe'] ) ? esc_html( $meta['designedwcratiorecipe'][0] ) : '0'; ?></td>
-                                <td id="designedWCRatioTolerance"><?= isset( $meta['designedwcratiotolerance'] ) ? esc_html( $meta['designedwcratiotolerance'][0] ) : '0'; ?></td>
-                                <td id="designedWCRatioHydronix"><?= isset( $meta['designedwcratiohydronix'] ) ? esc_html( $meta['designedwcratiohydronix'][0] ) : '0'; ?></td>
+                                <td id="designedWCRatioRecipe" class="text-end"><?= isset( $meta['designedwcratiorecipe'] ) ? esc_html( $meta['designedwcratiorecipe'][0] ) : '0'; ?></td>
+                                <td id="designedWCRatioTolerance" class="text-end"><?= isset( $meta['designedwcratiotolerance'] ) ? esc_html( $meta['designedwcratiotolerance'][0] ) : '0'; ?></td>
+                                <td id="designedWCRatioHydronix" class="text-end"><?= isset( $meta['designedwcratiohydronix'] ) ? esc_html( $meta['designedwcratiohydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <td>Produced W/C ratio</td>
-                                <td id="producedWCRatioRecipe"><?= isset( $meta['producedwcratiorecipe'] ) ? esc_html( $meta['producedwcratiorecipe'][0] ) : '0'; ?></td>
-                                <td id="producedWCRatioTolerance"><?= isset( $meta['producedwcratiotolerance'] ) ? esc_html( $meta['producedwcratiotolerance'][0] ) : '0'; ?></td>
-                                <td id="producedWCRatioHydronix"><?= isset( $meta['producedwcratiohydronix'] ) ? esc_html( $meta['producedwcratiohydronix'][0] ) : '0'; ?></td>
+                                <td id="producedWCRatioRecipe" class="text-end"><?= isset( $meta['producedwcratiorecipe'] ) ? esc_html( $meta['producedwcratiorecipe'][0] ) : '0'; ?></td>
+                                <td id="producedWCRatioTolerance" class="text-end"><?= isset( $meta['producedwcratiotolerance'] ) ? esc_html( $meta['producedwcratiotolerance'][0] ) : '0'; ?></td>
+                                <td id="producedWCRatioHydronix" class="text-end"><?= isset( $meta['producedwcratiohydronix'] ) ? esc_html( $meta['producedwcratiohydronix'][0] ) : '0'; ?></td>
                             </tr>
 
                             <tr>
@@ -227,15 +227,15 @@ echo $header;
 
                             <tr>
                                 <td>Total Cement Needed to maintain SD target</td>
-                                <td id="totalCementNeededRecipe"><?= isset( $meta['totalcementneededrecipe'] ) ? esc_html( $meta['totalcementneededrecipe'][0] ) : '0'; ?></td>
-                                <td id="totalCementNeededTolerance"><?= isset( $meta['totalcementneededtolerance'] ) ? esc_html( $meta['totalcementneededtolerance'][0] ) : '0'; ?></td>
-                                <td id="totalCementNeededHydronix"><?= isset( $meta['totalcementneededhydronix'] ) ? esc_html( $meta['totalcementneededhydronix'][0] ) : '0'; ?></td>
+                                <td id="totalCementNeededRecipe" class="text-end"><?= isset( $meta['totalcementneededrecipe'] ) ? esc_html( $meta['totalcementneededrecipe'][0] ) : '0'; ?></td>
+                                <td id="totalCementNeededTolerance" class="text-end"><?= isset( $meta['totalcementneededtolerance'] ) ? esc_html( $meta['totalcementneededtolerance'][0] ) : '0'; ?></td>
+                                <td id="totalCementNeededHydronix" class="text-end"><?= isset( $meta['totalcementneededhydronix'] ) ? esc_html( $meta['totalcementneededhydronix'][0] ) : '0'; ?></td>
                             </tr>
                             <tr>
                                 <th>Extra cement needed to maintain SD target</th>
-                                <th id="extraCementNeededRecipe"><?= isset( $meta['extracementneededrecipe'] ) ? esc_html( $meta['extracementneededrecipe'][0] ) : '0'; ?></th>
-                                <th id="extraCementNeededTolerance"><?= isset( $meta['extracementneededtolerance'] ) ? esc_html( $meta['extracementneededtolerance'][0] ) : '0'; ?></th>
-                                <th id="extraCementNeededHydronix"><?= isset( $meta['extracementneededhydronix'] ) ? esc_html( $meta['extracementneededhydronix'][0] ) : '0'; ?></th>
+                                <th id="extraCementNeededRecipe" class="text-end"><?= isset( $meta['extracementneededrecipe'] ) ? esc_html( $meta['extracementneededrecipe'][0] ) : '0'; ?></th>
+                                <th id="extraCementNeededTolerance" class="text-end"><?= isset( $meta['extracementneededtolerance'] ) ? esc_html( $meta['extracementneededtolerance'][0] ) : '0'; ?></th>
+                                <th id="extraCementNeededHydronix" class="text-end"><?= isset( $meta['extracementneededhydronix'] ) ? esc_html( $meta['extracementneededhydronix'][0] ) : '0'; ?></th>
                             </tr>
 
                             <tr>
@@ -244,15 +244,15 @@ echo $header;
 
                             <tr>
                                 <td>Potential cement cost by not using Hydronix moisture measurement</td>
-                                <td id="">kg/m<sup>3</sup></td>
-                                <td id="potentialCementCost"><?= isset( $meta['potentialcementcost'] ) ? esc_html( $meta['potentialcementcost'][0] ) : '0'; ?></td>
                                 <td id="">&nbsp;</td>
+                                <td id="potentialCementCost" class="text-end"><?= isset( $meta['potentialcementcost'] ) ? esc_html( $meta['potentialcementcost'][0] ) : '0'; ?></td>
+                                <td id="">kg/m<sup>3</sup></td>
                             </tr>
                             <tr>
                                 <th>Extra Cement required to maintain w/c ratio per year</th>
-                                <td id="">Tonnes</td>
-                                <td id="extraCementPerYear"><?= isset( $meta['extracementperyear'] ) ? esc_html( $meta['extracementperyear'][0] ) : '0'; ?></td>
                                 <td id="">&nbsp;</td>
+                                <td id="extraCementPerYear" class="text-end"><?= isset( $meta['extracementperyear'] ) ? esc_html( $meta['extracementperyear'][0] ) : '0'; ?></td>
+                                <td id="">Tonnes</td>
                             </tr>
 
                             <tr>
@@ -261,15 +261,15 @@ echo $header;
 
                             <tr>
                                 <th>Cost of not using Hydronix per m<sup>3</sup></th>
-                                <td id="" colspan="3">£/$/€ <span id="costNotHydronixM"><?= isset( $meta['costnothydronixm'] ) ? esc_html( $meta['costnothydronixm'][0] ) : '0'; ?></span></td>
+                                <td id="" colspan="3" class="text-end">£/$/€ <span id="costNotHydronixM"><?= isset( $meta['costnothydronixm'] ) ? esc_html( $meta['costnothydronixm'][0] ) : '0'; ?></span></td>
                             </tr>
                             <tr>
                                 <th>Cost of not using Hydronix per year</th>
-                                <td id="" colspan="3">£/$/€ <span id="costNotHydronixY"><?= isset( $meta['costnothydronixy'] ) ? esc_html( $meta['costnothydronixy'][0] ) : '0'; ?></span></td>
+                                <td id="" colspan="3" class="text-end">£/$/€ <span id="costNotHydronixY"><?= isset( $meta['costnothydronixy'] ) ? esc_html( $meta['costnothydronixy'][0] ) : '0'; ?></span></td>
                             </tr>
                             <tr>
                                 <th>Environmental Cost of not using Hydronix per year</th>
-                                <td id="" colspan="3"><span id="envNotHydronixY"><?= isset( $meta['envnothydronixy'] ) ? esc_html( $meta['envnothydronixy'][0] ) : '0'; ?></span> kgCO<sub>2</sub>e/t</td>
+                                <td id="" colspan="3" class="text-end"><span id="envNotHydronixY"><?= isset( $meta['envnothydronixy'] ) ? esc_html( $meta['envnothydronixy'][0] ) : '0'; ?></span> kgCO<sub>2</sub>e/t</td>
                             </tr>
 
                         </tbody>
