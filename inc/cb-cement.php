@@ -171,6 +171,11 @@ function handle_save_cement_results() {
     $post_data = wp_unslash( $_POST['data'] ?? '' );
     $data      = json_decode( $post_data, true );
     
+    // Debug: Log the received data
+    error_log( 'Cement Calc - Raw POST data: ' . print_r( $_POST, true ) );
+    error_log( 'Cement Calc - JSON data: ' . $post_data );
+    error_log( 'Cement Calc - Parsed data: ' . print_r( $data, true ) );
+    
     // Validate that we have valid JSON data.
     if ( json_last_error() !== JSON_ERROR_NONE ) {
         wp_send_json_error( array( 'message' => 'Invalid JSON data provided' ) );
@@ -216,7 +221,10 @@ function handle_save_cement_results() {
         // Save data as custom fields.
         foreach ( $data as $entry ) {
             if ( ! empty( $entry['id'] ) && isset( $entry['value'] ) ) {
-                update_post_meta( $new_post_id, sanitize_key( $entry['id'] ), sanitize_text_field( $entry['value'] ) );
+                $meta_key = sanitize_key( $entry['id'] );
+                $meta_value = sanitize_text_field( $entry['value'] );
+                error_log( "Saving meta: {$meta_key} = {$meta_value}" );
+                update_post_meta( $new_post_id, $meta_key, $meta_value );
             }
         }
 
