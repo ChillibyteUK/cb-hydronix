@@ -71,6 +71,28 @@ echo $header;
                     </div>
                 </div>
             </section>
+			<section>
+				<div class="container-xl mb-4">
+					<div class="row g-4">
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-body d-flex flex-column align-items-center gap-4">
+									<a href="<?= esc_url( get_stylesheet_directory_uri() . '/img/standard-deviation.png' ); ?>" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/standard-deviation.png' ); ?>" style="max-height:400px;width:auto;"></a>
+									<div>A batching plant has to design mixes based around historic results. A statistical analysis of the results can then be made and a result called the Standard Deviation (SD) gives the spread of the results around a mean value. British and EU law states that the design strength of the concrete mix must be at a point that is 2x Standard Deviations below the mean value. This means that the probability of batches will be below the design strength is only approximately 2.275%.</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card h-100">
+								<div class="card-body d-flex flex-column align-items-center gap-4">
+									<a href="<?= esc_url( get_stylesheet_directory_uri() . '/img/water-cement-ratio.png' ); ?>" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/water-cement-ratio.png' ); ?>" style="max-height:400px;width:auto;"></a>
+									<div>So a 38 N/mm2 with a W/C ratio of 0.605 and a water quantity of 200 l/m3 would need 331kg of cement. A 34N/mm2 mix has a W/C ratio of 0.660 and so will only need 303kg of cement presuming the water demand is constant. This still gives the same design strength of C30 but saves 28kg of cement per m3!</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
             <div class="container-xl">
                 <div class="table-responsive">
                     <table class="table table-sm table-bordered" id="wcReportTable">
@@ -253,16 +275,96 @@ echo $header;
                         </tbody>
                     </table>
                 </div>
-                <div class="py-5">
-                    RELATED PRODUCTS?
-                </div>
-            </div>
+			</div>
+		</article>
+		<!-- products -->
+		<section class="prod_by_app product pb-5">
+			<div class="container-xl">
+				<h2><?= __('Products','cb-hydronix'); ?></h2>
+				<div class="row g-3">
+					<?php
+					$products = array( 10993, 337, 10240 );
+					$p        = new WP_Query(
+						array(
+							'post_type'      => 'product',
+							'posts_per_page' => -1,
+							'post__in'       => $products,
+							'post_status'    => 'publish',
+						)
+					);
 
-        </article>
+					while ( $p->have_posts() ) {
+ 						$p->the_post();
+    					?>
+					<div class="col-sm-6 col-lg-3">
+						<a class="product__card" href="<?= esc_url( get_the_permalink( $p->ID ) ); ?>">
+							<img src="<?= esc_url( get_the_post_thumbnail_url( $p->ID,'medium' ) ); ?>">
+							<div class="mb-2 fw-bold"><?= esc_html( get_the_title( $p->ID ) ); ?></div>
+							<div class="mb-2 product__subtitle"><?= esc_html( get_field( 'hero_subtitle', $p->ID ) ); ?></div>
+							<div class="badges">
+                		<?php
+						$curr_lang = apply_filters( 'wpml_current_language', null );
+
+						$ht_term      = get_term_by( 'slug', 'high-temperature', 'applications' );
+						$ht_termid_tx = apply_filters( 'wpml_object_id', $ht_term->term_id, 'applications', true, $curr_lang );
+						$ht_term_tx   = get_term( $ht_termid_tx, 'applications' );
+						$high_temp    = $ht_term_tx->slug;
+
+						$ex_term      = get_term_by( 'slug', 'explosive-atmosphere', 'applications' );
+						$ex_termid_tx = apply_filters( 'wpml_object_id', $ex_term->term_id, 'applications', true, $curr_lang );
+						$ex_term_tx   = get_term( $ex_termid_tx, 'applications' );
+						$explosive    = $ex_term_tx->slug;
+
+						$fs_term      = get_term_by( 'slug', 'food-safe', 'applications' );
+						$fs_termid_tx = apply_filters( 'wpml_object_id', $fs_term->term_id, 'applications', true, $curr_lang );
+						$fs_term_tx   = get_term( $fs_termid_tx, 'applications' );
+						$food_safe    = $fs_term_tx->slug;
+
+						foreach ( get_the_terms( $p, 'applications' ) as $t ) {
+							if ( $t->slug === $explosive ) {
+		                        ?>
+								<div class="badge badge--atex"></div>
+								<div class="badge badge--etl"></div>
+                        		<?php
+                    		}
+                    		if ( $t->slug === $food_safe ) {
+                        		?>
+								<div class="badge badge--food-safe"></div>
+                        		<?php
+                    		}
+                    		if ( $t->slug === $high_temp ) {
+                        		?>
+								<div class="badge badge--high-temp"></div>
+                        		<?php
+                    		}
+                		}
+                		?>
+            				</div>
+        				</a>
+    				</div>
+    					<?php
+					}
+					?>
+				</div>
+			</div>
+		</section>
 		    <?php
         }
     }
     ?>
 </main>
 <?php
+add_action(
+	'wp_footer',
+	function () {
+		?>
+            <link rel="stylesheet"
+                href="<?= esc_url( get_stylesheet_directory_uri() ); ?>/css/lightbox.min.css">
+            <script
+                src="<?= esc_url( get_stylesheet_directory_uri() ); ?>/js/lightbox.min.js">
+            </script>
+		<?php
+	}
+);
+
 get_footer();
