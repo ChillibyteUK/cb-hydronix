@@ -524,12 +524,19 @@ function resultsJson() {
             .then(response => {
                 // Check if response is ok
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    console.error('HTTP Error:', response.status, response.statusText);
+                    throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
                 }
                 
                 // Get the response text first to see what we're actually getting
                 return response.text().then(text => {
                     console.log('Raw response:', text); // Debug log
+                    console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+                    
+                    // Check if we got an empty response
+                    if (!text || text.trim() === '') {
+                        throw new Error('Empty response from server - check if cement-results.php file exists and is accessible');
+                    }
                     
                     // Try to parse as JSON
                     try {
@@ -538,7 +545,14 @@ function resultsJson() {
                     } catch (jsonError) {
                         console.error('JSON parse error:', jsonError);
                         console.error('Response text:', text);
-                        throw new Error('Invalid JSON response from server');
+                        console.error('Response length:', text.length);
+                        
+                        // Check if it looks like an HTML error page
+                        if (text.includes('<html>') || text.includes('<!DOCTYPE')) {
+                            throw new Error('Server returned HTML instead of JSON - possible 404 or server error');
+                        }
+                        
+                        throw new Error('Invalid JSON response from server: ' + jsonError.message);
                     }
                 });
             })

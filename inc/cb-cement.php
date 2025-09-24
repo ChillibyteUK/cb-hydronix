@@ -85,7 +85,7 @@ function handle_send_cement_results_email() {
 
     // Prepare email content.
     $subject = 'Your Cement Calculator Results - Hydronix';
-    
+
     $message = "
     <html>
     <head>
@@ -154,7 +154,73 @@ function handle_send_cement_results_email() {
     }
 }
 
+/**
+ * AJAX handler to save cement calc results.
+ *
+ * @return void
+ */
+function handle_save_cement_results() {
+    // Sanitize and validate input data.
+    $post_data = wp_unslash( $_POST['data'] ?? '' );
+    $data      = json_decode( $post_data, true );
+
+    // Generate a random string for the slug.
+    $post_slug = wp_generate_password( 32, false );
+
+    // Extract company and email from the POST data.
+    $company = '';
+    $email   = '';
+
+    if ( is_array( $data ) ) {
+        foreach ( $data as $entry ) {
+            if ( 'company' === $entry['id'] ) {
+                $company = sanitize_text_field( $entry['value'] );
+            }
+            if ( 'email' === $entry['id'] ) {
+                $email = sanitize_email( $entry['value'] );
+            }
+        }
+    }
+
+    // Construct the post title.
+    $post_title = trim( $company . ' | ' . $email );
+
+    if ( ! empty( $data ) && is_array( $data ) ) {
+        // Create a new post with the slug.
+        $new_post_id = wp_insert_post(
+            array(
+                'post_title'  => $post_title,
+                'post_name'   => $post_slug,
+                'post_type'   => 'cement_results',
+                'post_status' => 'publish',
+            )
+        );
+
+        if ( is_wp_error( $new_post_id ) ) {
+            wp_send_json_error( array( 'message' => 'Failed to create post: ' . $new_post_id->get_error_message() ) );
+        }
+
+        // Save data as custom fields.
+        foreach ( $data as $entry ) {
+            if ( ! empty( $entry['id'] ) && isset( $entry['value'] ) ) {
+                update_post_meta( $new_post_id, sanitize_key( $entry['id'] ), sanitize_text_field( $entry['value'] ) );
+            }
+        }
+
+        // Return success with post ID and URL.
+        wp_send_json_success(
+            array(
+                'post_id'     => $new_post_id,
+                'results_url' => home_url( '/cement-results/' . $post_slug ),
+            )
+        );
+    } else {
+        wp_send_json_error( array( 'message' => 'No data provided' ) );
+    }
+}
+
 // Register AJAX handlers for both logged in and non-logged in users.
+add_action( 'wp_ajax_save_cement_results', 'handle_save_cement_results' );
+add_action( 'wp_ajax_nopriv_save_cement_results', 'handle_save_cement_results' );
 add_action( 'wp_ajax_send_cement_results_email', 'handle_send_cement_results_email' );
 add_action( 'wp_ajax_nopriv_send_cement_results_email', 'handle_send_cement_results_email' );
-
