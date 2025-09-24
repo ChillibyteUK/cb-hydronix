@@ -365,7 +365,7 @@ echo $header;
 		<section
 			class="single_post py-5">
 			<div class="container-xl px-0">
-				<h2 class="mb-4">Related Content</h2>
+				<h2 class="mb-4">Related Articles</h2>
 				<div class=" row g-4 mb-4">
 					<div class="col-lg-6">
 						<div class="single_post__card h-100">
