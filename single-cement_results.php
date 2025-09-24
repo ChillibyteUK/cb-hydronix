@@ -348,10 +348,10 @@ echo $header;
 				</div>
 			</div>
 		</section>
-		<?php
-		$id1 = 1187;
-		$id2 = 1186;
-		?>
+			<?php
+			$id1 = 1187;
+			$id2 = 1186;
+			?>
 		<style>
 			.single_post__card {
 				background-color: white;
@@ -374,11 +374,11 @@ echo $header;
 									<?= get_the_post_thumbnail( $id1 ); ?>
 								</div>
 								<div class="col-md-9 p-3">
-									<h3><?= get_the_title( $id1 ); ?></h3>
-									<p><?= wp_trim_words( get_the_content( null, false, $id1 ), 30 ); ?>
+									<h3><?= esc_html( get_the_title( $id1 ) ); ?></h3>
+									<p><?= wp_kses_post( wp_trim_words( get_the_content( null, false, $id1 ), 30 ) ); ?>
 									</p>
-									<a href="<?= get_the_permalink( $id1 ); ?>"
-										class="btn btn--orange ms-md-auto me-md-4"><?= __( 'Read more', 'cb-hydronix' ); ?></a>
+									<a href="<?= esc_url( get_the_permalink( $id1 ) ); ?>"
+										class="btn btn--orange ms-md-auto me-md-4"><?= esc_html( __( 'Read more', 'cb-hydronix' ) ); ?></a>
 								</div>
 							</div>
 						</div>
@@ -390,11 +390,11 @@ echo $header;
 									<?= get_the_post_thumbnail( $id2 ); ?>
 								</div>
 								<div class="col-md-9 p-3">
-									<h3><?= get_the_title( $id2 ); ?></h3>
-									<p><?= wp_trim_words( get_the_content( null, false, $id2 ), 30 ); ?>
+									<h3><?= esc_html( get_the_title( $id2 ) ); ?></h3>
+									<p><?= wp_kses_post( wp_trim_words( get_the_content( null, false, $id2 ), 30 ) ); ?>
 									</p>
-									<a href="<?= get_the_permalink( $id2 ); ?>"
-										class="btn btn--orange ms-md-auto me-md-4"><?= __( 'Read more', 'cb-hydronix' ); ?></a>
+									<a href="<?= esc_url( get_the_permalink( $id2 ) ); ?>"
+										class="btn btn--orange ms-md-auto me-md-4"><?= esc_html( __( 'Read more', 'cb-hydronix' ) ); ?></a>
 								</div>
 							</div>
 						</div>
