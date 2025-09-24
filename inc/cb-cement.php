@@ -160,8 +160,15 @@ function handle_send_cement_results_email() {
  * @return void
  */
 function handle_save_cement_results() {
+    // Verify nonce for security.
+    $nonce = sanitize_text_field( wp_unslash( $_POST['nonce'] ?? '' ) );
+    if ( ! wp_verify_nonce( $nonce, 'cement_calc_nonce' ) ) {
+        wp_send_json_error( array( 'message' => 'Security check failed' ) );
+        return;
+    }
+
     // Sanitize and validate input data.
-    $post_data = wp_unslash( $_POST['data'] ?? '' );
+    $post_data = sanitize_textarea_field( wp_unslash( $_POST['data'] ?? '' ) );
     $data      = json_decode( $post_data, true );
 
     // Generate a random string for the slug.

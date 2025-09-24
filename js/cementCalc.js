@@ -512,14 +512,15 @@ function resultsJson() {
         jsonData.push({ id: 'name', value: name });
         jsonData.push({ id: 'company', value: company });
 
-        // First, submit the data to create the post
-        fetch('/wp-content/themes/cb-hydronix/inc/cement-results.php', {
+        // First, submit the data to create the post using WordPress AJAX
+        const saveFormData = new FormData();
+        saveFormData.append('action', 'save_cement_results');
+        saveFormData.append('data', JSON.stringify(jsonData));
+        saveFormData.append('nonce', cementCalcNonce);
+        
+        fetch(ajaxUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-Requested-With': 'XMLHttpRequest', // This tells the server it's an AJAX request
-            },
-            body: `data=${encodeURIComponent(JSON.stringify(jsonData))}`,
+            body: saveFormData
         })
             .then(response => {
                 // Check if response is ok
