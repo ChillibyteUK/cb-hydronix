@@ -278,9 +278,9 @@ echo $header;
 			</div>
 		</article>
 		<!-- products -->
-		<section class="prod_by_app product pb-5">
+		<section class="prod_by_app product py-5">
 			<div class="container-xl">
-				<h2><?= __('Products','cb-hydronix'); ?></h2>
+				<h2><?= __('Related Products','cb-hydronix'); ?></h2>
 				<div class="row g-3">
 					<?php
 					$products = array( 10993, 337, 10240 );
