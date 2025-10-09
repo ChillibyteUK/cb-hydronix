@@ -114,19 +114,19 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                         <h4><?=__('Hydronix America','cb-hydronix')?></h3>
                         <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
-                            <ul class="fa-ul">
-                                <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('us_address','options')?></li>
-                                <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> 
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a>
-                                </li>
-                                <li class="mb-4"><span class="fa-li"><i class="fa fa-mobile"></i></span>
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
-                                    <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
-                                <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
-                            </ul>
-                        </div>
+                        <ul class="fa-ul">
+                            <li class="mb-4"><span class="fa-li"><i class="fa fa-map-marker"></i></span> <?=get_field('us_address','options')?></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> 
+                                <a class="noline" href="tel:<?=parse_phone(get_field('us_phone_tf','options'))?>"><?=get_field('us_phone_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
+                                <a class="noline" href="tel:<?=parse_phone(get_field('us_phone','options'))?>"><?=get_field('us_phone','options')?></a>
+                            </li>
+                            <li class="mb-4"><span class="fa-li"><i class="fa fa-mobile"></i></span>
+                                <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile_tf','options'))?>"><?=get_field('us_mobile_tf','options')?></a> <?=__('(Toll-free), or','cb-hydronix')?><br>
+                                <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
+                            <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
+                        </ul>
                         <small class="text-muted mt-auto" style="font-size: 0.75rem;"><?=__('Shanghai Haodun Electro-Mechanical Equipment Co. Ltd is an independent company authorized to distribute Hydronix Ltd (UK) products in Mainland China. Customer contracts are not concluded by Hydronix Ltd (UK).','cb-hydronix')?></small>
+                        </div>
                     </div>
                 </div>
             </div>
