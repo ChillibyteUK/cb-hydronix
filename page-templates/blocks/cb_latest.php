@@ -83,7 +83,7 @@ $lang = $curr_lang == 'en' ? '' : '/' . $curr_lang;
                 wp_reset_postdata();
                 ?>
                 <div>
-                    <a href="<?=$lang?>/<?=__('resources','cb-hydronix')?>/<?=__('events','cb-hydronix')?>/" class="mx-auto btn btn--orange"><?=__('All Events','cb-hydronix')?></a>
+                    <a href="<?=$lang?>/<?=__('resources/events','Custom Post Type Slugs')?>/" class="mx-auto btn btn--orange"><?=__('All Events','cb-hydronix')?></a>
                 </div>
             </div>
         </div>
