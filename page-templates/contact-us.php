@@ -82,6 +82,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                             ?>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('eu_email','options')?>"><?=__('Hydronix Europe','cb-hydronix')?></a></li>
                         </ul>
+                        <small class="text-muted mt-auto d-none" style="font-size: 0.75rem;"><?=__('Independent representative authorised to promote Hydronix.<br>Customer contracts made directly with Hydronix UK.','cb-hydronix')?></small>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -93,6 +94,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('fr_phone','options'))?>"><?=get_field('fr_phone','options')?></a></li>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('fr_email','options')?>"><?=__('Hydronix France','cb-hydronix')?></a></li>
                         </ul>
+                        <small class="text-muted mt-auto d-none" style="font-size: 0.75rem;"><?=__('Independent representative authorised to promote Hydronix.<br>Customer contracts made directly with Hydronix UK.','cb-hydronix')?></small>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -104,11 +106,12 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-phone"></i></span> <a class="noline" href="tel:<?=parse_phone(get_field('cn_phone','options'))?>"><?=get_field('cn_phone','options')?></a></li>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('cn_email','options')?>"><?=__('Hydronix China','cb-hydronix')?></a></li>
                         </ul>
+                        <small class="text-muted mt-auto d-none" style="font-size: 0.75rem;"><?=__('An Independent company authorised to distribute Hydronix Products in China.<br>Customer Contracts are not made with Hydronix UK.','cb-hydronix')?></small>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix America','cb-hydronix')?></h3>
+                        <h4><?=__('Hydronix America','cb-hydronix')?></h4>
                         <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
                         <ul class="fa-ul">
@@ -122,7 +125,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                                 <a class="noline" href="tel:<?=parse_phone(get_field('us_mobile','options'))?>"><?=get_field('us_mobile','options')?></a></li>
                             <li class="mb-2"><span class="fa-li"><i class="fa fa-envelope"></i></span> <a class="noline" href="<?=get_field('us_email','options')?>"><?=__('Hydronix America','cb-hydronix')?></a></li>
                         </ul>
-                        </div>
+                        <small class="text-muted mt-auto d-none" style="font-size: 0.75rem;"><?=__('Independent representative authorised to promote Hydronix.<br>Customer contracts made directly with Hydronix UK.','cb-hydronix')?></small>
                     </div>
                 </div>
             </div>
