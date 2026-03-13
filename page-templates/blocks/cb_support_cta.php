@@ -30,7 +30,8 @@
                 $resLink = get_the_permalink($resIDLang);
 
                 $home_url = apply_filters('wpml_home_url', get_option('home'));
-                $trgID = get_page_by_path('training');
+                // $trgID = get_page_by_path('training');
+                $trgID = get_page_by_path('hydronix-moisture-sensor-training');
                 $trgIDLang = apply_filters( 'wpml_object_id', $trgID->ID, 'page' );
                 $trgLink = get_the_permalink($trgIDLang);
                 ?>
