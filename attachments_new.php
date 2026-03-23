@@ -41,8 +41,8 @@ $dtype_tax = empty($dtype) ? array() : array('taxonomy' => 'attachment_category'
 // $dlang_tax = empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang);
 $dlang_tax = ($dtype == 'software-firmware') ? array() : (empty($dlang) ? array() : array('taxonomy' => 'doclang', 'field' => 'slug', 'terms' => $dlang));
 
-// Exclusion criteria, if any
-// $exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
+// Exclude legacy downloads from AJAX results.
+$exclude = array('taxonomy' => 'docprod', 'field' => 'slug', 'terms' => 'legacy', 'operator' => 'NOT IN');
 
 // Include 'docprod' taxonomy if dtext has a value
 $termIds = get_terms([
@@ -64,7 +64,8 @@ $tax_query = array_filter(array(
     $dsub_tax,
     $dtype_tax,
     $dlang_tax,
-    $dtext_query
+    $dtext_query,
+    $exclude
 ));
 
 $args = array(
