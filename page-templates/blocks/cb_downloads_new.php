@@ -106,14 +106,14 @@ $dsubs = get_terms(array(
 $liveProducts = array();
 $legacyProducts = array();
 foreach ($dsubs as $d) {
-    
+
     $checkbox_value = get_field('is_current', 'docprod_' . $d->term_id);
-    
+
     // echo '<!--';
     // var_dump($checkbox_value);
     // echo '-->';
 
-    if ($d->slug == 'ca-moisture-probe') {
+    if ($d->slug == 'ca-moisture-probe' || $d->slug == 'legacy') {
         continue;
     }
 
@@ -271,9 +271,22 @@ foreach ($dlangs as $dl) {
 </section>
 
 <?php
-add_action('wp_footer', function () {
+add_action('wp_footer', function () use ($liveProducts) {
 
 $categories = get_taxonomy_hierarchy( 'docprod' );
+$categories = array_filter($categories, function ($category) use ($liveProducts) {
+    return isset($liveProducts[$category->slug]);
+});
+
+foreach ($categories as $index => $category) {
+    if (empty($category->children)) {
+        continue;
+    }
+
+    $category->children = array_filter($category->children, function ($child) {
+        return $child->slug !== 'legacy';
+    });
+}
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
