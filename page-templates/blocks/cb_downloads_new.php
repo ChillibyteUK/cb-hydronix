@@ -113,7 +113,7 @@ foreach ($dsubs as $d) {
     // var_dump($checkbox_value);
     // echo '-->';
 
-    if ($d->slug == 'ca-moisture-probe' || $d->slug == 'legacy') {
+    if ($d->slug == 'ca-moisture-probe' || $d->slug == 'legacy' || $d->name == 'EA01 Lantronix Configuration Software') {
         continue;
     }
 
