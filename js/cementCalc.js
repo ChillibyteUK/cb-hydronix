@@ -64,10 +64,12 @@ document.getElementById('water').addEventListener('input', calculateRatios);
 document.getElementById('totalBinderWeight').addEventListener('input', calculateRatios);
 document.getElementById('totalWeight').addEventListener('input', calculateRatios);
 
-// Initialize Bootstrap tooltips
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
+// Initialize Bootstrap tooltips (deferred until Bootstrap is available via wp_footer)
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
 
 function toggleMoistureFields() {
