@@ -95,7 +95,7 @@ function handle_send_cement_results_email() {
         <div style='max-width: 600px; margin: 0 auto; padding: 20px;'>
             <h2 style='color: #2c5282;'>Hello {$name},</h2>
             
-            <p>Thank you for using the Hydronix Cement Calculator. Your personalized results are now ready!</p>
+            <p>Thank you for using the Hydronix Cement Calculator. Your personalised results are now ready!</p>
             
             <div style='background: #f7fafc; padding: 20px; border-radius: 8px; margin: 20px 0;'>
                 <h3 style='margin-top: 0; color: #2c5282;'>Your Results Summary</h3>
@@ -111,7 +111,7 @@ function handle_send_cement_results_email() {
                 </a>
             </div>
             
-            <p>This link will take you to your personalized cement calculator report, including:</p>
+            <p>This link will take you to your personalised cement calculator report, including:</p>
             <ul>
                 <li>Your concrete mix design recipe</li>
                 <li>Production data analysis</li>
