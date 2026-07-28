@@ -7,10 +7,6 @@ defined('ABSPATH') || exit;
     <div class="container-xl">
         <div class="row">
             <div class="col-lg-4">
-                <div class="h5">Hydronix</div>
-                <div class="mb-4">
-                    <?=__('To ensure that our customers receive the best possible sales and support assistance, Hydronix has offices located across the world. Our head office is in the UK, and we also have offices in the US, Germany, France and China.', 'cb-hydronix')?>
-                </div>
                 <a href="<?=__('/about-hydronix/contact-us/', 'cb-hydronix')?>"
                     class="btn btn--orange mb-3"><?=__('Get in touch', 'cb-hydronix')?></a>
                 <div class="social-icons mb-2">

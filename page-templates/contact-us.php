@@ -111,7 +111,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix America','cb-hydronix')?></h4>
+                        <h4><?=__('Hydronix Americas','cb-hydronix')?></h4>
                         <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
                         <ul class="fa-ul">
