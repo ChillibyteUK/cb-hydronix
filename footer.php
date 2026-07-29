@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
     <div class="container-xl">
         <div class="row">
             <div class="col-lg-4">
-<               <div class="h5">Hydronix</div>
+                <div class="h5">Hydronix</div>
                 <div class="mb-4">
                     <?=__('To ensure that our customers receive the best possible sales and support assistance, Hydronix has partners located across the world.', 'cb-hydronix')?>
                 </div>
