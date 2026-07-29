@@ -592,29 +592,81 @@ if (get_field('accessories')) {
                     aria-labelledby="heading-Accessories">
                     <div class="card-body py-5">
                         <ul class="cols-lg-3 nopad">
-                            <?php
-                            if ( get_field( 'accessories' ) ?? null ) {
-                                foreach ( get_field( 'accessories' ) as $i ) {
-                                    if ( has_post_thumbnail( $i ) ) {
-                                        $img   = get_the_post_thumbnail_url( $i, 'full' );
-                                        $thumb = get_the_post_thumbnail_url( $i, 'thumbnail' );
-                                        echo '<li class="mb-2"><a href="' . $img . '" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
-                                    } else {
-                                        // Try to get the English version's thumbnail
-                                        $post_type = get_post_type($i);
-                                        $default_lang = apply_filters( 'wpml_default_language', null );
-                                        $en_id = apply_filters( 'wpml_object_id', $i, $post_type, true, $default_lang );
-                                        if ( $en_id && has_post_thumbnail( $en_id ) ) {
-                                            $img   = get_the_post_thumbnail_url( $en_id, 'full' );
-                                            $thumb = get_the_post_thumbnail_url( $en_id, 'thumbnail' );
-                                            echo '<li class="mb-2"><a href="' . $img . '" data-lightbox="gallery" class="d-flex gap-2 text-decoration-none"><img src="' . $thumb . '" width=50 height=50>&nbsp;' . get_the_title( $i ) . '</a></li>';
-                                        } else {
-                                            echo '<li class="mb-2">' . get_the_title( $i ) . '</li>';
-                                        }
-                                    }
-                                }
-                            }
-							?>
+<?php
+$accessories = get_field( 'accessories' );
+
+if ( $accessories ) {
+
+    $current_lang = apply_filters( 'wpml_current_language', null );
+    $default_lang = apply_filters( 'wpml_default_language', null );
+
+    foreach ( $accessories as $accessory ) {
+
+        $original_id = is_object( $accessory )
+            ? $accessory->ID
+            : (int) $accessory;
+
+        $post_type = get_post_type( $original_id );
+
+        // Get this accessory in the currently displayed language.
+        $translated_id = apply_filters(
+            'wpml_object_id',
+            $original_id,
+            $post_type,
+            true,
+            $current_lang
+        );
+
+        $display_id = $translated_id ?: $original_id;
+
+        /*
+         * Use the current-language image where available.
+         * Otherwise fall back to the default-language image.
+         */
+        $image_id = $display_id;
+
+        if ( ! has_post_thumbnail( $image_id ) ) {
+            $default_id = apply_filters(
+                'wpml_object_id',
+                $original_id,
+                $post_type,
+                true,
+                $default_lang
+            );
+
+            if ( $default_id && has_post_thumbnail( $default_id ) ) {
+                $image_id = $default_id;
+            }
+        }
+
+        echo '<li class="mb-2">';
+
+        if ( has_post_thumbnail( $image_id ) ) {
+
+            $img   = get_the_post_thumbnail_url( $image_id, 'full' );
+            $thumb = get_the_post_thumbnail_url( $image_id, 'thumbnail' );
+
+            echo '<a href="' . esc_url( $img ) . '" 
+                     data-lightbox="gallery" 
+                     class="d-flex gap-2 text-decoration-none">';
+
+            echo '<img src="' . esc_url( $thumb ) . '" 
+                       width="50" 
+                       height="50" 
+                       alt="">';
+
+            echo '<span>' . esc_html( get_the_title( $display_id ) ) . '</span>';
+
+            echo '</a>';
+
+        } else {
+            echo esc_html( get_the_title( $display_id ) );
+        }
+
+        echo '</li>';
+    }
+}
+?>
                         </ul>
                     </div>
                 </div>
