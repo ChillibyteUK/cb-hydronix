@@ -68,7 +68,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix Europe','cb-hydronix')?></h4>
+                        <h4><?=__('Central Europe','cb-hydronix-contact')?></h4>
                         <div class="mb-2"><em><?=get_field('eu_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('eu_locality','options')?></em></div>
                         <ul class="fa-ul">
@@ -87,7 +87,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix France','cb-hydronix')?></h4>
+                        <h4><?=__('France and French-speaking Africa','cb-hydronix-contact')?></h4>
                         <div class="mb-2"><em><?=get_field('fr_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('fr_locality','options')?></em></div>
                         <ul class="fa-ul">
@@ -99,7 +99,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix China','cb-hydronix')?></h4>
+                        <h4><?=__('China','cb-hydronix-contact')?></h4>
                         <div class="mb-2"><em><?=get_field('cn_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('cn_locality','options')?></em></div>
                         <ul class="fa-ul">
@@ -111,7 +111,7 @@ $ho_service_email = apply_filters( 'wpml_permalink', get_field('ho_service_email
                 </div>
                 <div class="col-md-3">
                     <div class="card p-4 h-100">
-                        <h4><?=__('Hydronix Americas','cb-hydronix')?></h4>
+                        <h4><?=__('Americas','cb-hydronix-contact')?></h4>
                         <div class="mb-2"><em><?=get_field('us_areas_served','options')?></em></div>
                         <div class="mb-3"><em><?=get_field('us_locality','options')?></em></div>
                         <ul class="fa-ul">
