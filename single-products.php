@@ -1053,7 +1053,7 @@ do_action('wpml_switch_language', $current_lang);
 
 <?php
 $faqs = get_field('faqs', $product_id);
-$background = get_field('background_colour');
+$background = get_field('background_colour', $product_id);
 
 if (!empty($faqs)) : ?>
     <section id="faq" class="py-5 <?=$background?>">
