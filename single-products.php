@@ -1054,10 +1054,9 @@ do_action('wpml_switch_language', $current_lang);
 <?php
 $faqs = get_field('faqs', $product_id);
 $background = get_field('background_colour');
-$bg = !empty($background) && $background[0] === 'dark' ? 'bg--blue-100' : '';
 
 if (!empty($faqs)) : ?>
-    <section id="faq" class="py-5 <?=$bg?>">
+    <section id="faq" class="py-5 <?=$background?>">
         <div class="container-xl">
             <h2 class="mb-4">
                 <?= __('Frequently Asked Questions', 'cb-hydronix') ?>
