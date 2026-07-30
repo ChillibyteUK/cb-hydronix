@@ -28,6 +28,8 @@ add_action(
 get_header();
 the_post();
 
+$product_id = get_the_ID();
+
 $bg = wp_get_attachment_image_url( get_field( 'hero_background' ), 'full' );
 if ( ! $bg ) {
     $bg = '/wp-content/uploads/2022/09/product-bg-organic-2.jpg';
@@ -1062,7 +1064,7 @@ if (!empty($faqs)) : ?>
         </div>
     </section>
 <?php endif; ?>
-    
+
 </main>
 <?php
 
