@@ -1048,6 +1048,21 @@ do_action('wpml_switch_language', $current_lang);
             </div>
         </div>
     </section>
+
+<?php
+$faqs = get_field('faqs', $product_id);
+
+if (!empty($faqs)) : ?>
+    <section id="faq" class="support_cta py-5">
+        <div class="container-xl">
+            <h2 class="mb-4">
+                <?= __('Frequently Asked Questions', 'cb-hydronix') ?>
+            </h2>
+            <?php echo do_shortcode('[faq_tabs ids="' . implode(',', $faqs) . '" search="0" schema="1"]'); ?>
+        </div>
+    </section>
+<?php endif; ?>
+    
 </main>
 <?php
 
